@@ -1,8 +1,8 @@
 {
-  "name": "codecities",
+  "name": "CodeWanderer",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:dennisschoepf/codecities.git",
+  "repository": "git@github.com:dennisschoepf/codewanderer.git",
   "author": "Dennis Schoepf <dennis@schoepf.co>",
   "license": "MIT",
   "scripts": {
