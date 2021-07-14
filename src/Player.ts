@@ -28,6 +28,9 @@ export class Player {
 
     this.drawPlayerTrail();
     this.drawPlayerShape(this.x, this.y);
+  }
+
+  public move() {
     this.drawCursorIndicator(mp5.mouseX, mp5.mouseY, 4);
   }
 

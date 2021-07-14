@@ -1,22 +1,29 @@
 import p5 from 'p5';
-import { colors } from './src/constants/colors';
 import { SCREEN_WIDTH, SCREEN_HEIGHT } from './src/constants/screen';
-import { Player } from './src/Player';
+import { OverviewScene } from './src/scenes/OverviewScene';
+import { Scenes } from './src/scenes/scenes';
 
 const sketch = (s) => {
-  let player;
+  let currentScene: Scenes = Scenes.OVERVIEW;
+  let overviewScene: OverviewScene;
 
   s.setup = () => {
     s.createCanvas(SCREEN_WIDTH, SCREEN_HEIGHT);
     s.noCursor();
 
-    player = new Player();
+    overviewScene = new OverviewScene();
   };
 
   s.draw = () => {
-    s.background(s.color(colors.greyLighter));
+    if (currentScene === Scenes.OVERVIEW) {
+      overviewScene.draw();
+    }
+  };
 
-    player.follow();
+  s.mousePressed = () => {
+    if (currentScene === Scenes.OVERVIEW) {
+      overviewScene.onSceneClick();
+    }
   };
 };
 

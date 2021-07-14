@@ -1,4 +1,16 @@
-export const colors: { [key: string]: string } = {
+interface Colors {
+  greyLighter: string;
+  greyLight: string;
+  grey: string;
+  greyDark: string;
+  blueGrey: string;
+  redLight: string;
+  red: string;
+  redDark: string;
+  black: string;
+}
+
+export const colors: Colors = {
   greyLighter: '#EBEEF2',
   greyLight: '#D0D5D9',
   grey: '#B0B7BF',
