@@ -7,4 +7,5 @@ export const colors: { [key: string]: string } = {
   redLight: '#BF2431',
   red: '#A60303',
   redDark: '#590C13',
+  black: '#0D0D0D',
 };
