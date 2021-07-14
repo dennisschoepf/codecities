@@ -1,6 +1,6 @@
 import p5 from 'p5';
-import { colors } from './src/colors';
-import { SCREEN_WIDTH, SCREEN_HEIGHT } from './src/constants';
+import { colors } from './src/constants/colors';
+import { SCREEN_WIDTH, SCREEN_HEIGHT } from './src/constants/screen';
 import { Player } from './src/Player';
 
 const sketch = (s) => {
