@@ -1,7 +1,6 @@
 import { mp5 } from '../../main';
-import { SceneManager } from './SceneManager';
+import store from '../store';
 import { Scenes } from './scenes';
-
 export class LegacyScene {
   constructor() {}
 
@@ -9,8 +8,8 @@ export class LegacyScene {
     mp5.background(100);
   }
 
-  onSceneClick(sm: SceneManager) {
+  onSceneClick() {
     console.log('Click on legacy scene');
-    sm.changeSceneTo(Scenes.OVERVIEW);
+    store.setState({ currentScene: Scenes.OVERVIEW });
   }
 }

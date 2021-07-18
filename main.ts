@@ -1,24 +1,41 @@
 import p5 from 'p5';
 import { SCREEN_WIDTH, SCREEN_HEIGHT } from './src/constants/screen';
-import { SceneManager } from './src/scenes/SceneManager';
+import { LegacyScene } from './src/scenes/LegacyScene';
+import { OverviewScene } from './src/scenes/OverviewScene';
 import { Scenes } from './src/scenes/scenes';
+import store from './src/store';
 
 const sketch = (s: p5) => {
-  let sm: SceneManager;
+  // Scenes
+  let overviewScene: OverviewScene;
+  let legacyScene: LegacyScene;
 
   s.setup = () => {
     s.createCanvas(SCREEN_WIDTH, SCREEN_HEIGHT);
     s.noCursor();
 
-    sm = new SceneManager();
+    overviewScene = new OverviewScene();
+    legacyScene = new LegacyScene();
   };
 
   s.draw = () => {
-    sm.draw();
+    const { currentScene } = store.getState();
+
+    if (currentScene === Scenes.OVERVIEW) {
+      overviewScene.draw();
+    } else if (currentScene === Scenes.LEGACY) {
+      legacyScene.draw();
+    }
   };
 
   s.mousePressed = () => {
-    sm.handleClick();
+    const { currentScene } = store.getState();
+
+    if (currentScene === Scenes.OVERVIEW) {
+      overviewScene.onSceneClick();
+    } else if (currentScene === Scenes.LEGACY) {
+      legacyScene.onSceneClick();
+    }
   };
 };
 

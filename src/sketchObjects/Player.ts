@@ -1,5 +1,5 @@
-import { mp5 } from '../main';
-import { colors } from './constants/colors';
+import { mp5 } from '../../main';
+import { colors } from '../constants/colors';
 
 export class Player {
   x: number;

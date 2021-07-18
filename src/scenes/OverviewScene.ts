@@ -1,9 +1,9 @@
 import { mp5 } from '../../main';
-import { Player } from '../Player';
+import { Player } from '../sketchObjects/Player';
 import { colors } from '../constants/colors';
-import { Edge } from '../Edge';
-import { SceneManager } from './SceneManager';
+import { Edge } from '../sketchObjects/Edge';
 import { Scenes } from './scenes';
+import store from '../store';
 
 export class OverviewScene {
   player: Player;
@@ -28,11 +28,11 @@ export class OverviewScene {
     this.player.move();
   }
 
-  public onSceneClick(sm: SceneManager) {
+  public onSceneClick() {
     this.edgeData.forEach((edge, i) => {
       const dist = mp5.dist(mp5.mouseX, mp5.mouseY, edge.x, edge.y);
       if (dist < edge.r) {
-        sm.changeSceneTo(edge.scene);
+        store.setState({ currentScene: edge.scene });
       }
     });
   }
