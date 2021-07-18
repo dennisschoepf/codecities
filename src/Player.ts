@@ -57,6 +57,7 @@ export class Player {
   }
 
   private drawCursorIndicator(x: number, y: number, size: number) {
+    mp5.strokeWeight(2);
     mp5.stroke(mp5.color(colors.black));
     mp5.line(x - size, y + size, x + size, y - size);
     mp5.line(x + size, y - size, x - size, y + size);

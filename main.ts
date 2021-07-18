@@ -1,29 +1,24 @@
 import p5 from 'p5';
 import { SCREEN_WIDTH, SCREEN_HEIGHT } from './src/constants/screen';
-import { OverviewScene } from './src/scenes/OverviewScene';
+import { SceneManager } from './src/scenes/SceneManager';
 import { Scenes } from './src/scenes/scenes';
 
-const sketch = (s) => {
-  let currentScene: Scenes = Scenes.OVERVIEW;
-  let overviewScene: OverviewScene;
+const sketch = (s: p5) => {
+  let sm: SceneManager;
 
   s.setup = () => {
     s.createCanvas(SCREEN_WIDTH, SCREEN_HEIGHT);
     s.noCursor();
 
-    overviewScene = new OverviewScene();
+    sm = new SceneManager();
   };
 
   s.draw = () => {
-    if (currentScene === Scenes.OVERVIEW) {
-      overviewScene.draw();
-    }
+    sm.draw();
   };
 
   s.mousePressed = () => {
-    if (currentScene === Scenes.OVERVIEW) {
-      overviewScene.onSceneClick();
-    }
+    sm.handleClick();
   };
 };
 
