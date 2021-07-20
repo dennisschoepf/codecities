@@ -1,5 +1,4 @@
 import anime from 'animejs/lib/anime.es';
-import { reject } from 'core-js/fn/promise';
 import store from '../store';
 
 export enum CompanionState {
@@ -9,9 +8,16 @@ export enum CompanionState {
   SUCCESS = 'SUCCESS',
 }
 
+export interface CompanionMessage {
+  text: string;
+  inputWanted: boolean;
+  timestamp: number;
+}
+
 export class Companion {
   ref: HTMLElement;
   hoverAnimation: any;
+  message: CompanionMessage;
 
   constructor() {
     this.ref = document.getElementById('companion');
@@ -19,12 +25,13 @@ export class Companion {
     this.ref.addEventListener('mouseover', () => this.handleMouseEnter());
     this.ref.addEventListener('mouseleave', () => this.handleMouseLeave());
 
+    this.pupilFollowCursor();
+
     store.subscribe(
       (companionState) => {
         if (companionState === CompanionState.ACTIVE) {
           this.showActiveShape();
           this.scaleUpCompanion();
-          this.pupilFollowCursor();
         } else if (companionState === CompanionState.IDLE) {
           this.scaleDownCompanion();
           this.showIdleShape();
@@ -38,7 +45,19 @@ export class Companion {
       },
       (state) => state.companionState
     );
+
+    store.subscribe(
+      (messages: CompanionMessage[], prevMessages: CompanionMessage[]) => {
+        if (prevMessages.length !== messages.length) {
+          const newMessage = messages[messages.length - 1];
+          console.log(newMessage);
+        }
+      },
+      (state) => state.userMessages
+    );
   }
+
+  showMessage() {}
 
   showActiveShape() {
     const mouth = document.getElementById('companion-mouth');
@@ -99,7 +118,7 @@ export class Companion {
 
       pupil.style.transform = `translate(${-((pupDim.x - e.pageX) * 0.005)}px, ${-(
         (pupDim.y - e.pageY) *
-        0.015
+        0.012
       )}px)`;
     });
   }

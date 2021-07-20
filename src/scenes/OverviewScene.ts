@@ -35,6 +35,12 @@ export class OverviewScene {
         store.setState({ currentScene: edge.scene });
       }
     });
+
+    store.getState().addUserMessage({
+      text: `Test Message ${Math.random()}`,
+      inputWanted: false,
+      timestamp: Date.now(),
+    });
   }
 
   private drawLocations() {
