@@ -16,11 +16,20 @@ export interface CompanionMessage {
 
 export class Companion {
   ref: HTMLElement;
+  messageRef: HTMLElement;
+  messageTextRef: HTMLElement;
+  messageInputRef: HTMLElement;
+  messageButtonRef: HTMLElement;
   hoverAnimation: any;
   message: CompanionMessage;
 
   constructor() {
     this.ref = document.getElementById('companion');
+    this.messageRef = document.getElementById('message');
+    this.messageTextRef = document.getElementById('message-text');
+    this.messageInputRef = document.getElementById('message-input');
+    this.messageButtonRef = document.getElementById('message-confirm');
+
     this.ref.addEventListener('click', () => this.handleClick());
     this.ref.addEventListener('mouseover', () => this.handleMouseEnter());
     this.ref.addEventListener('mouseleave', () => this.handleMouseLeave());
@@ -50,14 +59,26 @@ export class Companion {
       (messages: CompanionMessage[], prevMessages: CompanionMessage[]) => {
         if (prevMessages.length !== messages.length) {
           const newMessage = messages[messages.length - 1];
-          console.log(newMessage);
+          this.showMessage(newMessage);
         }
       },
       (state) => state.userMessages
     );
   }
 
-  showMessage() {}
+  showMessage(message: CompanionMessage) {
+    this.messageTextRef.innerText = message.text;
+
+    if (message.inputWanted) {
+      this.messageInputRef.style.display = 'block';
+
+      // TODO: Get text from textarea and log it on confirm, hide button after click on confirm as well
+    } else {
+      this.messageInputRef.style.display = 'none';
+
+      // TODO: Hide message on confirm click, log time looked at message
+    }
+  }
 
   showActiveShape() {
     const mouth = document.getElementById('companion-mouth');

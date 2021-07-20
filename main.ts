@@ -4,7 +4,7 @@ import { LegacyScene } from './src/scenes/LegacyScene';
 import { OverviewScene } from './src/scenes/OverviewScene';
 import { Scenes } from './src/scenes/scenes';
 import store from './src/store';
-import { Companion } from './src/ui/companion';
+import { Companion, CompanionState } from './src/ui/companion';
 
 const sketch = (s: p5) => {
   // Scenes
@@ -32,7 +32,9 @@ const sketch = (s: p5) => {
   };
 
   s.mousePressed = () => {
-    const { currentScene } = store.getState();
+    const { currentScene, companionState } = store.getState();
+
+    if (companionState === CompanionState.ACTIVE) return;
 
     if (currentScene === Scenes.OVERVIEW) {
       overviewScene.onSceneClick();
