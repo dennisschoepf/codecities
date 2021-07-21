@@ -1,0 +1,16 @@
+{
+  "subprojects": [
+    {
+      "name": "sample",
+      "path": "packages/sample",
+      "size": 2450,
+      "contents": {}
+    },
+    {
+      "name": "sample",
+      "path": "packages/sample",
+      "size": 5600,
+      "contents": {}
+    }
+  ]
+}

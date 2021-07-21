@@ -1,7 +1,8 @@
 import { mp5 } from '../../main';
 import store from '../store';
 import { Scenes } from './scenes';
-export class LegacyScene {
+
+export class DetailScene {
   constructor() {}
 
   draw() {
@@ -9,7 +10,8 @@ export class LegacyScene {
   }
 
   onSceneClick() {
-    console.log('Click on legacy scene');
+    console.log('Click on detail scene');
+    console.log('Changing back to overview');
     store.setState({ currentScene: Scenes.OVERVIEW });
   }
 }
