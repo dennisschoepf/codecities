@@ -34,6 +34,8 @@ export class Companion {
     this.ref.addEventListener('mouseover', () => this.handleMouseEnter());
     this.ref.addEventListener('mouseleave', () => this.handleMouseLeave());
 
+    this.messageButtonRef.addEventListener('click', () => this.confirmMessage());
+
     this.pupilFollowCursor();
 
     store.subscribe(
@@ -41,12 +43,16 @@ export class Companion {
         if (companionState === CompanionState.ACTIVE) {
           this.showActiveShape();
           this.scaleUpCompanion();
+          this.stopAwaitAnimation();
+          this.showMessage(this.message);
         } else if (companionState === CompanionState.IDLE) {
           this.scaleDownCompanion();
           this.showIdleShape();
+          this.stopAwaitAnimation();
         } else if (companionState === CompanionState.AWAIT) {
           this.playAwaitAnimation();
         } else if (companionState === CompanionState.SUCCESS) {
+          this.stopAwaitAnimation();
           this.playSuccessAnimation();
           this.scaleDownCompanion();
           this.showIdleShape();
@@ -59,7 +65,9 @@ export class Companion {
       (messages: CompanionMessage[], prevMessages: CompanionMessage[]) => {
         if (prevMessages.length !== messages.length) {
           const newMessage = messages[messages.length - 1];
-          this.showMessage(newMessage);
+          this.message = newMessage;
+
+          store.setState({ companionState: CompanionState.AWAIT });
         }
       },
       (state) => state.userMessages
@@ -68,16 +76,26 @@ export class Companion {
 
   showMessage(message: CompanionMessage) {
     this.messageTextRef.innerText = message.text;
+    this.messageRef.style.display = 'flex';
 
     if (message.inputWanted) {
       this.messageInputRef.style.display = 'block';
-
-      // TODO: Get text from textarea and log it on confirm, hide button after click on confirm as well
     } else {
       this.messageInputRef.style.display = 'none';
-
-      // TODO: Hide message on confirm click, log time looked at message
     }
+  }
+
+  confirmMessage() {
+    console.log(this.message);
+
+    if (this.message.inputWanted) {
+      // Get text from textarea
+      // Send via API
+    }
+
+    // Hide Message
+    store.setState({ companionState: CompanionState.IDLE });
+    this.messageRef.style.display = 'none';
   }
 
   showActiveShape() {
@@ -130,7 +148,28 @@ export class Companion {
 
   playSuccessAnimation() {}
 
-  playAwaitAnimation() {}
+  playAwaitAnimation() {
+    document.getElementById('companion-await-indicator').style.display = 'inline';
+    anime({
+      targets: '#companion-await-indicator',
+      keyframes: [
+        { scale: 4, opacity: 0, rotate: '45deg', duration: 900 },
+        { scale: 5, duration: 200 },
+      ],
+      easing: 'easeOutQuad',
+      duration: 900,
+      loop: true,
+    });
+  }
+
+  stopAwaitAnimation() {
+    const indicator = document.getElementById('companion-await-indicator');
+    indicator.style.display = 'none';
+    indicator.style.opacity = '1';
+    indicator.style.transform = 'scale(1) rotate(0)';
+
+    anime.remove('#companion-await-indicator');
+  }
 
   pupilFollowCursor() {
     document.addEventListener('mousemove', (e) => {
