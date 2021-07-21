@@ -30,8 +30,9 @@ export function isColliding(
   );
 }
 
-export function generateEdgeCoords(existingCoordinates: Coordinates[]): Coordinates {
+export function generateEdgeCoords(existingEdges: Edge[]): Coordinates {
   let newCoords: Coordinates;
+  const existingCoordinates = existingEdges.map(({ x, y }) => ({ x, y }));
 
   do {
     newCoords = generateRandomEdgeCoordinates();
@@ -41,23 +42,25 @@ export function generateEdgeCoords(existingCoordinates: Coordinates[]): Coordina
 }
 
 export function generateEdges(subprojects: SubProject[]): Edge[] {
-  let edgeCoords = [];
+  let edges = [];
 
   subprojects.forEach((subproject) => {
-    const coordinates = generateEdgeCoords(edgeCoords);
-    edgeCoords.push({
+    const coordinates = generateEdgeCoords(edges);
+    edges.push({
       x: coordinates.x,
       y: coordinates.y,
       r: getEdgeDimensions(subproject),
+      name: subproject.name,
     });
   });
 
-  return edgeCoords.map(
-    (edgeCoord) =>
+  return edges.map(
+    (edge) =>
       new Edge({
-        x: edgeCoord.x,
-        y: edgeCoord.y,
-        r: edgeCoord.r,
+        x: edge.x,
+        y: edge.y,
+        r: edge.r,
+        name: edge.name,
       })
   );
 }

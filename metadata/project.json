@@ -1,14 +1,14 @@
 {
   "subprojects": [
     {
-      "name": "sample",
-      "path": "packages/sample",
+      "name": "block",
+      "path": "packages/block",
       "size": 2450,
       "contents": {}
     },
     {
-      "name": "sample",
-      "path": "packages/sample",
+      "name": "client",
+      "path": "packages/client",
       "size": 5600,
       "contents": {}
     }
