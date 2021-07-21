@@ -1,4 +1,6 @@
 export enum Scenes {
   OVERVIEW = 'OVERVIEW',
   LEGACY = 'LEGACY',
+  PACKAGES = 'PACKAGES',
+  CONTRIBUTORS = 'CONTRIBUTORS',
 }
