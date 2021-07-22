@@ -14,6 +14,14 @@ export class OverviewScene {
   constructor() {
     this.edges = generateEdges(projectMetadata.subprojects);
     this.player = new Player();
+
+    setTimeout(() => {
+      store.getState().addUserMessage({
+        text: "Hello there 👋 Let's start exploring the ethereumjs open source project",
+        inputWanted: false,
+        timestamp: Date.now(),
+      });
+    }, 2000);
   }
 
   public draw() {

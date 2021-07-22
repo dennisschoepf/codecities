@@ -11,6 +11,24 @@
       "path": "packages/client",
       "size": 5600,
       "contents": {}
+    },
+    {
+      "name": "blockchain",
+      "path": "packages/blockchain",
+      "size": 4000,
+      "contents": {}
+    },
+    {
+      "name": "ethash",
+      "path": "packages/ethash",
+      "size": 3600,
+      "contents": {}
+    },
+    {
+      "name": "common",
+      "path": "packages/common",
+      "size": 1000,
+      "contents": {}
     }
   ]
 }
