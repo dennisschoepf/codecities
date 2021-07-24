@@ -4,7 +4,11 @@
       "name": "block",
       "path": "packages/block",
       "size": 2450,
-      "contents": {}
+      "contents": {
+        "legacy": ["Test"],
+        "contributors": ["Test"],
+        "packages": ["Test"]
+      }
     },
     {
       "name": "client",

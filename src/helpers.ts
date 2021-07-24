@@ -64,3 +64,7 @@ export function generateEdges(subprojects: SubProject[]): Edge[] {
       })
   );
 }
+
+export function getSubproject(name: string, projects: SubProject[]): SubProject {
+  return projects.filter((project) => project.name === name)[0];
+}
