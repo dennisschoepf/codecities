@@ -1,7 +1,7 @@
 import { mp5 } from '../../main';
 import { colors } from '../constants/colors';
 
-export class Contributor {
+export class Package {
   x: number;
   y: number;
   size: number;
@@ -14,9 +14,7 @@ export class Contributor {
     this.size = size;
   }
 
-  public place() {}
-
-  private draw() {
+  public place() {
     mp5.fill(mp5.color(colors.redDark));
     mp5.ellipse(this.x, this.y, this.size);
   }

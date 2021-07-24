@@ -15,9 +15,7 @@ export class Contributor {
     this.size = size;
   }
 
-  public place() {}
-
-  private draw() {
+  public place() {
     mp5.fill(mp5.color(colors.blueGrey));
     mp5.ellipse(this.x, this.y, this.size);
   }

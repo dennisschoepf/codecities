@@ -14,9 +14,7 @@ export class Legacy {
     this.size = size;
   }
 
-  public place() {}
-
-  private draw() {
+  private place() {
     mp5.fill(mp5.color(colors.red));
     mp5.ellipse(this.x, this.y, this.size);
   }
