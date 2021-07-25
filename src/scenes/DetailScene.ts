@@ -27,6 +27,7 @@ export class DetailScene {
 
   draw() {
     mp5.background(mp5.color(colors.greyLighter));
+    this.player.drawOnReveal();
     this.player.follow();
     this.player.move();
 
@@ -42,8 +43,7 @@ export class DetailScene {
   }
 
   onSceneClick() {
-    console.log('Click on detail scene');
-    console.log('Changing back to overview');
-    store.setState({ currentScene: Scenes.OVERVIEW });
+    // store.setState({ currentScene: Scenes.OVERVIEW });
+    this.player.reveal();
   }
 }

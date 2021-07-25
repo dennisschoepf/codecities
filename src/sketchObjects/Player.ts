@@ -7,6 +7,11 @@ export class Player {
   r: number;
   easing: number;
   history: Array<{ x: number; y: number }> = [];
+  lastTrailEl: { x: number; y: number };
+  cursorOnRevealClick: { x: number; y: number };
+  showRevealEl: boolean;
+  revealElCoordinates: { x: number; y: number };
+  lastRevealClickTime: number;
 
   constructor() {
     this.x = mp5.height / 2;
@@ -34,6 +39,37 @@ export class Player {
     this.drawCursorIndicator(mp5.mouseX, mp5.mouseY, 4);
   }
 
+  public reveal() {
+    const { x, y } = this.lastTrailEl;
+
+    if (x && y) {
+      console.log('Drawing');
+      this.showRevealEl = true;
+      this.revealElCoordinates = { x, y };
+      this.cursorOnRevealClick = { x: mp5.mouseX, y: mp5.mouseY };
+      this.lastRevealClickTime = mp5.millis();
+    }
+  }
+
+  public drawOnReveal() {
+    const timeElapsedSinceRevealClick = mp5.millis() - this.lastRevealClickTime;
+
+    if (this.showRevealEl) {
+      mp5.fill(mp5.color(colors.greyLighter));
+      mp5.strokeWeight(5);
+      mp5.stroke(mp5.color(255));
+      mp5.ellipse(
+        this.cursorOnRevealClick.x,
+        this.cursorOnRevealClick.y,
+        timeElapsedSinceRevealClick * 0.4
+      );
+
+      if (timeElapsedSinceRevealClick > 2000) {
+        this.showRevealEl = false;
+      }
+    }
+  }
+
   private drawPlayerShape(x: number, y: number) {
     mp5.fill(mp5.color(colors.grey));
     mp5.noStroke();
@@ -48,6 +84,11 @@ export class Player {
 
   private drawPlayerTrail() {
     const immediateHistory = this.history.slice(1).slice(-30);
+    const lastTrailElPosition = immediateHistory[0];
+
+    if (lastTrailElPosition) {
+      this.lastTrailEl = lastTrailElPosition;
+    }
 
     immediateHistory.forEach((pointInHistory, i) => {
       if (i % 5 === 0) {
