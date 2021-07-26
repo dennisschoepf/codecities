@@ -57,7 +57,7 @@ export class Player {
     if (this.showRevealEl) {
       const x = this.cursorOnRevealClick.x;
       const y = this.cursorOnRevealClick.y;
-      const w = Math.floor(timeElapsedSinceRevealClick * 0.4);
+      const w = timeElapsedSinceRevealClick * 0.4;
 
       mp5.fill(mp5.color(colors.greyLighter));
       mp5.strokeWeight(5);

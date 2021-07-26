@@ -30,13 +30,6 @@ export function isColliding(
   );
 }
 
-export function shapeCollision(
-  firstShape: { x: number; y: number; w: number },
-  secondShape: { x: number; y: number; w: number }
-) {
-  return mp5.dist(firstShape.x, firstShape.y, secondShape.x, secondShape.y) < secondShape.w - 150;
-}
-
 export function generateEdgeCoords(existingEdges: Edge[]): Coordinates {
   let newCoords: Coordinates;
   const existingCoordinates = existingEdges.map(({ x, y }) => ({ x, y }));

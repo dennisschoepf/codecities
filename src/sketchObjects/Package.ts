@@ -1,8 +1,7 @@
-import { asyncScheduler, distinct, distinctUntilKeyChanged, throttleTime } from 'rxjs';
+import { map } from 'rxjs';
 import { mp5 } from '../../main';
-import { revealedArea$ } from '../area';
+import { pointIsRevealed, revealedArea$ } from '../area';
 import { colors } from '../constants/colors';
-import { shapeCollision } from '../helpers';
 
 export class Package {
   x: number;
@@ -16,9 +15,11 @@ export class Package {
     this.y = y;
     this.size = size;
 
-    revealedArea$.subscribe((revealedArea) => {
-      this.revealed = shapeCollision({ x: this.x, y: this.y, w: 10 }, revealedArea);
-    });
+    revealedArea$
+      .pipe(map((revealedArea) => pointIsRevealed({ x: this.x, y: this.y }, revealedArea)))
+      .subscribe((isRevealed) => {
+        this.revealed = isRevealed;
+      });
   }
 
   public place() {
