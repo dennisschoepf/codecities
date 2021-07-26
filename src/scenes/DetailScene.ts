@@ -21,7 +21,7 @@ export class DetailScene {
         (contributor) => new Contributor(100, 200, 100)
       );
       this.legacy = state.currLegacy.map((legacy) => new Legacy(200, 300, 100));
-      this.packages = state.currPackages.map((currPackage) => new Package(400, 300, 100));
+      this.packages = state.currPackages.map((currPackage) => new Package(400, 300, 50));
     });
   }
 
@@ -39,7 +39,7 @@ export class DetailScene {
     });
     this.packages.forEach((packageObj) => {
       packageObj.place();
-      packageObj.drawOnReveal();
+      packageObj.draw();
     });
   }
 

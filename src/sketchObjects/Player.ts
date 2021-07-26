@@ -1,5 +1,5 @@
 import { mp5 } from '../../main';
-import { revealedArea$ } from '../area';
+import { playerHeadPosition$, revealedArea$ } from '../area';
 import { colors } from '../constants/colors';
 
 export class Player {
@@ -34,6 +34,8 @@ export class Player {
 
     this.drawPlayerTrail();
     this.drawPlayerShape(this.x, this.y);
+
+    playerHeadPosition$.next({ x: this.x, y: this.y });
   }
 
   public move() {

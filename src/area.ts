@@ -1,5 +1,7 @@
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { mp5 } from '../main';
+
+export const playerHeadPosition$ = new Subject<{ x: number; y: number }>();
 
 export const revealedArea$ = new BehaviorSubject<{ x: number; y: number; w: number }>({
   x: 0,
