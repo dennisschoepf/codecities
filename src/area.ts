@@ -12,7 +12,6 @@ export function pointIsRevealed(
   revealedArea: { x: number; y: number; w: number }
 ): boolean {
   const distanceBetweenPoints = mp5.dist(point.x, point.y, revealedArea.x, revealedArea.y);
-  console.log(distanceBetweenPoints, revealedArea.w);
 
   return distanceBetweenPoints < revealedArea.w / 2;
 }
