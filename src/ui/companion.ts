@@ -11,7 +11,7 @@ export enum CompanionState {
 export interface CompanionMessage {
   text: string;
   inputWanted: boolean;
-  timestamp: number;
+  timestamp?: number;
 }
 
 export class Companion {
@@ -75,7 +75,7 @@ export class Companion {
   }
 
   showMessage(message: CompanionMessage) {
-    this.messageTextRef.innerText = message.text;
+    this.messageTextRef.innerHTML = message.text;
     this.messageRef.style.display = 'flex';
 
     if (message.inputWanted) {
@@ -89,8 +89,8 @@ export class Companion {
     console.log(this.message);
 
     if (this.message.inputWanted) {
-      // Get text from textarea
-      // Send via API
+      // TODO: Get text from textarea
+      // TODO: Send via API
     }
 
     // Hide Message
