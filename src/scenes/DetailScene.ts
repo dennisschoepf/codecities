@@ -39,6 +39,7 @@ export class DetailScene {
     });
     this.packages.forEach((packageObj) => {
       packageObj.place();
+      packageObj.drawOnReveal();
     });
   }
 

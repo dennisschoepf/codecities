@@ -21,6 +21,7 @@
   "dependencies": {
     "animejs": "^3.2.1",
     "p5": "^1.4.0",
+    "rxjs": "^7.2.0",
     "zustand": "^3.5.7"
   }
 }

@@ -1,4 +1,5 @@
 import { mp5 } from '../../main';
+import { revealedArea$ } from '../area';
 import { colors } from '../constants/colors';
 
 export class Player {
@@ -43,7 +44,6 @@ export class Player {
     const { x, y } = this.lastTrailEl;
 
     if (x && y) {
-      console.log('Drawing');
       this.showRevealEl = true;
       this.revealElCoordinates = { x, y };
       this.cursorOnRevealClick = { x: mp5.mouseX, y: mp5.mouseY };
@@ -55,17 +55,20 @@ export class Player {
     const timeElapsedSinceRevealClick = mp5.millis() - this.lastRevealClickTime;
 
     if (this.showRevealEl) {
+      const x = this.cursorOnRevealClick.x;
+      const y = this.cursorOnRevealClick.y;
+      const w = Math.floor(timeElapsedSinceRevealClick * 0.4);
+
       mp5.fill(mp5.color(colors.greyLighter));
       mp5.strokeWeight(5);
       mp5.stroke(mp5.color(255));
-      mp5.ellipse(
-        this.cursorOnRevealClick.x,
-        this.cursorOnRevealClick.y,
-        timeElapsedSinceRevealClick * 0.4
-      );
+      mp5.ellipse(x, y, w);
+
+      revealedArea$.next({ x, y, w });
 
       if (timeElapsedSinceRevealClick > 2000) {
         this.showRevealEl = false;
+        revealedArea$.next({ x: 0, y: 0, w: 0 });
       }
     }
   }
