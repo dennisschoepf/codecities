@@ -49,11 +49,6 @@ export class Package {
       );
       const isTouched = areasColliding({ x: this.x, y: this.y, w: this.size }, playerHead, true);
 
-      console.log('Revealed', isRevealed);
-      console.log('isTouched', isTouched);
-      console.log('wasTouched', this.wasTouched);
-      console.log('wasInteractedWith', this.wasInteractedWith);
-
       if (isRevealed) {
         if (this.packageState !== PackageStates.ACTIVE) {
           this.packageState = PackageStates.REVEALED;
@@ -141,7 +136,6 @@ export class Package {
 
   public onClick() {
     if (this.hover && !this.wasInteractedWith) {
-      console.log('click on shape');
       this.wasInteractedWith = true;
       store.getState().addInfoMessage({
         headline: this.name,
