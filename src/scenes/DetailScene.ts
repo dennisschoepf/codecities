@@ -34,7 +34,7 @@ export class DetailScene {
     this.player.follow();
 
     this.contributors.forEach((contributor) => {
-      contributor.place();
+      contributor.draw();
     });
     this.legacy.forEach((legacyObj) => {
       legacyObj.place();

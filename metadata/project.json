@@ -5,7 +5,11 @@
       "path": "packages/block",
       "size": 2450,
       "contents": {
-        "contributors": [],
+        "contributors": [
+          {
+            "name": "Peter Dunne"
+          }
+        ],
         "legacy": [],
         "packages": [
           {
