@@ -27,9 +27,9 @@ export class DetailScene {
 
   draw() {
     mp5.background(mp5.color(colors.greyLighter));
+
     this.player.drawOnReveal();
     this.player.follow();
-    this.player.move();
 
     this.contributors.forEach((contributor) => {
       contributor.place();
@@ -38,9 +38,10 @@ export class DetailScene {
       legacyObj.place();
     });
     this.packages.forEach((packageObj) => {
-      packageObj.place();
       packageObj.draw();
     });
+
+    this.player.move();
   }
 
   onSceneClick() {

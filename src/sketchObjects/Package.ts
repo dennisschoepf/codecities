@@ -1,80 +1,82 @@
 import { combineLatest, map } from 'rxjs';
 import { mp5 } from '../../main';
-import { playerHeadPosition$, pointIsRevealed, revealedArea$ } from '../area';
+import { playerHead$, areasColliding, revealedArea$ } from '../area';
 import { colors } from '../constants/colors';
+
+enum PackageStates {
+  HIDDEN = 'HIDDEN',
+  REVEALED = 'REVEALED',
+  ACTIVE = 'ACTIVE',
+  INACTIVE = 'INACTIVE',
+}
 
 export class Package {
   x: number;
   y: number;
   size: number;
   name: string;
-  revealed: boolean;
-  active: boolean = false;
+  url: string;
+  corners: number = 10;
   startSize: number = 5;
-  currentSize: number = 5;
+  currentSize: number;
+  wasTouched: boolean = false;
+  packageState: PackageStates = PackageStates.HIDDEN;
 
-  constructor(x: number, y: number, size: number, name?: string, profileURL?: string) {
+  constructor(x: number, y: number, size: number, name?: string, packageURL?: string) {
     this.x = x;
     this.y = y;
     this.size = size;
+    this.name = name;
+    this.url = packageURL;
+    this.currentSize = this.startSize;
 
-    combineLatest([revealedArea$, playerHeadPosition$]).subscribe(
-      ([revealedArea, playerHeadPosition]) => {
-        const isRevealed = pointIsRevealed({ x: this.x, y: this.y }, revealedArea);
-        const isTouched = isRevealed
-          ? pointIsRevealed(
-              { x: this.x, y: this.y },
-              {
-                x: playerHeadPosition.x,
-                y: playerHeadPosition.y,
-                w: 30,
-              }
-            )
-          : false;
+    combineLatest([revealedArea$, playerHead$]).subscribe(([revealedArea, playerHead]) => {
+      const isRevealed = areasColliding(
+        { x: this.x, y: this.y, w: this.currentSize },
+        revealedArea
+      );
+      const isTouched = areasColliding({ x: this.x, y: this.y, w: this.size }, playerHead, true);
 
-        this.revealed = isRevealed;
+      if (this.wasTouched) {
+        this.packageState = PackageStates.ACTIVE;
+      } else if (isRevealed && !this.wasTouched) {
+        this.packageState = PackageStates.REVEALED;
 
-        if (this.active === false && isTouched) {
-          this.active = true;
-          console.log(this.active);
+        if (isTouched) {
+          this.wasTouched = true;
         }
+      } else {
+        this.packageState = PackageStates.HIDDEN;
       }
-    );
-  }
 
-  public place() {
-    mp5.noStroke();
-    mp5.rectMode('center');
-    mp5.fill(mp5.color(colors.greyLight));
-    mp5.rect(this.x, this.y, this.startSize, this.startSize);
+      // console.log(this.packageState);
+    });
   }
 
   public draw() {
-    if (this.revealed && !this.active) {
-      this.drawRevealedShape();
-    } else if ((this.active && this.revealed) || (!this.revealed && this.active)) {
-      this.drawActiveShape();
-    } else {
-      this.drawUnrevealedShape();
+    mp5.noStroke();
+
+    if (this.packageState === PackageStates.HIDDEN) {
+      // Scale down after it was revealed or active
+      if (this.currentSize > this.startSize) {
+        this.currentSize--;
+      }
+
+      mp5.square(this.x, this.y, this.currentSize, this.corners);
+    } else if (this.packageState === PackageStates.REVEALED) {
+      // Scale up if not large enough
+      if (this.currentSize < this.size) {
+        this.currentSize++;
+      }
+
+      mp5.square(this.x, this.y, this.currentSize, this.corners);
+      mp5.square(this.x - this.size - 10, this.y, this.currentSize, this.corners);
+      mp5.square(this.x, this.y - this.size - 10, this.currentSize, this.corners);
+    } else if (this.packageState === PackageStates.ACTIVE) {
+      mp5.fill(mp5.color(colors.redLight));
+      mp5.square(this.x, this.y, this.currentSize, this.corners);
+      mp5.square(this.x - this.size - 10, this.y, this.currentSize, this.corners);
+      mp5.square(this.x, this.y - this.size - 10, this.currentSize, this.corners);
     }
-  }
-
-  private drawUnrevealedShape() {
-    mp5.rect(this.x, this.y, this.startSize, this.startSize);
-  }
-
-  private drawRevealedShape() {
-    if (this.currentSize < this.size) {
-      this.currentSize++;
-    } else {
-      this.currentSize = this.size;
-    }
-
-    mp5.rect(this.x, this.y, this.currentSize, this.currentSize);
-  }
-
-  private drawActiveShape() {
-    mp5.fill(mp5.color(colors.redLight));
-    mp5.rect(this.x, this.y, this.currentSize, this.currentSize);
   }
 }
