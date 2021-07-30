@@ -21,7 +21,9 @@ export class DetailScene {
         (contributor) => new Contributor(100, 200, 100)
       );
       this.legacy = state.currLegacy.map((legacy) => new Legacy(200, 300, 100));
-      this.packages = state.currPackages.map((currPackage) => new Package(400, 300, 50));
+      this.packages = state.currPackages.map(
+        (currPackage) => new Package(400, 300, 50, 'react', '<h3>Test</h3>')
+      );
     });
   }
 
@@ -47,5 +49,9 @@ export class DetailScene {
   onSceneClick() {
     // store.setState({ currentScene: Scenes.OVERVIEW });
     this.player.reveal();
+
+    this.packages.forEach((packageObj) => {
+      packageObj.onClick();
+    });
   }
 }
