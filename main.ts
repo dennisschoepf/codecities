@@ -5,6 +5,7 @@ import { OverviewScene } from './src/scenes/OverviewScene';
 import { Scenes } from './src/scenes/scenes';
 import store from './src/store';
 import { Companion, CompanionState } from './src/ui/companion';
+import { InfoMessage } from './src/ui/info';
 
 const sketch = (s: p5) => {
   // Scenes
@@ -16,6 +17,7 @@ const sketch = (s: p5) => {
     s.noCursor();
 
     new Companion();
+    new InfoMessage();
 
     overviewScene = new OverviewScene();
     detailScene = new DetailScene();
@@ -32,9 +34,10 @@ const sketch = (s: p5) => {
   };
 
   s.mousePressed = () => {
-    const { currentScene, companionState } = store.getState();
+    const { currentScene, companionState, infoMessageShown } = store.getState();
 
     if (companionState === CompanionState.ACTIVE) return;
+    if (infoMessageShown) return;
 
     if (currentScene === Scenes.OVERVIEW) {
       overviewScene.onSceneClick();
