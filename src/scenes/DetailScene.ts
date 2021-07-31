@@ -18,7 +18,7 @@ export class DetailScene {
 
     store.subscribe((state) => {
       this.contributors = state.currContributors.map(
-        (contributor) => new Contributor(100, 200, 100)
+        (contributor) => new Contributor(100, 200, 50)
       );
       this.legacy = state.currLegacy.map((legacy) => new Legacy(200, 300, 100));
       this.packages = state.currPackages.map(

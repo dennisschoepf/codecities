@@ -61,10 +61,17 @@ export class Contributor {
     mp5.noStroke();
     mp5.rectMode('center');
     mp5.ellipseMode('center');
+    mp5.angleMode('degrees');
 
     if (this.contribState === ContribStates.HIDDEN) {
     } else if (this.contribState === ContribStates.REVEALED) {
-      mp5.arc(this.x, this.y, this.size, 80, 0, mp5.PI + mp5.QUARTER_PI, mp5.CHORD);
+      mp5.arc(this.x, this.y, this.size, this.size, 10, 170, mp5.CHORD);
+      mp5.fill(mp5.color(colors.redDark));
+      mp5.arc(this.x, this.y, this.size, this.size, 170, 370, mp5.CHORD);
+      mp5.fill(mp5.color(colors.greyDark));
+      mp5.ellipse(this.x - this.size / 5, this.y + this.size / 4, this.size / 5);
+      mp5.ellipse(this.x + this.size / 5, this.y + this.size / 4, this.size / 5);
+      mp5.arc(this.x, this.y + this.size / 3, this.size / 3, this.size / 5, 0, 180, mp5.CHORD);
     } else if (this.contribState === ContribStates.ACTIVE) {
       // Check if mouse is over the squares, if so animate and enable click
       const mouseOverShape = areasColliding(
