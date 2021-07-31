@@ -1,9 +1,10 @@
 import { mp5 } from '../main';
 import { SCREEN_HEIGHT, SCREEN_WIDTH } from './constants/screen';
 import { Edge } from './sketchObjects/Edge';
-import { Coordinates, SubProject } from './types';
+import { RevealableInterface, RevealableTypes } from './sketchObjects/Revealable';
+import { Coordinates, JSONSubproject, SubProject } from './types';
 
-export function getEdgeDimensions({ size }: SubProject): number {
+export function getEdgeDimensions({ size }: JSONSubproject): number {
   const radius = size * 0.05;
   return radius > 150 ? 150 : radius;
 }
@@ -41,7 +42,7 @@ export function generateEdgeCoords(existingEdges: Edge[]): Coordinates {
   return newCoords;
 }
 
-export function generateEdges(subprojects: SubProject[]): Edge[] {
+export function generateEdges(subprojects: JSONSubproject[]): Edge[] {
   let edges = [];
 
   subprojects.forEach((subproject) => {
@@ -65,6 +66,26 @@ export function generateEdges(subprojects: SubProject[]): Edge[] {
   );
 }
 
-export function getSubproject(name: string, projects: SubProject[]): SubProject {
-  return projects.filter((project) => project.name === name)[0];
+export function getTypedSubproject(name: string, projects: JSONSubproject[]): SubProject {
+  return projects
+    .filter((project) => project.name === name)
+    .map((project) => ({
+      ...project,
+      revealables: project.revealables.map((revealable) => ({
+        ...revealable,
+        type: RevealableTypes[revealable.type],
+      })),
+    }))[0];
+}
+
+export function getRevealablesforSubproject(
+  subProjectName: string,
+  subProjects: JSONSubproject[]
+): RevealableInterface[] {
+  return subProjects
+    .filter((subproject) => subproject.name === subProjectName)[0]
+    .revealables.map((revealable) => ({
+      ...revealable,
+      type: RevealableTypes[revealable.type],
+    }));
 }

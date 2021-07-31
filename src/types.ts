@@ -1,15 +1,32 @@
+import { RevealableInterface } from './sketchObjects/Revealable';
+
 export interface SubProject {
   name: string;
   path: string;
   size: number;
-  contents: {
-    contributors: any[];
-    legacy: any[];
-    packages: any[];
-  };
+  revealables: RevealableInterface[];
 }
 
+export interface JSONSubproject {
+  name: string;
+  path: string;
+  size: number;
+  revealables: Array<{
+    type: string;
+    name: string;
+    contents: string;
+    url: string;
+    path?: string;
+    imageUrl?: string;
+  }>;
+}
 export interface Coordinates {
   x: number;
   y: number;
+}
+
+export interface Area {
+  x: number;
+  y: number;
+  w: number;
 }
