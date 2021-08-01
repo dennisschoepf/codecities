@@ -50,6 +50,10 @@ export class DetailScene {
       this.revealableObjects.every((revObj) => revObj.wasInteractedWith) &&
       !(store.getState().companionState === CompanionState.ACTIVE)
     ) {
+      store.setState((state) => ({
+        finishedSubProjects: [...state.finishedSubProjects, state.currentSubproject],
+      }));
+
       store.getState().addUserMessage({
         text: "Yaay! You've found all of the important parts of this part of the repository. You will be returned to the subproject overview now. Pick the next subproject you want to take a look at there.",
         inputWanted: false,

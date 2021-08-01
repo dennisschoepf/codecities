@@ -6,9 +6,11 @@ import project from '../metadata/project.json';
 import { InfoMessageType } from './ui/info';
 import { RevealableInterface, RevealableTypes } from './sketchObjects/Revealable';
 import { getRevealablesforSubproject } from './helpers';
+import { SubProject } from './types';
 
 export interface State {
   currentScene: Scenes;
+  currentSubproject?: string;
   companionState: CompanionState;
   infoMessageShown: boolean;
   infoMessages: InfoMessageType[];
@@ -16,12 +18,14 @@ export interface State {
   userMessages: CompanionMessage[];
   addUserMessage: (newMessage: CompanionMessage) => void;
   revealables: RevealableInterface[];
+  finishedSubProjects: string[];
   setProjectMetadata: (projectName: string) => void;
 }
 
 const store = create<State>(
   devtools((set) => ({
     currentScene: Scenes.OVERVIEW,
+    currentSubproject: null,
     companionState: CompanionState.IDLE,
     infoMessageShown: false,
     infoMessages: [],
@@ -33,6 +37,7 @@ const store = create<State>(
         userMessages: [...state.userMessages, newMessage],
       })),
     revealables: [],
+    finishedSubProjects: [],
     setProjectMetadata: (projectName) =>
       set((state) => ({
         ...state,

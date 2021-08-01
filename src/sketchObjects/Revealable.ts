@@ -122,6 +122,8 @@ export class Revealable {
       store.getState().addInfoMessage({
         headline: this.name,
         innerHTML: this.contents,
+        imgUrl: this.imageUrl,
+        url: this.url,
       });
     }
   }

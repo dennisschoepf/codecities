@@ -6,9 +6,12 @@ import store from '../store';
 import { generateEdges } from '../helpers';
 import { Scenes } from './scenes';
 import projectMetadata from '../../metadata/project.json';
+import { playerHead$ } from '../area';
+import { Area } from '../types';
 
 export class OverviewScene {
   player: Player;
+  playerHead: Area;
   edges: Edge[];
 
   constructor() {
@@ -29,12 +32,18 @@ export class OverviewScene {
       const dist = mp5.dist(mp5.mouseX, mp5.mouseY, edge.x, edge.y);
       if (dist < edge.r) {
         store.getState().setProjectMetadata(edge.name);
-        store.setState({ currentScene: Scenes.DETAIL });
+        store.setState({ currentSubproject: edge.name, currentScene: Scenes.DETAIL });
       }
     });
   }
 
   private drawLocations() {
-    this.edges.forEach((edgeShape) => edgeShape.draw());
+    this.edges.forEach((edgeShape) => {
+      if (store.getState().finishedSubProjects.some((fsp) => fsp === edgeShape.name)) {
+        edgeShape.finished = true;
+      }
+
+      edgeShape.draw();
+    });
   }
 }
