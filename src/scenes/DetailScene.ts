@@ -1,12 +1,15 @@
 import { mp5 } from '../../main';
 import { colors } from '../constants/colors';
+import { generateRevealableCoords } from '../helpers';
 import { Player } from '../sketchObjects/Player';
 import { Revealable, RevealableInterface } from '../sketchObjects/Revealable';
 import store from '../store';
+import { Coordinates } from '../types';
 
 export class DetailScene {
   player: Player;
   revealables: RevealableInterface[];
+  revealableCoords: Coordinates[];
   revealableObjects: Revealable[];
 
   constructor() {
@@ -14,8 +17,14 @@ export class DetailScene {
 
     store.subscribe((state) => {
       this.revealables = state.revealables;
+      this.revealableCoords = generateRevealableCoords();
       this.revealableObjects = this.revealables.map(
-        (revealable) => new Revealable(revealable, { x: 100, y: 200, w: 65 })
+        (revealable, i) =>
+          new Revealable(revealable, {
+            x: this.revealableCoords[i].x,
+            y: this.revealableCoords[i].y,
+            w: this.revealables[i].size,
+          })
       );
     });
   }

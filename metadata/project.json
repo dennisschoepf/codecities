@@ -9,6 +9,7 @@
           "type": "LEGACY",
           "name": "trieNode",
           "path": "src/trieNode.ts",
+          "size": 85,
           "contents": "This file is a bit long, you might want to take a clear look and refactor it. The contributors of this subpackage could help here. Try to reveal them to see their contact info.",
           "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/master/packages/trie/src/trieNode.ts",
           "imageUrl": null
@@ -17,6 +18,7 @@
           "type": "CONTRIBUTOR",
           "name": "Holger Drewes (holgerd77)",
           "path": null,
+          "size": 40,
           "contents": "This contributor has a lot of commits in this sub package, below you can find the contact information and a few commits from this repo.",
           "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/master/packages/trie/src/trieNode.ts",
           "imageUrl": "https://avatars.githubusercontent.com/u/931137?v=4"
@@ -25,6 +27,7 @@
           "type": "PACKAGE",
           "name": "chalk",
           "path": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/master/packages/client/package.json",
+          "size": 65,
           "contents": "This package is used in this part of the project. Take a look at the documentation in order to make yourself familiar with it",
           "url": "https://github.com/chalk/chalk",
           "imageUrl": null

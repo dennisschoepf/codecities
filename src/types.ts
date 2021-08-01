@@ -16,6 +16,7 @@ export interface JSONSubproject {
     name: string;
     contents: string;
     url: string;
+    size: number;
     path?: string;
     imageUrl?: string;
   }>;

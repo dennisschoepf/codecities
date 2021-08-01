@@ -15,6 +15,7 @@ export interface RevealableInterface {
   name: string;
   contents: string;
   url: string;
+  size: number;
   path?: string;
   imageUrl?: string;
 }
