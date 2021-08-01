@@ -28,36 +28,82 @@ enum RevealableStates {
 export class Revealable {
   state: RevealableStates = RevealableStates.HIDDEN;
   area: Area;
-  hover: boolean;
+
+  isHovered: boolean;
+  isRevealed: boolean;
+
+  minSize: number = 5;
+  currentSize: number;
+  maxSize: number;
 
   constructor({ type, name, path, contents, url, imageUrl }: RevealableInterface, area: Area) {
     this.area = area;
+    this.currentSize = this.minSize;
+    this.maxSize = area.w;
 
     combineLatest([revealedArea$, playerHead$]).subscribe(([revealedArea, playerHead]) => {
-      const isRevealed = areasColliding(revealedArea, this.area);
-      const isHovered = areasColliding(playerHead, this.area);
+      const isRevealed = areasColliding(revealedArea, {
+        x: this.area.x,
+        y: this.area.y,
+        w: this.currentSize,
+      });
+      const isHovered = areasColliding(playerHead, {
+        x: this.area.x,
+        y: this.area.y,
+        w: this.currentSize,
+      });
 
-      if (isRevealed && isHovered) {
+      if (
+        ((isRevealed && isHovered) || (!isRevealed && isHovered)) &&
+        (this.state === RevealableStates.REVEALED || this.state === RevealableStates.FOUND)
+      ) {
         this.state = RevealableStates.FOUND;
       } else if (isRevealed && !isHovered) {
         this.state = RevealableStates.REVEALED;
       } else {
         this.state = RevealableStates.HIDDEN;
       }
+
+      this.isHovered = this.state === RevealableStates.FOUND ? isHovered : false;
+      this.isRevealed = isRevealed;
     });
   }
 
   public draw() {
     if (this.state === RevealableStates.HIDDEN) {
-      mp5.fill(mp5.color(colors.greyLight));
+      this.reduceSize();
     } else if (this.state === RevealableStates.REVEALED) {
-      mp5.fill(mp5.color(colors.red));
+      this.increaseSize();
+
+      mp5.fill(mp5.color(colors.greyLight));
+      mp5.ellipse(this.area.x, this.area.y, this.currentSize);
     } else if (this.state === RevealableStates.FOUND) {
       mp5.fill(mp5.color(colors.redDark));
+      mp5.ellipse(this.area.x, this.area.y, this.currentSize);
     }
-
-    mp5.ellipse(this.area.x, this.area.y, this.area.w);
   }
 
-  public onClick() {}
+  public onClick() {
+    if (this.isHovered) {
+      console.log('Clicked on Revealable');
+    }
+  }
+
+  private reduceSize() {
+    if (this.currentSize > this.minSize) {
+      this.currentSize -= 8;
+    } else {
+      this.currentSize = this.minSize;
+    }
+  }
+
+  private increaseSize() {
+    if (this.currentSize < this.maxSize) {
+      this.currentSize += 8;
+    } else {
+      this.currentSize = this.maxSize;
+    }
+  }
+
+  private pulsate() {}
 }
