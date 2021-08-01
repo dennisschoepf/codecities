@@ -5,7 +5,6 @@ import { CompanionMessage, CompanionState } from './ui/companion';
 import project from '../metadata/project.json';
 import { InfoMessageType } from './ui/info';
 import { RevealableInterface, RevealableTypes } from './sketchObjects/Revealable';
-import { SubProject } from './types';
 import { getRevealablesforSubproject } from './helpers';
 
 export interface State {

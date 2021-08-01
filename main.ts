@@ -36,13 +36,12 @@ const sketch = (s: p5) => {
   s.mousePressed = () => {
     const { currentScene, companionState, infoMessageShown } = store.getState();
 
-    if (companionState === CompanionState.ACTIVE) return;
-    if (infoMessageShown) return;
-
-    if (currentScene === Scenes.OVERVIEW) {
-      overviewScene.onSceneClick();
-    } else if (currentScene === Scenes.DETAIL) {
-      detailScene.onSceneClick();
+    if (companionState !== CompanionState.ACTIVE || !infoMessageShown) {
+      if (currentScene === Scenes.OVERVIEW) {
+        overviewScene.onSceneClick();
+      } else if (currentScene === Scenes.DETAIL) {
+        detailScene.onSceneClick();
+      }
     }
   };
 };
