@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import { mp5 } from '../../main';
 import { colors } from '../constants/colors';
 import { generateRevealableCoords } from '../helpers';
@@ -15,17 +16,21 @@ export class DetailScene {
   constructor() {
     this.player = new Player();
 
-    store.subscribe((state) => {
-      this.revealables = state.revealables;
-      this.revealableCoords = generateRevealableCoords();
-      this.revealableObjects = this.revealables.map(
-        (revealable, i) =>
-          new Revealable(revealable, {
-            x: this.revealableCoords[i].x,
-            y: this.revealableCoords[i].y,
-            w: this.revealables[i].size,
-          })
-      );
+    store.subscribe((state, prevState) => {
+      if (!_.isEqual(state.revealables, prevState.revealables)) {
+        this.revealables = state.revealables;
+        this.revealableCoords = generateRevealableCoords();
+        this.revealableObjects = this.revealables.map(
+          (revealable, i) =>
+            new Revealable(revealable, {
+              x: this.revealableCoords[i].x,
+              y: this.revealableCoords[i].y,
+              w: this.revealables[i].size,
+            })
+        );
+      }
+
+      // TODO: Check if everything was found, if so, get back to overview screen
     });
   }
 

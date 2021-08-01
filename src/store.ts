@@ -26,15 +26,16 @@ const store = create<State>(
     infoMessageShown: false,
     infoMessages: [],
     addInfoMessage: (newMessage) =>
-      set((state) => ({ infoMessages: [...state.infoMessages, newMessage] })),
+      set((state) => ({ ...state, infoMessages: [...state.infoMessages, newMessage] })),
     userMessages: [],
     addUserMessage: (newMessage) =>
-      set((state) => ({ userMessages: [...state.userMessages, newMessage] })),
+      set((state) => ({ ...state, userMessages: [...state.userMessages, newMessage] })),
     revealables: [],
     setProjectMetadata: (projectName) =>
-      set({
+      set((state) => ({
+        ...state,
         revealables: getRevealablesforSubproject(projectName, project.subprojects),
-      }),
+      })),
   }))
 );
 
