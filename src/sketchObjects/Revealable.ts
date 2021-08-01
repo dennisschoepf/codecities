@@ -117,8 +117,6 @@ export class Revealable {
 
   public onClick() {
     if (this.isHovered && !this.wasInteractedWith) {
-      console.log('Clicked on Revealable');
-
       this.wasInteractedWith = true;
 
       store.getState().addInfoMessage({
@@ -149,8 +147,6 @@ export class Revealable {
     const maxPulse = this.currentSize + 40;
 
     let color: any = mp5.color(colors.red);
-
-    console.log(this.pulseCurrentSize, this.pulseCountUp);
 
     if (this.pulseCountUp) {
       this.pulseCurrentSize += 1;

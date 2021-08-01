@@ -29,7 +29,9 @@ const store = create<State>(
       set((state) => ({ ...state, infoMessages: [...state.infoMessages, newMessage] })),
     userMessages: [],
     addUserMessage: (newMessage) =>
-      set((state) => ({ ...state, userMessages: [...state.userMessages, newMessage] })),
+      set((state) => ({
+        userMessages: [...state.userMessages, newMessage],
+      })),
     revealables: [],
     setProjectMetadata: (projectName) =>
       set((state) => ({

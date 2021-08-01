@@ -6,6 +6,8 @@ import { Player } from '../sketchObjects/Player';
 import { Revealable, RevealableInterface } from '../sketchObjects/Revealable';
 import store from '../store';
 import { Coordinates } from '../types';
+import { CompanionState } from '../ui/companion';
+import { Scenes } from './scenes';
 
 export class DetailScene {
   player: Player;
@@ -29,8 +31,6 @@ export class DetailScene {
             })
         );
       }
-
-      // TODO: Check if everything was found, if so, get back to overview screen
     });
   }
 
@@ -45,6 +45,18 @@ export class DetailScene {
     });
 
     this.player.move();
+
+    if (
+      this.revealableObjects.every((revObj) => revObj.wasInteractedWith) &&
+      !(store.getState().companionState === CompanionState.ACTIVE)
+    ) {
+      store.getState().addUserMessage({
+        text: "Yaay! You've found all of the important parts of this part of the repository. You will be returned to the subproject overview now. Pick the next subproject you want to take a look at there.",
+        inputWanted: false,
+        onNext: () => store.setState({ currentScene: Scenes.OVERVIEW }),
+        showIdle: false,
+      });
+    }
   }
 
   onSceneClick() {
