@@ -185,7 +185,7 @@ export class Companion {
   }
 
   handleClick() {
-    const { companionState } = store.getState();
+    /*const { companionState } = store.getState();
     let newCompanionState: CompanionState;
 
     if (companionState === CompanionState.ACTIVE) {
@@ -194,7 +194,7 @@ export class Companion {
       newCompanionState = CompanionState.ACTIVE;
     }
 
-    store.setState({ companionState: newCompanionState });
+    store.setState({ companionState: newCompanionState });*/
   }
 
   handleMouseEnter() {
