@@ -39,8 +39,8 @@ const sketch = (s: p5) => {
     const { currentScene, companionState, infoMessageShown } = store.getState();
 
     if (
-      companionState !== CompanionState.ACTIVE ||
-      !infoMessageShown ||
+      companionState !== CompanionState.ACTIVE &&
+      !infoMessageShown &&
       store.getState().currentIntroStep === 0
     ) {
       if (currentScene === Scenes.OVERVIEW) {

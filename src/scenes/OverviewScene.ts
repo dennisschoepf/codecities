@@ -6,7 +6,6 @@ import store from '../store';
 import { generateEdges } from '../helpers';
 import { Scenes } from './scenes';
 import projectMetadata from '../../metadata/project.json';
-import { playerHead$ } from '../area';
 import { Area } from '../types';
 
 export class OverviewScene {

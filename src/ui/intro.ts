@@ -1,3 +1,4 @@
+import { Scenes } from '../scenes/scenes';
 import store from '../store';
 
 export class Intro {
@@ -112,6 +113,16 @@ export class Intro {
 
     if (currentStep === 4) {
       store.setState({ currentIntroStep: 0 });
+
+      setTimeout(() => {
+        if (store.getState().currentScene !== Scenes.DETAIL) {
+          store.getState().addUserMessage({
+            inputWanted: false,
+            text: "Hey there! Need help here? You'll have to touch the parts of the project you want to take a look at with you character's head. As soon as the project part (packages/...) is highlighted, you can click it to dive deeper into what lies behind 🔬",
+          });
+        }
+      }, 3000);
+
       return;
     }
 
