@@ -38,7 +38,11 @@ const sketch = (s: p5) => {
   s.mousePressed = () => {
     const { currentScene, companionState, infoMessageShown } = store.getState();
 
-    if (companionState !== CompanionState.ACTIVE || !infoMessageShown) {
+    if (
+      companionState !== CompanionState.ACTIVE ||
+      !infoMessageShown ||
+      store.getState().currentIntroStep === 0
+    ) {
       if (currentScene === Scenes.OVERVIEW) {
         overviewScene.onSceneClick();
       } else if (currentScene === Scenes.DETAIL) {

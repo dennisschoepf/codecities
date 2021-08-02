@@ -21,6 +21,7 @@ export interface State {
   revealables: RevealableInterface[];
   finishedSubProjects: string[];
   setProjectMetadata: (projectName: string) => void;
+  participantAnonymous: boolean;
 }
 
 const store = create<State>(
@@ -28,6 +29,7 @@ const store = create<State>(
     currentIntroStep: 1,
     currentScene: Scenes.OVERVIEW,
     currentSubproject: null,
+    participantAnonymous: false,
     companionState: CompanionState.IDLE,
     infoMessageShown: false,
     infoMessages: [],

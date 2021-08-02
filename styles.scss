@@ -39,6 +39,34 @@ button {
   }
 }
 
+label {
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+input[type='text'],
+input[type='number'] {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  font-size: 18px;
+  padding: 8px 12px;
+  outline: 0;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+select {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  font-size: 18px;
+  padding: 8px 12px;
+  outline: 0;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
 .ui {
   position: absolute;
   bottom: 40px;
@@ -268,19 +296,33 @@ button {
 
     #intro-step2 {
       display: none;
+      flex-direction: column;
     }
 
     #intro-step3 {
       display: none;
+      flex-direction: column;
     }
 
     #intro-step4 {
       display: none;
+      flex-direction: column;
     }
 
     #intro-button {
       float: right;
       margin-top: 25px;
+    }
+
+    #intro-error {
+      display: none;
+      margin-top: 25px;
+      background-color: #fecaca;
+      color: #7f1d1d;
+      padding: 8px 20px;
+      border-radius: 5px;
+      border-left: 7px solid #7f1d1d;
+      margin-top: 15px;
     }
   }
 }
