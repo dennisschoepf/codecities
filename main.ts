@@ -6,6 +6,7 @@ import { Scenes } from './src/scenes/scenes';
 import store from './src/store';
 import { Companion, CompanionState } from './src/ui/companion';
 import { InfoMessage } from './src/ui/info';
+import { Intro } from './src/ui/intro';
 
 const sketch = (s: p5) => {
   // Scenes
@@ -16,6 +17,7 @@ const sketch = (s: p5) => {
     s.createCanvas(SCREEN_WIDTH, SCREEN_HEIGHT);
     s.noCursor();
 
+    new Intro();
     new Companion();
     new InfoMessage();
 

@@ -9,6 +9,7 @@ import { getRevealablesforSubproject } from './helpers';
 import { SubProject } from './types';
 
 export interface State {
+  currentIntroStep: number;
   currentScene: Scenes;
   currentSubproject?: string;
   companionState: CompanionState;
@@ -24,6 +25,7 @@ export interface State {
 
 const store = create<State>(
   devtools((set) => ({
+    currentIntroStep: 1,
     currentScene: Scenes.OVERVIEW,
     currentSubproject: null,
     companionState: CompanionState.IDLE,
