@@ -26,7 +26,7 @@ export interface State {
 
 const store = create<State>(
   devtools((set) => ({
-    currentIntroStep: 1,
+    currentIntroStep: 0,
     currentScene: Scenes.OVERVIEW,
     currentSubproject: null,
     participantAnonymous: false,

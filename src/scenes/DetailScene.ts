@@ -14,6 +14,9 @@ export class DetailScene {
   revealables: RevealableInterface[];
   revealableCoords: Coordinates[];
   revealableObjects: Revealable[];
+  startTime?: number = null;
+  wasInteractedWith: boolean = false;
+  wasHovered: boolean = false;
 
   constructor() {
     this.player = new Player();
@@ -35,6 +38,26 @@ export class DetailScene {
   }
 
   draw() {
+    if (this.startTime === null) {
+      this.startTime = mp5.millis();
+    }
+
+    if (mp5.millis() > this.startTime + 3000 && !this.wasInteractedWith) {
+      console.log('3 seconds without interaction');
+      this.wasInteractedWith = true;
+      store.getState().addUserMessage({
+        inputWanted: false,
+        text: 'Trouble knowing what to do? You should try clicking somewhere in order to spawn reveal bubbles. Try this in different parts of the canvas to see what you can find',
+      });
+    } else if (mp5.millis() > this.startTime + 6000 && !this.wasHovered && this.wasInteractedWith) {
+      console.log('3 seconds without hovering');
+      this.wasHovered = true;
+      store.getState().addUserMessage({
+        inputWanted: false,
+        text: "Good job with your reveal bubbles, in order to truly find out what is important in this part of the project, try to catch the revealed objects with your character's head to be able to interact with them.",
+      });
+    }
+
     mp5.background(mp5.color(colors.greyLighter));
 
     this.player.drawOnReveal();
@@ -66,9 +89,11 @@ export class DetailScene {
   onSceneClick() {
     this.revealableObjects.forEach((revObj) => {
       if (revObj.isHovered) {
+        this.wasHovered = true;
         revObj.onClick();
       } else {
         this.player.reveal();
+        this.wasInteractedWith = true;
       }
     });
   }
