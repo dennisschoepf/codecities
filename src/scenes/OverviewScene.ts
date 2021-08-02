@@ -31,7 +31,11 @@ export class OverviewScene {
       const dist = mp5.dist(mp5.mouseX, mp5.mouseY, edge.x, edge.y);
       if (dist < edge.r) {
         store.getState().setProjectMetadata(edge.name);
-        store.setState({ currentSubproject: edge.name, currentScene: Scenes.DETAIL });
+        store.setState({
+          showScore: true,
+          currentSubproject: edge.name,
+          currentScene: Scenes.DETAIL,
+        });
       }
     });
   }

@@ -43,14 +43,12 @@ export class DetailScene {
     }
 
     if (mp5.millis() > this.startTime + 3000 && !this.wasInteractedWith) {
-      console.log('3 seconds without interaction');
       this.wasInteractedWith = true;
       store.getState().addUserMessage({
         inputWanted: false,
         text: 'Trouble knowing what to do? You should try clicking somewhere in order to spawn reveal bubbles. Try this in different parts of the canvas to see what you can find',
       });
-    } else if (mp5.millis() > this.startTime + 6000 && !this.wasHovered && this.wasInteractedWith) {
-      console.log('3 seconds without hovering');
+    } else if (mp5.millis() > this.startTime + 8000 && !this.wasHovered && this.wasInteractedWith) {
       this.wasHovered = true;
       store.getState().addUserMessage({
         inputWanted: false,
@@ -67,6 +65,11 @@ export class DetailScene {
       revObj.draw();
     });
 
+    store.setState({
+      revealablesFinished: this.revealableObjects.filter((revObj) => revObj.wasInteractedWith)
+        .length,
+    });
+
     this.player.move();
 
     if (
@@ -80,7 +83,7 @@ export class DetailScene {
       store.getState().addUserMessage({
         text: "Yaay! You've found all of the important parts of this part of the repository. You will be returned to the subproject overview now. Pick the next subproject you want to take a look at there.",
         inputWanted: false,
-        onNext: () => store.setState({ currentScene: Scenes.OVERVIEW }),
+        onNext: () => store.setState({ showScore: false, currentScene: Scenes.OVERVIEW }),
         showIdle: false,
       });
     }

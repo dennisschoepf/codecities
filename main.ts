@@ -7,6 +7,7 @@ import store from './src/store';
 import { Companion, CompanionState } from './src/ui/companion';
 import { InfoMessage } from './src/ui/info';
 import { Intro } from './src/ui/intro';
+import { Score } from './src/ui/score';
 
 const sketch = (s: p5) => {
   // Scenes
@@ -20,6 +21,7 @@ const sketch = (s: p5) => {
     new Intro();
     new Companion();
     new InfoMessage();
+    new Score();
 
     overviewScene = new OverviewScene();
     detailScene = new DetailScene();

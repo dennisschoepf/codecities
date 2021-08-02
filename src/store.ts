@@ -22,11 +22,15 @@ export interface State {
   setProjectMetadata: (projectName: string) => void;
   participantAnonymous: boolean;
   finishedGame: boolean;
+  revealablesFinished: number;
+  showScore: boolean;
 }
 
 const store = create<State>(
   devtools((set) => ({
+    showScore: false,
     currentIntroStep: 0,
+    revealablesFinished: 0,
     currentScene: Scenes.OVERVIEW,
     currentSubproject: null,
     participantAnonymous: false,
