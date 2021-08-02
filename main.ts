@@ -1,24 +1,26 @@
 import p5 from 'p5';
 import { SCREEN_WIDTH, SCREEN_HEIGHT } from './src/constants/screen';
-import { LegacyScene } from './src/scenes/LegacyScene';
+import { DetailScene } from './src/scenes/DetailScene';
 import { OverviewScene } from './src/scenes/OverviewScene';
 import { Scenes } from './src/scenes/scenes';
 import store from './src/store';
 import { Companion, CompanionState } from './src/ui/companion';
+import { InfoMessage } from './src/ui/info';
 
 const sketch = (s: p5) => {
   // Scenes
   let overviewScene: OverviewScene;
-  let legacyScene: LegacyScene;
+  let detailScene: DetailScene;
 
   s.setup = () => {
     s.createCanvas(SCREEN_WIDTH, SCREEN_HEIGHT);
     s.noCursor();
 
     new Companion();
+    new InfoMessage();
 
     overviewScene = new OverviewScene();
-    legacyScene = new LegacyScene();
+    detailScene = new DetailScene();
   };
 
   s.draw = () => {
@@ -26,20 +28,20 @@ const sketch = (s: p5) => {
 
     if (currentScene === Scenes.OVERVIEW) {
       overviewScene.draw();
-    } else if (currentScene === Scenes.LEGACY) {
-      legacyScene.draw();
+    } else if (currentScene === Scenes.DETAIL) {
+      detailScene.draw();
     }
   };
 
   s.mousePressed = () => {
-    const { currentScene, companionState } = store.getState();
+    const { currentScene, companionState, infoMessageShown } = store.getState();
 
-    if (companionState === CompanionState.ACTIVE) return;
-
-    if (currentScene === Scenes.OVERVIEW) {
-      overviewScene.onSceneClick();
-    } else if (currentScene === Scenes.LEGACY) {
-      legacyScene.onSceneClick();
+    if (companionState !== CompanionState.ACTIVE || !infoMessageShown) {
+      if (currentScene === Scenes.OVERVIEW) {
+        overviewScene.onSceneClick();
+      } else if (currentScene === Scenes.DETAIL) {
+        detailScene.onSceneClick();
+      }
     }
   };
 };

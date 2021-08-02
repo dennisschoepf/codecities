@@ -11,7 +11,9 @@ export enum CompanionState {
 export interface CompanionMessage {
   text: string;
   inputWanted: boolean;
-  timestamp: number;
+  timestamp?: number;
+  onNext?: () => void;
+  showIdle?: boolean;
 }
 
 export class Companion {
@@ -41,9 +43,9 @@ export class Companion {
     store.subscribe(
       (companionState) => {
         if (companionState === CompanionState.ACTIVE) {
+          this.stopAwaitAnimation();
           this.showActiveShape();
           this.scaleUpCompanion();
-          this.stopAwaitAnimation();
           this.showMessage(this.message);
         } else if (companionState === CompanionState.IDLE) {
           this.scaleDownCompanion();
@@ -61,21 +63,18 @@ export class Companion {
       (state) => state.companionState
     );
 
-    store.subscribe(
-      (messages: CompanionMessage[], prevMessages: CompanionMessage[]) => {
-        if (prevMessages.length !== messages.length) {
-          const newMessage = messages[messages.length - 1];
-          this.message = newMessage;
+    store.subscribe((state, prevState) => {
+      if (prevState.userMessages.length < state.userMessages.length) {
+        const newMessage = state.userMessages[state.userMessages.length - 1];
+        this.message = newMessage;
 
-          store.setState({ companionState: CompanionState.AWAIT });
-        }
-      },
-      (state) => state.userMessages
-    );
+        store.setState({ companionState: CompanionState.ACTIVE });
+      }
+    });
   }
 
   showMessage(message: CompanionMessage) {
-    this.messageTextRef.innerText = message.text;
+    this.messageTextRef.innerHTML = message.text;
     this.messageRef.style.display = 'flex';
 
     if (message.inputWanted) {
@@ -86,16 +85,18 @@ export class Companion {
   }
 
   confirmMessage() {
-    console.log(this.message);
-
     if (this.message.inputWanted) {
-      // Get text from textarea
-      // Send via API
+      // TODO: Get text from textarea
+      // TODO: Send via API
     }
 
     // Hide Message
-    store.setState({ companionState: CompanionState.IDLE });
     this.messageRef.style.display = 'none';
+    store.setState({ companionState: CompanionState.IDLE });
+
+    if (this.message.onNext) {
+      this.message.onNext();
+    }
   }
 
   showActiveShape() {
@@ -163,12 +164,12 @@ export class Companion {
   }
 
   stopAwaitAnimation() {
+    anime.remove('#companion-await-indicator');
+
     const indicator = document.getElementById('companion-await-indicator');
     indicator.style.display = 'none';
     indicator.style.opacity = '1';
     indicator.style.transform = 'scale(1) rotate(0)';
-
-    anime.remove('#companion-await-indicator');
   }
 
   pupilFollowCursor() {

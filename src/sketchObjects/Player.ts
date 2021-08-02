@@ -1,4 +1,5 @@
 import { mp5 } from '../../main';
+import { playerHead$, revealedArea$ } from '../area';
 import { colors } from '../constants/colors';
 
 export class Player {
@@ -7,6 +8,11 @@ export class Player {
   r: number;
   easing: number;
   history: Array<{ x: number; y: number }> = [];
+  lastTrailEl: { x: number; y: number };
+  cursorOnRevealClick: { x: number; y: number };
+  showRevealEl: boolean;
+  revealElCoordinates: { x: number; y: number };
+  lastRevealClickTime: number;
 
   constructor() {
     this.x = mp5.height / 2;
@@ -28,10 +34,45 @@ export class Player {
 
     this.drawPlayerTrail();
     this.drawPlayerShape(this.x, this.y);
+
+    playerHead$.next({ x: this.x, y: this.y, w: this.r });
   }
 
   public move() {
     this.drawCursorIndicator(mp5.mouseX, mp5.mouseY, 4);
+  }
+
+  public reveal() {
+    const { x, y } = this.lastTrailEl;
+
+    if (x && y) {
+      this.showRevealEl = true;
+      this.revealElCoordinates = { x, y };
+      this.cursorOnRevealClick = { x: mp5.mouseX, y: mp5.mouseY };
+      this.lastRevealClickTime = mp5.millis();
+    }
+  }
+
+  public drawOnReveal() {
+    const timeElapsedSinceRevealClick = mp5.millis() - this.lastRevealClickTime;
+
+    if (this.showRevealEl) {
+      const x = this.cursorOnRevealClick.x;
+      const y = this.cursorOnRevealClick.y;
+      const w = timeElapsedSinceRevealClick * 0.5;
+
+      mp5.fill(mp5.color(colors.greyLighter));
+      mp5.strokeWeight(5);
+      mp5.stroke(mp5.color(255));
+      mp5.ellipse(x, y, w);
+
+      revealedArea$.next({ x, y, w });
+
+      if (timeElapsedSinceRevealClick > 2000) {
+        this.showRevealEl = false;
+        revealedArea$.next({ x: 0, y: 0, w: 0 });
+      }
+    }
   }
 
   private drawPlayerShape(x: number, y: number) {
@@ -48,6 +89,11 @@ export class Player {
 
   private drawPlayerTrail() {
     const immediateHistory = this.history.slice(1).slice(-30);
+    const lastTrailElPosition = immediateHistory[0];
+
+    if (lastTrailElPosition) {
+      this.lastTrailEl = lastTrailElPosition;
+    }
 
     immediateHistory.forEach((pointInHistory, i) => {
       if (i % 5 === 0) {
