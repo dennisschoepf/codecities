@@ -67,6 +67,18 @@ select {
   border-radius: 5px;
 }
 
+textarea {
+  display: block;
+  width: 100%;
+  margin-top: 25px;
+  min-height: 8rem;
+  font-size: 18px;
+  padding: 8px 12px;
+  outline: 0;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
 .ui {
   position: absolute;
   bottom: 40px;
@@ -305,6 +317,25 @@ select {
     }
 
     #intro-step4 {
+      display: none;
+      flex-direction: column;
+    }
+
+    #intro-step5 {
+      display: none;
+      flex-direction: column;
+    }
+
+    #intro-step6 {
+      display: none;
+      flex-direction: column;
+
+      label {
+        margin-top: 60px;
+      }
+    }
+
+    #intro-step7 {
       display: none;
       flex-direction: column;
     }

@@ -38,6 +38,25 @@ export class OverviewScene {
   }
 
   private drawLocations() {
+    if (
+      store.getState().finishedSubProjects.every((fsp) => {
+        const edge = this.edges.filter((edge) => edge.name === fsp)[0];
+        return edge.finished;
+      }) &&
+      !store.getState().finishedGame &&
+      store.getState().finishedSubProjects.length > 0
+    ) {
+      store.setState({ finishedGame: true });
+
+      setTimeout(() => {
+        store.getState().addUserMessage({
+          text: "Nice! 😎 You made it all the way through. Now I would be very thankful if you could take some time to answer the following questions. Don't overthink the answers and write down everything that comes to your mind. The more input you give, the better no matter how well it is formulated!",
+          inputWanted: false,
+          onNext: () => store.setState({ currentIntroStep: 5 }),
+        });
+      }, 800);
+    }
+
     this.edges.forEach((edgeShape) => {
       if (store.getState().finishedSubProjects.some((fsp) => fsp === edgeShape.name)) {
         edgeShape.finished = true;

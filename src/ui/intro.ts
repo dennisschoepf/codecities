@@ -1,6 +1,7 @@
 import store from '../store';
 
 export class Intro {
+  currentStep: number;
   anonymous: boolean;
 
   nextButton: HTMLElement;
@@ -11,6 +12,9 @@ export class Intro {
   step2Container: HTMLElement;
   step3Container: HTMLElement;
   step4Container: HTMLElement;
+  step5Container: HTMLElement;
+  step6Container: HTMLElement;
+  step7Container: HTMLElement;
 
   nameRef: HTMLInputElement;
   ageRef: HTMLInputElement;
@@ -24,6 +28,9 @@ export class Intro {
     this.step2Container = document.getElementById('intro-step2');
     this.step3Container = document.getElementById('intro-step3');
     this.step4Container = document.getElementById('intro-step4');
+    this.step5Container = document.getElementById('intro-step5');
+    this.step6Container = document.getElementById('intro-step6');
+    this.step7Container = document.getElementById('intro-step7');
     this.nextButton = document.getElementById('intro-button');
     this.anonymousCheckbox = document.querySelector('#intro-anonymous');
     this.introContainer = document.querySelector('#intro');
@@ -38,11 +45,18 @@ export class Intro {
 
     this.nextButton.addEventListener('click', () => this.onNextClick());
 
-    store.subscribe((state) => {
-      this.anonymous = state.participantAnonymous;
-      this.showStep(state.currentIntroStep);
+    this.currentStep = store.getState().currentIntroStep;
 
-      console.log(state.currentIntroStep);
+    if (this.currentStep === 0) {
+      this.introContainer.style.display = 'none';
+      this.introBackdrop.style.display = 'none';
+    } else {
+      this.showStep();
+    }
+
+    store.subscribe((state) => {
+      this.currentStep = state.currentIntroStep;
+      this.anonymous = state.participantAnonymous;
 
       if (state.currentIntroStep === 2) {
         this.nextButton.innerHTML = 'Agree';
@@ -50,14 +64,25 @@ export class Intro {
         this.nextButton.innerHTML = 'Confirm';
       } else if (state.currentIntroStep === 4) {
         this.nextButton.innerHTML = 'Start already!';
+      } else if (state.currentIntroStep === 7) {
+        this.nextButton.style.display = 'none';
       } else if (state.currentIntroStep === 0) {
         this.introContainer.style.display = 'none';
         this.introBackdrop.style.display = 'none';
+      } else {
+        this.nextButton.innerHTML = 'Continue';
+      }
+
+      if (state.currentIntroStep !== 0) {
+        this.introContainer.style.display = 'block';
+        this.introBackdrop.style.display = 'block';
       }
 
       if (this.anonymous) {
         this.hideNameInput();
       }
+
+      this.showStep();
     });
   }
 
@@ -103,27 +128,63 @@ export class Intro {
 
   private hideNameInput() {}
 
-  private showStep(stepToShow: number) {
-    if (stepToShow === 1) {
+  private showStep() {
+    if (this.currentStep === 1) {
       this.step1Container.style.display = 'flex';
       this.step2Container.style.display = 'none';
       this.step3Container.style.display = 'none';
       this.step4Container.style.display = 'none';
-    } else if (stepToShow === 2) {
+      this.step5Container.style.display = 'none';
+      this.step6Container.style.display = 'none';
+      this.step7Container.style.display = 'none';
+    } else if (this.currentStep === 2) {
       this.step1Container.style.display = 'none';
       this.step2Container.style.display = 'flex';
       this.step3Container.style.display = 'none';
       this.step4Container.style.display = 'none';
-    } else if (stepToShow === 3) {
+      this.step5Container.style.display = 'none';
+      this.step6Container.style.display = 'none';
+      this.step7Container.style.display = 'none';
+    } else if (this.currentStep === 3) {
       this.step1Container.style.display = 'none';
       this.step2Container.style.display = 'none';
       this.step3Container.style.display = 'flex';
       this.step4Container.style.display = 'none';
-    } else if (stepToShow === 4) {
+      this.step5Container.style.display = 'none';
+      this.step6Container.style.display = 'none';
+      this.step7Container.style.display = 'none';
+    } else if (this.currentStep === 4) {
       this.step1Container.style.display = 'none';
       this.step2Container.style.display = 'none';
       this.step3Container.style.display = 'none';
       this.step4Container.style.display = 'flex';
+      this.step5Container.style.display = 'none';
+      this.step6Container.style.display = 'none';
+      this.step7Container.style.display = 'none';
+    } else if (this.currentStep === 5) {
+      this.step1Container.style.display = 'none';
+      this.step2Container.style.display = 'none';
+      this.step3Container.style.display = 'none';
+      this.step4Container.style.display = 'none';
+      this.step5Container.style.display = 'flex';
+      this.step6Container.style.display = 'none';
+      this.step7Container.style.display = 'none';
+    } else if (this.currentStep === 6) {
+      this.step1Container.style.display = 'none';
+      this.step2Container.style.display = 'none';
+      this.step3Container.style.display = 'none';
+      this.step4Container.style.display = 'none';
+      this.step5Container.style.display = 'none';
+      this.step6Container.style.display = 'flex';
+      this.step7Container.style.display = 'none';
+    } else if (this.currentStep === 7) {
+      this.step1Container.style.display = 'none';
+      this.step2Container.style.display = 'none';
+      this.step3Container.style.display = 'none';
+      this.step4Container.style.display = 'none';
+      this.step5Container.style.display = 'none';
+      this.step6Container.style.display = 'none';
+      this.step7Container.style.display = 'flex';
     }
   }
 }
