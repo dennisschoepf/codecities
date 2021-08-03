@@ -14,6 +14,7 @@ export class InfoMessage {
   type: RevealableTypes;
   name: string;
   infoMessage: HTMLElement;
+  infoMessageSubheadline: HTMLElement;
   infoMessageHeadline: HTMLElement;
   infoMessageContents: HTMLElement;
   infoMessageClose: HTMLElement;
@@ -24,6 +25,7 @@ export class InfoMessage {
   constructor() {
     this.infoMessage = document.getElementById('info-message');
     this.infoMessageHeadline = document.getElementById('info-message-headline');
+    this.infoMessageSubheadline = document.getElementById('info-message-subheadline');
     this.infoMessageContents = document.getElementById('info-message-contents');
     this.infoMessageClose = document.getElementById('info-message-close');
     this.infoMessageImgRef = document.getElementById('info-message-img') as HTMLImageElement;
@@ -47,6 +49,8 @@ export class InfoMessage {
         this.type = newMessage.type;
         this.name = newMessage.headline;
 
+        this.infoMessageSubheadline.innerHTML = this.getTextForType();
+
         if (newMessage.imgUrl) {
           this.setImg(newMessage.imgUrl);
         } else {
@@ -62,6 +66,16 @@ export class InfoMessage {
         store.setState({ infoMessageShown: true });
       }
     });
+  }
+
+  private getTextForType(): string {
+    if (this.type === RevealableTypes.CONTRIBUTOR) {
+      return 'Contributor';
+    } else if (this.type === RevealableTypes.PACKAGE) {
+      return 'NPM Package';
+    } else {
+      return 'Legacy Alert';
+    }
   }
 
   private setContents(headline: string, innerHTML: string) {

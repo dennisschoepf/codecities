@@ -233,6 +233,13 @@ textarea {
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
       var(--tw-shadow);
 
+    #info-message-subheadline {
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: bold;
+      color: #b0b7bf;
+    }
+
     #info-message-header {
       display: flex;
       justify-content: space-between;
