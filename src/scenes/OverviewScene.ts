@@ -13,6 +13,7 @@ export class OverviewScene {
   player: Player;
   playerHead: Area;
   edges: Edge[];
+  sfLogged: boolean;
 
   constructor() {
     this.edges = generateEdges(projectMetadata.subprojects);
@@ -34,7 +35,7 @@ export class OverviewScene {
         logger.log({
           type: 'OC',
           timestamp: Date.now(),
-          message: 'Click outside edge',
+          message: 'Click inside edge',
         });
 
         store.getState().setProjectMetadata(edge.name);
@@ -47,7 +48,7 @@ export class OverviewScene {
         logger.log({
           type: 'OC',
           timestamp: Date.now(),
-          message: 'Click on edge',
+          message: 'Click outside edge',
         });
       }
     });
@@ -80,12 +81,6 @@ export class OverviewScene {
 
     this.edges.forEach((edgeShape) => {
       if (store.getState().finishedSubProjects.some((fsp) => fsp === edgeShape.name)) {
-        logger.log({
-          type: 'SF',
-          timestamp: Date.now(),
-          message: `Finished subproject: ${edgeShape.name}`,
-        });
-
         edgeShape.finished = true;
       }
 

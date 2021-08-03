@@ -84,7 +84,16 @@ export class DetailScene {
       store.getState().addUserMessage({
         text: "Yaay! You've found all of the important parts of this part of the repository. You will be returned to the subproject overview now. Pick the next subproject you want to take a look at there.",
         inputWanted: false,
-        onNext: () => store.setState({ showScore: false, currentScene: Scenes.OVERVIEW }),
+        onNext: () => {
+          logger.log({
+            type: 'SF',
+            timestamp: Date.now(),
+            message: `Finished subprojects: ${JSON.stringify(
+              store.getState().finishedSubProjects
+            )}`,
+          });
+          store.setState({ showScore: false, currentScene: Scenes.OVERVIEW });
+        },
         showIdle: false,
       });
     }

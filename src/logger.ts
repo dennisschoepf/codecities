@@ -72,9 +72,10 @@ export class Logger {
   public logQuestions(answers: string[], isKQ: boolean = false) {
     const uid = store.getState().uid;
 
-    this.database.ref(uid).set({
-      [`${isKQ ? 'knowledge' : 'general'}Questions`]: answers,
-    });
+    this.database
+      .ref(uid)
+      .child(`${isKQ ? 'knowledge' : 'general'}Questions`)
+      .set(answers);
   }
 }
 

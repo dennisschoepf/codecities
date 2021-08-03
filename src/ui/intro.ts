@@ -54,16 +54,16 @@ export class Intro {
     this.backgroundRef = document.querySelector('#intro-background');
     this.experienceRef = document.querySelector('#intro-experience');
 
-    this.fb1 = document.querySelector('#fb1');
-    this.fb2 = document.querySelector('#fb2');
-    this.fb3 = document.querySelector('#fb3');
-    this.fb4 = document.querySelector('#fb4');
-    this.fb5 = document.querySelector('#fb5');
-    this.fb6 = document.querySelector('#fb6');
-    this.fb7 = document.querySelector('#fb7');
-    this.fb8 = document.querySelector('#fb8');
-    this.fb9 = document.querySelector('#fb9');
-    this.fb10 = document.querySelector('#fb10');
+    this.fb1 = document.querySelector('#fb-1');
+    this.fb2 = document.querySelector('#fb-2');
+    this.fb3 = document.querySelector('#fb-3');
+    this.fb4 = document.querySelector('#fb-4');
+    this.fb5 = document.querySelector('#fb-5');
+    this.fb6 = document.querySelector('#fb-6');
+    this.fb7 = document.querySelector('#fb-7');
+    this.fb8 = document.querySelector('#fb-8');
+    this.fb9 = document.querySelector('#fb-9');
+    this.fb10 = document.querySelector('#fb-10');
 
     this.errorRef = document.querySelector('#intro-error');
 
@@ -180,6 +180,7 @@ export class Intro {
     ];
 
     console.log(answers);
+    logger.logQuestions(answers);
   }
 
   private sendKnowledgeQuestionAnswers() {}

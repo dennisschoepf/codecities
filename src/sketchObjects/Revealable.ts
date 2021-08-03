@@ -43,6 +43,7 @@ export class Revealable {
   isHovered: boolean;
   isRevealed: boolean;
   wasInteractedWith: boolean;
+  wasRevealed: boolean;
 
   minSize: number = 5;
   currentSize: number;
@@ -87,16 +88,20 @@ export class Revealable {
         } else if (isRevealed && !isHovered) {
           this.state = RevealableStates.REVEALED;
 
-          logger.log({
-            type:
-              this.type === RevealableTypes.CONTRIBUTOR
-                ? 'NR'
-                : this.type === RevealableTypes.LEGACY
-                ? 'LR'
-                : 'PR',
-            timestamp: Date.now(),
-            message: `Revealed ${this.name}`,
-          });
+          if (!this.wasRevealed) {
+            logger.log({
+              type:
+                this.type === RevealableTypes.CONTRIBUTOR
+                  ? 'NR'
+                  : this.type === RevealableTypes.LEGACY
+                  ? 'LR'
+                  : 'PR',
+              timestamp: Date.now(),
+              message: `Revealed ${this.name}`,
+            });
+          }
+
+          this.wasRevealed = true;
         } else {
           this.state = RevealableStates.HIDDEN;
         }
