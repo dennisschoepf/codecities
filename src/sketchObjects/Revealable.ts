@@ -125,10 +125,27 @@ export class Revealable {
       mp5.fill(mp5.color(colors.red));
       mp5.ellipse(this.area.x, this.area.y, this.currentSize);
     } else if (this.state === RevealableStates.INACTIVE) {
+      this.minSize = 35;
       this.reduceSize();
 
-      mp5.fill(mp5.color(colors.greyDark));
+      mp5.fill(mp5.color(colors.redDark));
       mp5.ellipse(this.area.x, this.area.y, this.currentSize);
+      mp5.strokeWeight(4);
+      mp5.stroke(mp5.color(colors.greyLighter));
+
+      mp5.line(
+        this.area.x + this.currentSize / 5,
+        this.area.y - this.currentSize / 5,
+        this.area.x - this.currentSize / 5,
+        this.area.y + this.currentSize / 5
+      );
+
+      mp5.line(
+        this.area.x - this.currentSize / 5,
+        this.area.y - this.currentSize / 5,
+        this.area.x + this.currentSize / 5,
+        this.area.y + this.currentSize / 5
+      );
     }
   }
 
