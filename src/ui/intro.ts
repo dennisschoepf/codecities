@@ -23,6 +23,17 @@ export class Intro {
   backgroundRef: HTMLInputElement;
   experienceRef: HTMLSelectElement;
 
+  fb1: HTMLTextAreaElement;
+  fb2: HTMLTextAreaElement;
+  fb3: HTMLTextAreaElement;
+  fb4: HTMLTextAreaElement;
+  fb5: HTMLTextAreaElement;
+  fb6: HTMLTextAreaElement;
+  fb7: HTMLTextAreaElement;
+  fb8: HTMLTextAreaElement;
+  fb9: HTMLTextAreaElement;
+  fb10: HTMLTextAreaElement;
+
   errorRef: HTMLElement;
 
   constructor() {
@@ -42,6 +53,17 @@ export class Intro {
     this.ageRef = document.querySelector('#intro-age');
     this.backgroundRef = document.querySelector('#intro-background');
     this.experienceRef = document.querySelector('#intro-experience');
+
+    this.fb1 = document.querySelector('#fb1');
+    this.fb2 = document.querySelector('#fb2');
+    this.fb3 = document.querySelector('#fb3');
+    this.fb4 = document.querySelector('#fb4');
+    this.fb5 = document.querySelector('#fb5');
+    this.fb6 = document.querySelector('#fb6');
+    this.fb7 = document.querySelector('#fb7');
+    this.fb8 = document.querySelector('#fb8');
+    this.fb9 = document.querySelector('#fb9');
+    this.fb10 = document.querySelector('#fb10');
 
     this.errorRef = document.querySelector('#intro-error');
 
@@ -132,16 +154,35 @@ export class Intro {
       return;
     }
 
+    if (currentStep === 6) {
+      this.sendGeneralQuestionAnswers();
+    }
+
     store.setState((state) => ({ currentIntroStep: state.currentIntroStep + 1 }));
   }
 
-  private sendConsent() {}
-
   private sendDemographicData(name: string, age: number, background: string, experience: string) {
-    console.log(name, age, background, experience);
-
-    // TODO: Log
+    logger.logPersonalData(name, age, background, experience);
   }
+
+  private sendGeneralQuestionAnswers() {
+    const answers = [
+      this.fb1.value,
+      this.fb2.value,
+      this.fb3.value,
+      this.fb4.value,
+      this.fb5.value,
+      this.fb6.value,
+      this.fb7.value,
+      this.fb8.value,
+      this.fb9.value,
+      this.fb10.value,
+    ];
+
+    console.log(answers);
+  }
+
+  private sendKnowledgeQuestionAnswers() {}
 
   private hideNameInput() {}
 

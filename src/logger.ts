@@ -50,16 +50,32 @@ export class Logger {
   public log(ev: LogEvent) {
     console.log('Logging event');
     const uid = store.getState().uid;
-    const logEvKey = this.database.ref(uid).child('logs').push().key;
 
-    this.database.ref(uid).update({ [`logs/${logEvKey}`]: ev });
+    if (uid) {
+      const logEvKey = this.database.ref(uid).child('logs').push().key;
+
+      this.database.ref(uid).update({ [`logs/${logEvKey}`]: ev });
+    }
   }
 
-  public logPersonalData() {}
+  public logPersonalData(name: string, age: number, background: string, experience: string) {
+    const uid = store.getState().uid;
 
-  public logKnowledgeQuestions() {}
+    this.database.ref(uid).set({
+      name,
+      age,
+      background,
+      experience,
+    });
+  }
 
-  public logGeneralQuestions() {}
+  public logQuestions(answers: string[], isKQ: boolean = false) {
+    const uid = store.getState().uid;
+
+    this.database.ref(uid).set({
+      [`${isKQ ? 'knowledge' : 'general'}Questions`]: answers,
+    });
+  }
 }
 
 export const logger = new Logger();

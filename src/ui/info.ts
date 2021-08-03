@@ -80,22 +80,16 @@ export class InfoMessage {
   }
 
   private show() {
-    logger.log({
-      type:
-        this.type === RevealableTypes.CONTRIBUTOR
-          ? 'NS'
-          : this.type === RevealableTypes.LEGACY
-          ? 'LS'
-          : 'PS',
-      timestamp: Date.now(),
-      message: `Showing info message for ${this.name}`,
-    });
-
     this.infoMessage.style.display = 'block';
     this.backdrop.style.display = 'block';
   }
 
   private hide() {
+    this.infoMessage.style.display = 'none';
+    this.backdrop.style.display = 'none';
+  }
+
+  private onBackdropClick() {
     logger.log({
       type:
         this.type === RevealableTypes.CONTRIBUTOR
@@ -106,16 +100,20 @@ export class InfoMessage {
       timestamp: Date.now(),
       message: `Closing info message for ${this.name}`,
     });
-
-    this.infoMessage.style.display = 'none';
-    this.backdrop.style.display = 'none';
-  }
-
-  private onBackdropClick() {
     store.setState({ infoMessageShown: false });
   }
 
   private onCloseClick() {
+    logger.log({
+      type:
+        this.type === RevealableTypes.CONTRIBUTOR
+          ? 'NC'
+          : this.type === RevealableTypes.LEGACY
+          ? 'LC'
+          : 'PC',
+      timestamp: Date.now(),
+      message: `Closing info message for ${this.name}`,
+    });
     store.setState({ infoMessageShown: false });
   }
 }

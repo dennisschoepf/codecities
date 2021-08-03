@@ -131,6 +131,17 @@ export class Revealable {
     if (this.isHovered && !this.wasInteractedWith) {
       this.wasInteractedWith = true;
 
+      logger.log({
+        type:
+          this.type === RevealableTypes.CONTRIBUTOR
+            ? 'NS'
+            : this.type === RevealableTypes.LEGACY
+            ? 'LS'
+            : 'PS',
+        timestamp: Date.now(),
+        message: `Showing info message for ${this.name}`,
+      });
+
       store.getState().addInfoMessage({
         type: this.type,
         headline: this.name,
