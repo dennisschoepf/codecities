@@ -1,3 +1,4 @@
+import { logger } from '../logger';
 import { Scenes } from '../scenes/scenes';
 import store from '../store';
 
@@ -107,6 +108,11 @@ export class Intro {
         return;
       } else {
         this.errorRef.style.display = 'none';
+
+        store.setState({
+          uid: `${Date.now()}_${name.replace(/[^a-zA-Z ]/g, '').toLowerCase()}`,
+        });
+
         this.sendDemographicData(name, age, background, experience);
       }
     }

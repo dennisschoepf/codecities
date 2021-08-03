@@ -1,6 +1,9 @@
+import { logger } from '../logger';
+import { RevealableTypes } from '../sketchObjects/Revealable';
 import store from '../store';
 
 export interface InfoMessageType {
+  type: RevealableTypes;
   headline: string;
   innerHTML: string;
   imgUrl?: string;
@@ -8,6 +11,8 @@ export interface InfoMessageType {
 }
 
 export class InfoMessage {
+  type: RevealableTypes;
+  name: string;
   infoMessage: HTMLElement;
   infoMessageHeadline: HTMLElement;
   infoMessageContents: HTMLElement;
@@ -38,6 +43,9 @@ export class InfoMessage {
       if (state.infoMessages.length > prevState.infoMessages.length) {
         const newMessage = state.infoMessages[state.infoMessages.length - 1];
         this.setContents(newMessage.headline, newMessage.innerHTML);
+
+        this.type = newMessage.type;
+        this.name = newMessage.headline;
 
         if (newMessage.imgUrl) {
           this.setImg(newMessage.imgUrl);
@@ -72,11 +80,33 @@ export class InfoMessage {
   }
 
   private show() {
+    logger.log({
+      type:
+        this.type === RevealableTypes.CONTRIBUTOR
+          ? 'NS'
+          : this.type === RevealableTypes.LEGACY
+          ? 'LS'
+          : 'PS',
+      timestamp: Date.now(),
+      message: `Showing info message for ${this.name}`,
+    });
+
     this.infoMessage.style.display = 'block';
     this.backdrop.style.display = 'block';
   }
 
   private hide() {
+    logger.log({
+      type:
+        this.type === RevealableTypes.CONTRIBUTOR
+          ? 'NC'
+          : this.type === RevealableTypes.LEGACY
+          ? 'LC'
+          : 'PC',
+      timestamp: Date.now(),
+      message: `Closing info message for ${this.name}`,
+    });
+
     this.infoMessage.style.display = 'none';
     this.backdrop.style.display = 'none';
   }

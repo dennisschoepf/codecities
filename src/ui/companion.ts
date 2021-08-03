@@ -1,4 +1,5 @@
 import anime from 'animejs/lib/anime.es';
+import { logger } from '../logger';
 import store from '../store';
 
 export enum CompanionState {
@@ -93,6 +94,11 @@ export class Companion {
     // Hide Message
     this.messageRef.style.display = 'none';
     store.setState({ companionState: CompanionState.IDLE });
+    logger.log({
+      type: 'CC',
+      timestamp: Date.now(),
+      message: 'Close message',
+    });
 
     if (this.message.onNext) {
       this.message.onNext();
@@ -195,6 +201,10 @@ export class Companion {
     }
 
     store.setState({ companionState: newCompanionState });*/
+    logger.log({
+      type: 'CC',
+      timestamp: Date.now(),
+    });
   }
 
   handleMouseEnter() {

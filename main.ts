@@ -1,4 +1,5 @@
 import p5 from 'p5';
+import firebase from 'firebase/app';
 import { SCREEN_WIDTH, SCREEN_HEIGHT } from './src/constants/screen';
 import { DetailScene } from './src/scenes/DetailScene';
 import { OverviewScene } from './src/scenes/OverviewScene';

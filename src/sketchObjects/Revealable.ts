@@ -2,6 +2,7 @@ import { combineLatest } from 'rxjs';
 import { mp5 } from '../../main';
 import { areasColliding, playerHead$, revealedArea$ } from '../area';
 import { colors } from '../constants/colors';
+import { logger } from '../logger';
 import store from '../store';
 import { Area } from '../types';
 
@@ -85,6 +86,17 @@ export class Revealable {
           this.state = RevealableStates.FOUND;
         } else if (isRevealed && !isHovered) {
           this.state = RevealableStates.REVEALED;
+
+          logger.log({
+            type:
+              this.type === RevealableTypes.CONTRIBUTOR
+                ? 'NR'
+                : this.type === RevealableTypes.LEGACY
+                ? 'LR'
+                : 'PR',
+            timestamp: Date.now(),
+            message: `Revealed ${this.name}`,
+          });
         } else {
           this.state = RevealableStates.HIDDEN;
         }
@@ -120,6 +132,7 @@ export class Revealable {
       this.wasInteractedWith = true;
 
       store.getState().addInfoMessage({
+        type: this.type,
         headline: this.name,
         innerHTML: this.contents,
         imgUrl: this.imageUrl,

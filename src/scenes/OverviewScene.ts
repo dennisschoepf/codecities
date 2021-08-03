@@ -7,6 +7,7 @@ import { generateEdges } from '../helpers';
 import { Scenes } from './scenes';
 import projectMetadata from '../../metadata/project.json';
 import { Area } from '../types';
+import { logger } from '../logger';
 
 export class OverviewScene {
   player: Player;
@@ -30,11 +31,23 @@ export class OverviewScene {
     this.edges.forEach((edge, i) => {
       const dist = mp5.dist(mp5.mouseX, mp5.mouseY, edge.x, edge.y);
       if (dist < edge.r) {
+        logger.log({
+          type: 'OC',
+          timestamp: Date.now(),
+          message: 'Click outside edge',
+        });
+
         store.getState().setProjectMetadata(edge.name);
         store.setState({
           showScore: true,
           currentSubproject: edge.name,
           currentScene: Scenes.DETAIL,
+        });
+      } else {
+        logger.log({
+          type: 'OC',
+          timestamp: Date.now(),
+          message: 'Click on edge',
         });
       }
     });
@@ -52,6 +65,11 @@ export class OverviewScene {
       store.setState({ finishedGame: true });
 
       setTimeout(() => {
+        logger.log({
+          timestamp: Date.now(),
+          type: 'GF',
+        });
+
         store.getState().addUserMessage({
           text: "Nice! 😎 You made it all the way through. Now I would be very thankful if you could take some time to answer the following questions. Don't overthink the answers and write down everything that comes to your mind. The more input you give, the better no matter how well it is formulated!",
           inputWanted: false,
@@ -62,6 +80,12 @@ export class OverviewScene {
 
     this.edges.forEach((edgeShape) => {
       if (store.getState().finishedSubProjects.some((fsp) => fsp === edgeShape.name)) {
+        logger.log({
+          type: 'SF',
+          timestamp: Date.now(),
+          message: `Finished subproject: ${edgeShape.name}`,
+        });
+
         edgeShape.finished = true;
       }
 

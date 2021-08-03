@@ -2,8 +2,9 @@ import _ from 'lodash';
 import { mp5 } from '../../main';
 import { colors } from '../constants/colors';
 import { generateRevealableCoords } from '../helpers';
+import { logger } from '../logger';
 import { Player } from '../sketchObjects/Player';
-import { Revealable, RevealableInterface } from '../sketchObjects/Revealable';
+import { Revealable, RevealableInterface, RevealableTypes } from '../sketchObjects/Revealable';
 import store from '../store';
 import { Coordinates } from '../types';
 import { CompanionState } from '../ui/companion';
@@ -92,9 +93,25 @@ export class DetailScene {
   onSceneClick() {
     this.revealableObjects.forEach((revObj) => {
       if (revObj.isHovered) {
+        logger.log({
+          type:
+            revObj.type === RevealableTypes.CONTRIBUTOR
+              ? 'NI'
+              : revObj.type === RevealableTypes.LEGACY
+              ? 'LI'
+              : 'PI',
+          timestamp: Date.now(),
+          message: `Identified ${revObj.name}`,
+        });
+
         this.wasHovered = true;
         revObj.onClick();
       } else {
+        logger.log({
+          type: 'RC',
+          timestamp: Date.now(),
+        });
+
         this.player.reveal();
         this.wasInteractedWith = true;
       }
