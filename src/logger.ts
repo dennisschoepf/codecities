@@ -58,7 +58,13 @@ export class Logger {
     }
   }
 
-  public logPersonalData(name: string, age: number, background: string, experience: string) {
+  public logPersonalData(
+    name: string,
+    age: number,
+    background: string,
+    experience: string,
+    anonymous: boolean
+  ) {
     const uid = store.getState().uid;
 
     this.database.ref(uid).set({
@@ -66,6 +72,7 @@ export class Logger {
       age,
       background,
       experience,
+      anonymous,
     });
   }
 

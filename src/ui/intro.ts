@@ -125,7 +125,12 @@ export class Intro {
       const background = this.backgroundRef.value;
       const experience = this.experienceRef.value;
 
-      if (!name || !age || !background || experience === 'Choose an option...') {
+      if (
+        (this.anonymous ? false : !name) ||
+        !age ||
+        !background ||
+        experience === 'Choose an option...'
+      ) {
         this.errorRef.style.display = 'block';
         return;
       } else {
@@ -158,11 +163,15 @@ export class Intro {
       this.sendGeneralQuestionAnswers();
     }
 
+    if (currentStep === 5) {
+      this.sendKnowledgeQuestionAnswers();
+    }
+
     store.setState((state) => ({ currentIntroStep: state.currentIntroStep + 1 }));
   }
 
   private sendDemographicData(name: string, age: number, background: string, experience: string) {
-    logger.logPersonalData(name, age, background, experience);
+    logger.logPersonalData(name, age, background, experience, this.anonymous);
   }
 
   private sendGeneralQuestionAnswers() {
@@ -179,13 +188,20 @@ export class Intro {
       this.fb10.value,
     ];
 
-    console.log(answers);
     logger.logQuestions(answers);
   }
 
-  private sendKnowledgeQuestionAnswers() {}
+  private sendKnowledgeQuestionAnswers() {
+    const answers = [];
 
-  private hideNameInput() {}
+    logger.logQuestions(answers, true);
+  }
+
+  private hideNameInput() {
+    this.nameRef.style.display = 'none';
+    const label = document.querySelector('#name-label') as HTMLElement;
+    label.style.display = 'none';
+  }
 
   private showStep() {
     if (this.currentStep === 1) {
