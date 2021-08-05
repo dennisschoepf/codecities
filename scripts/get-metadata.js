@@ -1,14 +1,18 @@
 import { resolve } from 'path';
-import { readdir } from 'fs/promises';
+import { readdir, writeFile } from 'fs/promises';
 import getItemSize from 'get-folder-size';
-import { getProjectContributors } from './helpers.js';
+import {
+  getLegaciesForSubproject,
+  getLinksForSubproject,
+  getPackagesForSubproject,
+  getProjectContributors,
+} from './helpers.js';
+
+const __dirname = resolve();
+export const PROJECT_PATH = resolve(__dirname, 'sourceproject/ethereumjs-monorepo');
+export const SUBPACKAGE_PATH = resolve(PROJECT_PATH, 'packages');
 
 const main = async () => {
-  /* CONSTANTS */
-  const __dirname = resolve();
-  const PROJECT_PATH = resolve(__dirname, 'sourceproject/ethereumjs-monorepo');
-  const SUBPACKAGE_PATH = resolve(PROJECT_PATH, 'packages');
-
   const subprojectPaths = await readdir(SUBPACKAGE_PATH);
   const subprojectOverviewData = await Promise.all(
     subprojectPaths.map(async (subprojectPath) => {
@@ -27,28 +31,38 @@ const main = async () => {
     (subprojectData) => subprojectData.name !== 'vm' && subprojectData.name !== 'ethereum-tests'
   );
 
-  /*const subprojectsWithRevealables = await Promise.all(
-    subprojects.map(async (subproject) => {
-      const contributors = await getContributorsForSubproject(subproject);
-      const revealables = [...contributors];
-      const subprojectWithRevealables = {
-        ...subproject,
-        revealables,
-      };
-      console.log(revealables);
-
-      return subprojectWithRevealables;
-    })
-  );*/
-
   const projectContributors = await getProjectContributors();
 
-  console.log('overall contribs', projectContributors);
+  console.log(projectContributors.length);
 
-  // console.log('Resulting metadata:');
-  /* console.log({
-    subprojects: subprojectsWithRevealables,
-  });*/
+  const subprojectsWithRevealables = await Promise.all(
+    subprojects.map(async (subproject, i) => {
+      const packages = await getPackagesForSubproject(subproject);
+      const links = await getLinksForSubproject(subproject);
+      const legacies = await getLegaciesForSubproject(subproject);
+      const contributors = [
+        projectContributors[0 + i],
+        projectContributors[10 + i],
+        projectContributors[20 + i],
+      ];
+
+      return {
+        ...subproject,
+        links,
+        revealables: [...packages, ...contributors, ...legacies],
+      };
+    })
+  );
+
+  const jsonToWrite = JSON.stringify(
+    {
+      subprojects: subprojectsWithRevealables,
+    },
+    null,
+    2
+  );
+
+  writeFile(resolve(__dirname, 'metadata/project.json'), jsonToWrite);
 };
 
 main();

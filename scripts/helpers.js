@@ -1,10 +1,48 @@
-import { resolve } from 'path';
+import { resolve, basename } from 'path';
 import { readFile } from 'fs/promises';
+import { promisify } from 'util';
 import { Octokit } from '@octokit/core';
+import child_process from 'child_process';
+import nodeGlob from 'glob';
+import { PROJECT_PATH, SUBPACKAGE_PATH } from './get-metadata.js';
+
+const exec = promisify(child_process.exec);
+const glob = promisify(nodeGlob);
 
 const octokit = new Octokit({
   auth: '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',
 });
+
+export async function getLegaciesForSubproject(subproject) {
+  // Get all paths to project files
+  const files = await glob(resolve(SUBPACKAGE_PATH, subproject.name, '**/*.ts'));
+  const filteredFilePaths = files.filter(
+    (filePath) =>
+      !filePath.includes('spec.') && !filePath.includes('/test/') && !filePath.includes('@types')
+  );
+
+  // Get line counts for files
+  const filesWithWordCounts = await Promise.all(
+    filteredFilePaths.map(async (filteredFilePath) => {
+      const { stdout } = await exec(`wc -l < ${filteredFilePath}`);
+
+      return {
+        path: filteredFilePath,
+        count: Number(stdout.replace('\n', '')),
+      };
+    })
+  );
+
+  const largestFiles = filesWithWordCounts
+    .sort((fwcA, fwcB) => fwcB.count - fwcA.count)
+    .slice(0, 2);
+
+  // Transform to legacy object
+  const legacies = largestFiles.map((largeFile) => createLegacy(largeFile));
+
+  // Return 2 highest line counts
+  return legacies;
+}
 
 export async function getProjectContributors() {
   const contribs = await octokit.request('/repos/ethereumjs/ethereumjs-monorepo/contributors');
@@ -15,27 +53,37 @@ export async function getProjectContributors() {
   return contributors;
 }
 
-/*export async function getContributorsForSubproject(subproject) {
+export async function getLinksForSubproject(subproject) {
   const subprojectPackageJson = await readFile(
     resolve(subproject.filePath, 'package.json'),
     'utf8'
   );
-  const parsedPackageJson = JSON.parse(subprojectPackageJson);
+  const { dependencies } = JSON.parse(subprojectPackageJson);
+  const links = Object.keys(dependencies).filter((dependency) =>
+    dependency.includes('@ethereumjs')
+  );
 
-  try {
-    if (parsedPackageJson.contributors && parsedPackageJson.contributors.length > 0) {
-      const contributors = await Promise.all(
-        parsedPackageJson.contributors.map(async (cntrb) => await createContributor(cntrb))
-      );
+  return links;
+}
 
-      return contributors.filter((contributor) => !!contributor);
-    } else {
-      return [];
-    }
-  } catch (e) {
-    return [];
-  }
-}*/
+export async function getPackagesForSubproject(subproject) {
+  const subprojectPackageJson = await readFile(
+    resolve(subproject.filePath, 'package.json'),
+    'utf8'
+  );
+  const { dependencies } = JSON.parse(subprojectPackageJson);
+  const relevantDependencies = Object.keys(dependencies)
+    .filter((dependency) => !dependency.includes('ethereumjs') && !dependency.includes('@types'))
+    .slice(0, 3)
+    .map((dependencyKey) => ({
+      name: dependencyKey,
+      version: dependencies[dependencyKey],
+    }));
+
+  const formattedDependencies = relevantDependencies.map((dep) => createPackage(dep));
+
+  return formattedDependencies;
+}
 
 const createContributor = async (contrib) => {
   if (!contrib) return;
@@ -65,33 +113,30 @@ const createContributor = async (contrib) => {
   };
 };
 
-const createPackage = (pkg) => {
+const createPackage = ({ name, version }) => {
   const path = 'path.to.package.json';
   const size = 0;
-  const contents = '';
-  const url = '';
 
   return {
     type: 'PACKAGE',
-    name: pkg,
+    name,
     path,
+    version,
     size,
-    contents,
-    url,
+    contents: '',
+    url: `https://www.npmjs.com/package/${name}`,
   };
 };
 
-const createLegacy = (lgcy) => {
-  const size = 0;
-  const contents = '';
-  const url = '';
+const createLegacy = ({ path, count }) => {
+  const projectPath = path.replace(PROJECT_PATH, '');
 
   return {
     type: 'LEGACY',
-    name: 'filename',
-    path: 'filePath',
-    size,
-    contents,
-    url,
+    name: basename(projectPath),
+    path: projectPath,
+    size: count,
+    contents: '',
+    url: `https://github.com/ethereumjs/ethereumjs-monorepo/blob/master${projectPath}`,
   };
 };

@@ -10,7 +10,8 @@
     "dev": "parcel index.html",
     "build": "parcel build index.html",
     "deploy": "./deploy.sh",
-    "dev:meta": "nodemon ./scripts/get-metadata.js "
+    "dev:meta": "nodemon --ignore '**/*.json' ./scripts/get-metadata.js",
+    "generate": "node ./scripts/get-metadata.js"
   },
   "devDependencies": {
     "@octokit/core": "^3.5.1",
@@ -18,6 +19,7 @@
     "@types/lodash": "^4.14.171",
     "@types/p5": "^1.3.0",
     "get-folder-size": "^3.1.0",
+    "glob": "^7.1.7",
     "node-fetch": "^2.6.1",
     "nodemon": "^2.0.12",
     "parcel-bundler": "^1.12.5",

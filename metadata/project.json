@@ -1,0 +1,1066 @@
+{
+  "subprojects": [
+    {
+      "name": "block",
+      "path": "packages/block",
+      "filePath": "/home/dennis/projects/codewanderer/sourceproject/ethereumjs-monorepo/packages/block",
+      "size": 7602,
+      "links": [
+        "@ethereumjs/common",
+        "@ethereumjs/tx"
+      ],
+      "revealables": [
+        {
+          "type": "PACKAGE",
+          "name": "merkle-patricia-tree",
+          "path": "path.to.package.json",
+          "version": "^4.2.0",
+          "size": 0,
+          "contents": "",
+          "url": "https://www.npmjs.com/package/merkle-patricia-tree"
+        },
+        {
+          "type": "CONTRIBUTOR",
+          "name": "holgerd77",
+          "url": "https://github.com/holgerd77",
+          "size": 2060,
+          "imageUrl": "https://avatars.githubusercontent.com/u/931137?v=4",
+          "commits": [
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/b463d8ea96c8655b7d4d3b638b459e16ae8d76d8",
+              "message": "VM: New release v5.5.2 (#1390)",
+              "time": "2021-08-03T22:14:01Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/7f095a8d91fe537f040063767871fb6e90716307",
+              "message": "VM: New release v5.5.1 (#1388)",
+              "time": "2021-08-02T20:04:34Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/f01403a2b598c9232885dba43c6442e34d0d3ab7",
+              "message": "tx: clarify documentation for `gasPrice` under `FeeMarketEIP1559TxData` interface (#1387)",
+              "time": "2021-08-02T17:54:03Z"
+            }
+          ]
+        },
+        {
+          "type": "CONTRIBUTOR",
+          "name": "vpulim",
+          "url": "https://github.com/vpulim",
+          "size": 105,
+          "imageUrl": "https://avatars.githubusercontent.com/u/100092?v=4",
+          "commits": [
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/b463d8ea96c8655b7d4d3b638b459e16ae8d76d8",
+              "message": "VM: New release v5.5.2 (#1390)",
+              "time": "2021-08-03T22:14:01Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/7f095a8d91fe537f040063767871fb6e90716307",
+              "message": "VM: New release v5.5.1 (#1388)",
+              "time": "2021-08-02T20:04:34Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/f01403a2b598c9232885dba43c6442e34d0d3ab7",
+              "message": "tx: clarify documentation for `gasPrice` under `FeeMarketEIP1559TxData` interface (#1387)",
+              "time": "2021-08-02T17:54:03Z"
+            }
+          ]
+        },
+        {
+          "type": "CONTRIBUTOR",
+          "name": "acolytec3",
+          "url": "https://github.com/acolytec3",
+          "size": 21,
+          "imageUrl": "https://avatars.githubusercontent.com/u/17355484?v=4",
+          "commits": [
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/b463d8ea96c8655b7d4d3b638b459e16ae8d76d8",
+              "message": "VM: New release v5.5.2 (#1390)",
+              "time": "2021-08-03T22:14:01Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/7f095a8d91fe537f040063767871fb6e90716307",
+              "message": "VM: New release v5.5.1 (#1388)",
+              "time": "2021-08-02T20:04:34Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/f01403a2b598c9232885dba43c6442e34d0d3ab7",
+              "message": "tx: clarify documentation for `gasPrice` under `FeeMarketEIP1559TxData` interface (#1387)",
+              "time": "2021-08-02T17:54:03Z"
+            }
+          ]
+        },
+        {
+          "type": "LEGACY",
+          "name": "header.ts",
+          "path": "/packages/block/src/header.ts",
+          "size": 899,
+          "contents": "",
+          "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/master/packages/block/src/header.ts"
+        },
+        {
+          "type": "LEGACY",
+          "name": "block.ts",
+          "path": "/packages/block/src/block.ts",
+          "size": 487,
+          "contents": "",
+          "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/master/packages/block/src/block.ts"
+        }
+      ]
+    },
+    {
+      "name": "blockchain",
+      "path": "packages/blockchain",
+      "filePath": "/home/dennis/projects/codewanderer/sourceproject/ethereumjs-monorepo/packages/blockchain",
+      "size": 247,
+      "links": [
+        "@ethereumjs/block",
+        "@ethereumjs/common",
+        "@ethereumjs/ethash"
+      ],
+      "revealables": [
+        {
+          "type": "PACKAGE",
+          "name": "debug",
+          "path": "path.to.package.json",
+          "version": "^2.2.0",
+          "size": 0,
+          "contents": "",
+          "url": "https://www.npmjs.com/package/debug"
+        },
+        {
+          "type": "PACKAGE",
+          "name": "level-mem",
+          "path": "path.to.package.json",
+          "version": "^5.0.1",
+          "size": 0,
+          "contents": "",
+          "url": "https://www.npmjs.com/package/level-mem"
+        },
+        {
+          "type": "PACKAGE",
+          "name": "lru-cache",
+          "path": "path.to.package.json",
+          "version": "^5.1.1",
+          "size": 0,
+          "contents": "",
+          "url": "https://www.npmjs.com/package/lru-cache"
+        },
+        {
+          "type": "CONTRIBUTOR",
+          "name": "ryanio",
+          "url": "https://github.com/ryanio",
+          "size": 597,
+          "imageUrl": "https://avatars.githubusercontent.com/u/22116?v=4",
+          "commits": [
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/b463d8ea96c8655b7d4d3b638b459e16ae8d76d8",
+              "message": "VM: New release v5.5.2 (#1390)",
+              "time": "2021-08-03T22:14:01Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/7f095a8d91fe537f040063767871fb6e90716307",
+              "message": "VM: New release v5.5.1 (#1388)",
+              "time": "2021-08-02T20:04:34Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/f01403a2b598c9232885dba43c6442e34d0d3ab7",
+              "message": "tx: clarify documentation for `gasPrice` under `FeeMarketEIP1559TxData` interface (#1387)",
+              "time": "2021-08-02T17:54:03Z"
+            }
+          ]
+        },
+        {
+          "type": "CONTRIBUTOR",
+          "name": "jwasinger",
+          "url": "https://github.com/jwasinger",
+          "size": 82,
+          "imageUrl": "https://avatars.githubusercontent.com/u/3411040?v=4",
+          "commits": [
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/b463d8ea96c8655b7d4d3b638b459e16ae8d76d8",
+              "message": "VM: New release v5.5.2 (#1390)",
+              "time": "2021-08-03T22:14:01Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/7f095a8d91fe537f040063767871fb6e90716307",
+              "message": "VM: New release v5.5.1 (#1388)",
+              "time": "2021-08-02T20:04:34Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/f01403a2b598c9232885dba43c6442e34d0d3ab7",
+              "message": "tx: clarify documentation for `gasPrice` under `FeeMarketEIP1559TxData` interface (#1387)",
+              "time": "2021-08-02T17:54:03Z"
+            }
+          ]
+        },
+        {
+          "type": "CONTRIBUTOR",
+          "name": "whymarrh",
+          "url": "https://github.com/whymarrh",
+          "size": 19,
+          "imageUrl": "https://avatars.githubusercontent.com/u/1623628?v=4",
+          "commits": [
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/b463d8ea96c8655b7d4d3b638b459e16ae8d76d8",
+              "message": "VM: New release v5.5.2 (#1390)",
+              "time": "2021-08-03T22:14:01Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/7f095a8d91fe537f040063767871fb6e90716307",
+              "message": "VM: New release v5.5.1 (#1388)",
+              "time": "2021-08-02T20:04:34Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/f01403a2b598c9232885dba43c6442e34d0d3ab7",
+              "message": "tx: clarify documentation for `gasPrice` under `FeeMarketEIP1559TxData` interface (#1387)",
+              "time": "2021-08-02T17:54:03Z"
+            }
+          ]
+        },
+        {
+          "type": "LEGACY",
+          "name": "index.ts",
+          "path": "/packages/blockchain/src/index.ts",
+          "size": 1562,
+          "contents": "",
+          "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/master/packages/blockchain/src/index.ts"
+        },
+        {
+          "type": "LEGACY",
+          "name": "manager.ts",
+          "path": "/packages/blockchain/src/db/manager.ts",
+          "size": 257,
+          "contents": "",
+          "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/master/packages/blockchain/src/db/manager.ts"
+        }
+      ]
+    },
+    {
+      "name": "client",
+      "path": "packages/client",
+      "filePath": "/home/dennis/projects/codewanderer/sourceproject/ethereumjs-monorepo/packages/client",
+      "size": 3369,
+      "links": [
+        "@ethereumjs/block",
+        "@ethereumjs/blockchain",
+        "@ethereumjs/common",
+        "@ethereumjs/devp2p",
+        "@ethereumjs/tx",
+        "@ethereumjs/vm"
+      ],
+      "revealables": [
+        {
+          "type": "PACKAGE",
+          "name": "merkle-patricia-tree",
+          "path": "path.to.package.json",
+          "version": "^4.2.0",
+          "size": 0,
+          "contents": "",
+          "url": "https://www.npmjs.com/package/merkle-patricia-tree"
+        },
+        {
+          "type": "PACKAGE",
+          "name": "chalk",
+          "path": "path.to.package.json",
+          "version": "^2.4.2",
+          "size": 0,
+          "contents": "",
+          "url": "https://www.npmjs.com/package/chalk"
+        },
+        {
+          "type": "PACKAGE",
+          "name": "fs-extra",
+          "path": "path.to.package.json",
+          "version": "^7.0.1",
+          "size": 0,
+          "contents": "",
+          "url": "https://www.npmjs.com/package/fs-extra"
+        },
+        {
+          "type": "CONTRIBUTOR",
+          "name": "axic",
+          "url": "https://github.com/axic",
+          "size": 364,
+          "imageUrl": "https://avatars.githubusercontent.com/u/20340?v=4",
+          "commits": [
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/b463d8ea96c8655b7d4d3b638b459e16ae8d76d8",
+              "message": "VM: New release v5.5.2 (#1390)",
+              "time": "2021-08-03T22:14:01Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/7f095a8d91fe537f040063767871fb6e90716307",
+              "message": "VM: New release v5.5.1 (#1388)",
+              "time": "2021-08-02T20:04:34Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/f01403a2b598c9232885dba43c6442e34d0d3ab7",
+              "message": "tx: clarify documentation for `gasPrice` under `FeeMarketEIP1559TxData` interface (#1387)",
+              "time": "2021-08-02T17:54:03Z"
+            }
+          ]
+        },
+        {
+          "type": "CONTRIBUTOR",
+          "name": "gabrocheleau",
+          "url": "https://github.com/gabrocheleau",
+          "size": 55,
+          "imageUrl": "https://avatars.githubusercontent.com/u/18757482?v=4",
+          "commits": [
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/b463d8ea96c8655b7d4d3b638b459e16ae8d76d8",
+              "message": "VM: New release v5.5.2 (#1390)",
+              "time": "2021-08-03T22:14:01Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/7f095a8d91fe537f040063767871fb6e90716307",
+              "message": "VM: New release v5.5.1 (#1388)",
+              "time": "2021-08-02T20:04:34Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/f01403a2b598c9232885dba43c6442e34d0d3ab7",
+              "message": "tx: clarify documentation for `gasPrice` under `FeeMarketEIP1559TxData` interface (#1387)",
+              "time": "2021-08-02T17:54:03Z"
+            }
+          ]
+        },
+        {
+          "type": "CONTRIBUTOR",
+          "name": "rumkin",
+          "url": "https://github.com/rumkin",
+          "size": 19,
+          "imageUrl": "https://avatars.githubusercontent.com/u/609373?v=4",
+          "commits": [
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/b463d8ea96c8655b7d4d3b638b459e16ae8d76d8",
+              "message": "VM: New release v5.5.2 (#1390)",
+              "time": "2021-08-03T22:14:01Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/7f095a8d91fe537f040063767871fb6e90716307",
+              "message": "VM: New release v5.5.1 (#1388)",
+              "time": "2021-08-02T20:04:34Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/f01403a2b598c9232885dba43c6442e34d0d3ab7",
+              "message": "tx: clarify documentation for `gasPrice` under `FeeMarketEIP1559TxData` interface (#1387)",
+              "time": "2021-08-02T17:54:03Z"
+            }
+          ]
+        },
+        {
+          "type": "LEGACY",
+          "name": "eth.ts",
+          "path": "/packages/client/lib/rpc/modules/eth.ts",
+          "size": 545,
+          "contents": "",
+          "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/master/packages/client/lib/rpc/modules/eth.ts"
+        },
+        {
+          "type": "LEGACY",
+          "name": "config.ts",
+          "path": "/packages/client/lib/config.ts",
+          "size": 373,
+          "contents": "",
+          "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/master/packages/client/lib/config.ts"
+        }
+      ]
+    },
+    {
+      "name": "common",
+      "path": "packages/common",
+      "filePath": "/home/dennis/projects/codewanderer/sourceproject/ethereumjs-monorepo/packages/common",
+      "size": 1000,
+      "links": [],
+      "revealables": [
+        {
+          "type": "PACKAGE",
+          "name": "crc-32",
+          "path": "path.to.package.json",
+          "version": "^1.2.0",
+          "size": 0,
+          "contents": "",
+          "url": "https://www.npmjs.com/package/crc-32"
+        },
+        {
+          "type": "CONTRIBUTOR",
+          "name": "jochem-brouwer",
+          "url": "https://github.com/jochem-brouwer",
+          "size": 280,
+          "imageUrl": "https://avatars.githubusercontent.com/u/29359032?v=4",
+          "commits": [
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/b463d8ea96c8655b7d4d3b638b459e16ae8d76d8",
+              "message": "VM: New release v5.5.2 (#1390)",
+              "time": "2021-08-03T22:14:01Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/7f095a8d91fe537f040063767871fb6e90716307",
+              "message": "VM: New release v5.5.1 (#1388)",
+              "time": "2021-08-02T20:04:34Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/f01403a2b598c9232885dba43c6442e34d0d3ab7",
+              "message": "tx: clarify documentation for `gasPrice` under `FeeMarketEIP1559TxData` interface (#1387)",
+              "time": "2021-08-02T17:54:03Z"
+            }
+          ]
+        },
+        {
+          "type": "CONTRIBUTOR",
+          "name": "cdetrio",
+          "url": "https://github.com/cdetrio",
+          "size": 51,
+          "imageUrl": "https://avatars.githubusercontent.com/u/997681?v=4",
+          "commits": [
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/b463d8ea96c8655b7d4d3b638b459e16ae8d76d8",
+              "message": "VM: New release v5.5.2 (#1390)",
+              "time": "2021-08-03T22:14:01Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/7f095a8d91fe537f040063767871fb6e90716307",
+              "message": "VM: New release v5.5.1 (#1388)",
+              "time": "2021-08-02T20:04:34Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/f01403a2b598c9232885dba43c6442e34d0d3ab7",
+              "message": "tx: clarify documentation for `gasPrice` under `FeeMarketEIP1559TxData` interface (#1387)",
+              "time": "2021-08-02T17:54:03Z"
+            }
+          ]
+        },
+        {
+          "type": "CONTRIBUTOR",
+          "name": "chikeichan",
+          "url": "https://github.com/chikeichan",
+          "size": 16,
+          "imageUrl": "https://avatars.githubusercontent.com/u/8507735?v=4",
+          "commits": [
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/b463d8ea96c8655b7d4d3b638b459e16ae8d76d8",
+              "message": "VM: New release v5.5.2 (#1390)",
+              "time": "2021-08-03T22:14:01Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/7f095a8d91fe537f040063767871fb6e90716307",
+              "message": "VM: New release v5.5.1 (#1388)",
+              "time": "2021-08-02T20:04:34Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/f01403a2b598c9232885dba43c6442e34d0d3ab7",
+              "message": "tx: clarify documentation for `gasPrice` under `FeeMarketEIP1559TxData` interface (#1387)",
+              "time": "2021-08-02T17:54:03Z"
+            }
+          ]
+        },
+        {
+          "type": "LEGACY",
+          "name": "index.ts",
+          "path": "/packages/common/src/index.ts",
+          "size": 963,
+          "contents": "",
+          "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/master/packages/common/src/index.ts"
+        },
+        {
+          "type": "LEGACY",
+          "name": "types.ts",
+          "path": "/packages/common/src/types.ts",
+          "size": 69,
+          "contents": "",
+          "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/master/packages/common/src/types.ts"
+        }
+      ]
+    },
+    {
+      "name": "devp2p",
+      "path": "packages/devp2p",
+      "filePath": "/home/dennis/projects/codewanderer/sourceproject/ethereumjs-monorepo/packages/devp2p",
+      "size": 1651,
+      "links": [
+        "@ethereumjs/common"
+      ],
+      "revealables": [
+        {
+          "type": "PACKAGE",
+          "name": "base64url",
+          "path": "path.to.package.json",
+          "version": "^3.0.1",
+          "size": 0,
+          "contents": "",
+          "url": "https://www.npmjs.com/package/base64url"
+        },
+        {
+          "type": "PACKAGE",
+          "name": "bl",
+          "path": "path.to.package.json",
+          "version": "^1.1.2",
+          "size": 0,
+          "contents": "",
+          "url": "https://www.npmjs.com/package/bl"
+        },
+        {
+          "type": "PACKAGE",
+          "name": "debug",
+          "path": "path.to.package.json",
+          "version": "^2.2.0",
+          "size": 0,
+          "contents": "",
+          "url": "https://www.npmjs.com/package/debug"
+        },
+        {
+          "type": "CONTRIBUTOR",
+          "name": "wanderer",
+          "url": "https://github.com/wanderer",
+          "size": 251,
+          "imageUrl": "https://avatars.githubusercontent.com/u/158211?v=4",
+          "commits": [
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/b463d8ea96c8655b7d4d3b638b459e16ae8d76d8",
+              "message": "VM: New release v5.5.2 (#1390)",
+              "time": "2021-08-03T22:14:01Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/7f095a8d91fe537f040063767871fb6e90716307",
+              "message": "VM: New release v5.5.1 (#1388)",
+              "time": "2021-08-02T20:04:34Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/f01403a2b598c9232885dba43c6442e34d0d3ab7",
+              "message": "tx: clarify documentation for `gasPrice` under `FeeMarketEIP1559TxData` interface (#1387)",
+              "time": "2021-08-02T17:54:03Z"
+            }
+          ]
+        },
+        {
+          "type": "CONTRIBUTOR",
+          "name": "fanatid",
+          "url": "https://github.com/fanatid",
+          "size": 40,
+          "imageUrl": "https://avatars.githubusercontent.com/u/2633065?v=4",
+          "commits": [
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/b463d8ea96c8655b7d4d3b638b459e16ae8d76d8",
+              "message": "VM: New release v5.5.2 (#1390)",
+              "time": "2021-08-03T22:14:01Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/7f095a8d91fe537f040063767871fb6e90716307",
+              "message": "VM: New release v5.5.1 (#1388)",
+              "time": "2021-08-02T20:04:34Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/f01403a2b598c9232885dba43c6442e34d0d3ab7",
+              "message": "tx: clarify documentation for `gasPrice` under `FeeMarketEIP1559TxData` interface (#1387)",
+              "time": "2021-08-02T17:54:03Z"
+            }
+          ]
+        },
+        {
+          "type": "CONTRIBUTOR",
+          "name": "youfoundron",
+          "url": "https://github.com/youfoundron",
+          "size": 16,
+          "imageUrl": "https://avatars.githubusercontent.com/u/4658359?v=4",
+          "commits": [
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/b463d8ea96c8655b7d4d3b638b459e16ae8d76d8",
+              "message": "VM: New release v5.5.2 (#1390)",
+              "time": "2021-08-03T22:14:01Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/7f095a8d91fe537f040063767871fb6e90716307",
+              "message": "VM: New release v5.5.1 (#1388)",
+              "time": "2021-08-02T20:04:34Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/f01403a2b598c9232885dba43c6442e34d0d3ab7",
+              "message": "tx: clarify documentation for `gasPrice` under `FeeMarketEIP1559TxData` interface (#1387)",
+              "time": "2021-08-02T17:54:03Z"
+            }
+          ]
+        },
+        {
+          "type": "LEGACY",
+          "name": "peer.ts",
+          "path": "/packages/devp2p/src/rlpx/peer.ts",
+          "size": 584,
+          "contents": "",
+          "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/master/packages/devp2p/src/rlpx/peer.ts"
+        },
+        {
+          "type": "LEGACY",
+          "name": "ecies.ts",
+          "path": "/packages/devp2p/src/rlpx/ecies.ts",
+          "size": 390,
+          "contents": "",
+          "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/master/packages/devp2p/src/rlpx/ecies.ts"
+        }
+      ]
+    },
+    {
+      "name": "ethash",
+      "path": "packages/ethash",
+      "filePath": "/home/dennis/projects/codewanderer/sourceproject/ethereumjs-monorepo/packages/ethash",
+      "size": 75,
+      "links": [],
+      "revealables": [
+        {
+          "type": "PACKAGE",
+          "name": "buffer-xor",
+          "path": "path.to.package.json",
+          "version": "^2.0.1",
+          "size": 0,
+          "contents": "",
+          "url": "https://www.npmjs.com/package/buffer-xor"
+        },
+        {
+          "type": "PACKAGE",
+          "name": "miller-rabin",
+          "path": "path.to.package.json",
+          "version": "^4.0.0",
+          "size": 0,
+          "contents": "",
+          "url": "https://www.npmjs.com/package/miller-rabin"
+        },
+        {
+          "type": "CONTRIBUTOR",
+          "name": "s1na",
+          "url": "https://github.com/s1na",
+          "size": 239,
+          "imageUrl": "https://avatars.githubusercontent.com/u/1591639?v=4",
+          "commits": [
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/b463d8ea96c8655b7d4d3b638b459e16ae8d76d8",
+              "message": "VM: New release v5.5.2 (#1390)",
+              "time": "2021-08-03T22:14:01Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/7f095a8d91fe537f040063767871fb6e90716307",
+              "message": "VM: New release v5.5.1 (#1388)",
+              "time": "2021-08-02T20:04:34Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/f01403a2b598c9232885dba43c6442e34d0d3ab7",
+              "message": "tx: clarify documentation for `gasPrice` under `FeeMarketEIP1559TxData` interface (#1387)",
+              "time": "2021-08-02T17:54:03Z"
+            }
+          ]
+        },
+        {
+          "type": "CONTRIBUTOR",
+          "name": "danjm",
+          "url": "https://github.com/danjm",
+          "size": 38,
+          "imageUrl": "https://avatars.githubusercontent.com/u/7499938?v=4",
+          "commits": [
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/b463d8ea96c8655b7d4d3b638b459e16ae8d76d8",
+              "message": "VM: New release v5.5.2 (#1390)",
+              "time": "2021-08-03T22:14:01Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/7f095a8d91fe537f040063767871fb6e90716307",
+              "message": "VM: New release v5.5.1 (#1388)",
+              "time": "2021-08-02T20:04:34Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/f01403a2b598c9232885dba43c6442e34d0d3ab7",
+              "message": "tx: clarify documentation for `gasPrice` under `FeeMarketEIP1559TxData` interface (#1387)",
+              "time": "2021-08-02T17:54:03Z"
+            }
+          ]
+        },
+        {
+          "type": "CONTRIBUTOR",
+          "name": "alextsg",
+          "url": "https://github.com/alextsg",
+          "size": 15,
+          "imageUrl": "https://avatars.githubusercontent.com/u/8051479?v=4",
+          "commits": [
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/b463d8ea96c8655b7d4d3b638b459e16ae8d76d8",
+              "message": "VM: New release v5.5.2 (#1390)",
+              "time": "2021-08-03T22:14:01Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/7f095a8d91fe537f040063767871fb6e90716307",
+              "message": "VM: New release v5.5.1 (#1388)",
+              "time": "2021-08-02T20:04:34Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/f01403a2b598c9232885dba43c6442e34d0d3ab7",
+              "message": "tx: clarify documentation for `gasPrice` under `FeeMarketEIP1559TxData` interface (#1387)",
+              "time": "2021-08-02T17:54:03Z"
+            }
+          ]
+        },
+        {
+          "type": "LEGACY",
+          "name": "index.ts",
+          "path": "/packages/ethash/src/index.ts",
+          "size": 222,
+          "contents": "",
+          "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/master/packages/ethash/src/index.ts"
+        },
+        {
+          "type": "LEGACY",
+          "name": "util.ts",
+          "path": "/packages/ethash/src/util.ts",
+          "size": 81,
+          "contents": "",
+          "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/master/packages/ethash/src/util.ts"
+        }
+      ]
+    },
+    {
+      "name": "trie",
+      "path": "packages/trie",
+      "filePath": "/home/dennis/projects/codewanderer/sourceproject/ethereumjs-monorepo/packages/trie",
+      "size": 202,
+      "links": [],
+      "revealables": [
+        {
+          "type": "PACKAGE",
+          "name": "level-mem",
+          "path": "path.to.package.json",
+          "version": "^5.0.1",
+          "size": 0,
+          "contents": "",
+          "url": "https://www.npmjs.com/package/level-mem"
+        },
+        {
+          "type": "PACKAGE",
+          "name": "level-ws",
+          "path": "path.to.package.json",
+          "version": "^2.0.0",
+          "size": 0,
+          "contents": "",
+          "url": "https://www.npmjs.com/package/level-ws"
+        },
+        {
+          "type": "PACKAGE",
+          "name": "readable-stream",
+          "path": "path.to.package.json",
+          "version": "^3.6.0",
+          "size": 0,
+          "contents": "",
+          "url": "https://www.npmjs.com/package/readable-stream"
+        },
+        {
+          "type": "CONTRIBUTOR",
+          "name": "evertonfraga",
+          "url": "https://github.com/evertonfraga",
+          "size": 231,
+          "imageUrl": "https://avatars.githubusercontent.com/u/47108?v=4",
+          "commits": [
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/b463d8ea96c8655b7d4d3b638b459e16ae8d76d8",
+              "message": "VM: New release v5.5.2 (#1390)",
+              "time": "2021-08-03T22:14:01Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/7f095a8d91fe537f040063767871fb6e90716307",
+              "message": "VM: New release v5.5.1 (#1388)",
+              "time": "2021-08-02T20:04:34Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/f01403a2b598c9232885dba43c6442e34d0d3ab7",
+              "message": "tx: clarify documentation for `gasPrice` under `FeeMarketEIP1559TxData` interface (#1387)",
+              "time": "2021-08-02T17:54:03Z"
+            }
+          ]
+        },
+        {
+          "type": "CONTRIBUTOR",
+          "name": "greenkeeper[bot]",
+          "url": "https://github.com/apps/greenkeeper",
+          "size": 32,
+          "imageUrl": "https://avatars.githubusercontent.com/in/505?v=4",
+          "commits": [
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/b463d8ea96c8655b7d4d3b638b459e16ae8d76d8",
+              "message": "VM: New release v5.5.2 (#1390)",
+              "time": "2021-08-03T22:14:01Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/7f095a8d91fe537f040063767871fb6e90716307",
+              "message": "VM: New release v5.5.1 (#1388)",
+              "time": "2021-08-02T20:04:34Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/f01403a2b598c9232885dba43c6442e34d0d3ab7",
+              "message": "tx: clarify documentation for `gasPrice` under `FeeMarketEIP1559TxData` interface (#1387)",
+              "time": "2021-08-02T17:54:03Z"
+            }
+          ]
+        },
+        {
+          "type": "CONTRIBUTOR",
+          "name": "mattdean-digicatapult",
+          "url": "https://github.com/mattdean-digicatapult",
+          "size": 15,
+          "imageUrl": "https://avatars.githubusercontent.com/u/29942957?v=4",
+          "commits": [
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/b463d8ea96c8655b7d4d3b638b459e16ae8d76d8",
+              "message": "VM: New release v5.5.2 (#1390)",
+              "time": "2021-08-03T22:14:01Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/7f095a8d91fe537f040063767871fb6e90716307",
+              "message": "VM: New release v5.5.1 (#1388)",
+              "time": "2021-08-02T20:04:34Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/f01403a2b598c9232885dba43c6442e34d0d3ab7",
+              "message": "tx: clarify documentation for `gasPrice` under `FeeMarketEIP1559TxData` interface (#1387)",
+              "time": "2021-08-02T17:54:03Z"
+            }
+          ]
+        },
+        {
+          "type": "LEGACY",
+          "name": "baseTrie.ts",
+          "path": "/packages/trie/src/baseTrie.ts",
+          "size": 753,
+          "contents": "",
+          "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/master/packages/trie/src/baseTrie.ts"
+        },
+        {
+          "type": "LEGACY",
+          "name": "trieNode.ts",
+          "path": "/packages/trie/src/trieNode.ts",
+          "size": 197,
+          "contents": "",
+          "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/master/packages/trie/src/trieNode.ts"
+        }
+      ]
+    },
+    {
+      "name": "tx",
+      "path": "packages/tx",
+      "filePath": "/home/dennis/projects/codewanderer/sourceproject/ethereumjs-monorepo/packages/tx",
+      "size": 374,
+      "links": [
+        "@ethereumjs/common"
+      ],
+      "revealables": [
+        {
+          "type": "CONTRIBUTOR",
+          "name": "alcuadrado",
+          "url": "https://github.com/alcuadrado",
+          "size": 197,
+          "imageUrl": "https://avatars.githubusercontent.com/u/176499?v=4",
+          "commits": [
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/b463d8ea96c8655b7d4d3b638b459e16ae8d76d8",
+              "message": "VM: New release v5.5.2 (#1390)",
+              "time": "2021-08-03T22:14:01Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/7f095a8d91fe537f040063767871fb6e90716307",
+              "message": "VM: New release v5.5.1 (#1388)",
+              "time": "2021-08-02T20:04:34Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/f01403a2b598c9232885dba43c6442e34d0d3ab7",
+              "message": "tx: clarify documentation for `gasPrice` under `FeeMarketEIP1559TxData` interface (#1387)",
+              "time": "2021-08-02T17:54:03Z"
+            }
+          ]
+        },
+        {
+          "type": "CONTRIBUTOR",
+          "name": "dryajov",
+          "url": "https://github.com/dryajov",
+          "size": 27,
+          "imageUrl": "https://avatars.githubusercontent.com/u/1094341?v=4",
+          "commits": [
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/b463d8ea96c8655b7d4d3b638b459e16ae8d76d8",
+              "message": "VM: New release v5.5.2 (#1390)",
+              "time": "2021-08-03T22:14:01Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/7f095a8d91fe537f040063767871fb6e90716307",
+              "message": "VM: New release v5.5.1 (#1388)",
+              "time": "2021-08-02T20:04:34Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/f01403a2b598c9232885dba43c6442e34d0d3ab7",
+              "message": "tx: clarify documentation for `gasPrice` under `FeeMarketEIP1559TxData` interface (#1387)",
+              "time": "2021-08-02T17:54:03Z"
+            }
+          ]
+        },
+        {
+          "type": "CONTRIBUTOR",
+          "name": "greenkeeperio-bot",
+          "url": "https://github.com/greenkeeperio-bot",
+          "size": 15,
+          "imageUrl": "https://avatars.githubusercontent.com/u/14790466?v=4",
+          "commits": [
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/b463d8ea96c8655b7d4d3b638b459e16ae8d76d8",
+              "message": "VM: New release v5.5.2 (#1390)",
+              "time": "2021-08-03T22:14:01Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/7f095a8d91fe537f040063767871fb6e90716307",
+              "message": "VM: New release v5.5.1 (#1388)",
+              "time": "2021-08-02T20:04:34Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/f01403a2b598c9232885dba43c6442e34d0d3ab7",
+              "message": "tx: clarify documentation for `gasPrice` under `FeeMarketEIP1559TxData` interface (#1387)",
+              "time": "2021-08-02T17:54:03Z"
+            }
+          ]
+        },
+        {
+          "type": "LEGACY",
+          "name": "eip1559Transaction.ts",
+          "path": "/packages/tx/src/eip1559Transaction.ts",
+          "size": 414,
+          "contents": "",
+          "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/master/packages/tx/src/eip1559Transaction.ts"
+        },
+        {
+          "type": "LEGACY",
+          "name": "legacyTransaction.ts",
+          "path": "/packages/tx/src/legacyTransaction.ts",
+          "size": 385,
+          "contents": "",
+          "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/master/packages/tx/src/legacyTransaction.ts"
+        }
+      ]
+    },
+    {
+      "name": "util",
+      "path": "packages/util",
+      "filePath": "/home/dennis/projects/codewanderer/sourceproject/ethereumjs-monorepo/packages/util",
+      "size": 340,
+      "links": [],
+      "revealables": [
+        {
+          "type": "PACKAGE",
+          "name": "bn.js",
+          "path": "path.to.package.json",
+          "version": "^5.1.2",
+          "size": 0,
+          "contents": "",
+          "url": "https://www.npmjs.com/package/bn.js"
+        },
+        {
+          "type": "PACKAGE",
+          "name": "create-hash",
+          "path": "path.to.package.json",
+          "version": "^1.1.2",
+          "size": 0,
+          "contents": "",
+          "url": "https://www.npmjs.com/package/create-hash"
+        },
+        {
+          "type": "PACKAGE",
+          "name": "ethereum-cryptography",
+          "path": "path.to.package.json",
+          "version": "^0.1.3",
+          "size": 0,
+          "contents": "",
+          "url": "https://www.npmjs.com/package/ethereum-cryptography"
+        },
+        {
+          "type": "CONTRIBUTOR",
+          "name": "kumavis",
+          "url": "https://github.com/kumavis",
+          "size": 185,
+          "imageUrl": "https://avatars.githubusercontent.com/u/1474978?v=4",
+          "commits": [
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/b463d8ea96c8655b7d4d3b638b459e16ae8d76d8",
+              "message": "VM: New release v5.5.2 (#1390)",
+              "time": "2021-08-03T22:14:01Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/7f095a8d91fe537f040063767871fb6e90716307",
+              "message": "VM: New release v5.5.1 (#1388)",
+              "time": "2021-08-02T20:04:34Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/f01403a2b598c9232885dba43c6442e34d0d3ab7",
+              "message": "tx: clarify documentation for `gasPrice` under `FeeMarketEIP1559TxData` interface (#1387)",
+              "time": "2021-08-02T17:54:03Z"
+            }
+          ]
+        },
+        {
+          "type": "CONTRIBUTOR",
+          "name": "tcoulter",
+          "url": "https://github.com/tcoulter",
+          "size": 24,
+          "imageUrl": "https://avatars.githubusercontent.com/u/92629?v=4",
+          "commits": [
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/b463d8ea96c8655b7d4d3b638b459e16ae8d76d8",
+              "message": "VM: New release v5.5.2 (#1390)",
+              "time": "2021-08-03T22:14:01Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/7f095a8d91fe537f040063767871fb6e90716307",
+              "message": "VM: New release v5.5.1 (#1388)",
+              "time": "2021-08-02T20:04:34Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/f01403a2b598c9232885dba43c6442e34d0d3ab7",
+              "message": "tx: clarify documentation for `gasPrice` under `FeeMarketEIP1559TxData` interface (#1387)",
+              "time": "2021-08-02T17:54:03Z"
+            }
+          ]
+        },
+        {
+          "type": "CONTRIBUTOR",
+          "name": "sdtsui",
+          "url": "https://github.com/sdtsui",
+          "size": 13,
+          "imageUrl": "https://avatars.githubusercontent.com/u/8230144?v=4",
+          "commits": [
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/b463d8ea96c8655b7d4d3b638b459e16ae8d76d8",
+              "message": "VM: New release v5.5.2 (#1390)",
+              "time": "2021-08-03T22:14:01Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/7f095a8d91fe537f040063767871fb6e90716307",
+              "message": "VM: New release v5.5.1 (#1388)",
+              "time": "2021-08-02T20:04:34Z"
+            },
+            {
+              "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/f01403a2b598c9232885dba43c6442e34d0d3ab7",
+              "message": "tx: clarify documentation for `gasPrice` under `FeeMarketEIP1559TxData` interface (#1387)",
+              "time": "2021-08-02T17:54:03Z"
+            }
+          ]
+        },
+        {
+          "type": "LEGACY",
+          "name": "account.ts",
+          "path": "/packages/util/src/account.ts",
+          "size": 320,
+          "contents": "",
+          "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/master/packages/util/src/account.ts"
+        },
+        {
+          "type": "LEGACY",
+          "name": "bytes.ts",
+          "path": "/packages/util/src/bytes.ts",
+          "size": 228,
+          "contents": "",
+          "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/master/packages/util/src/bytes.ts"
+        }
+      ]
+    }
+  ]
+}
