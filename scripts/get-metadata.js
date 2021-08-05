@@ -33,8 +33,6 @@ const main = async () => {
 
   const projectContributors = await getProjectContributors();
 
-  console.log(projectContributors.length);
-
   const subprojectsWithRevealables = await Promise.all(
     subprojects.map(async (subproject, i) => {
       const packages = await getPackagesForSubproject(subproject);
