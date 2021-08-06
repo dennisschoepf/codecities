@@ -31,7 +31,7 @@ export class OverviewScene {
   public onSceneClick() {
     this.edges.forEach((edge, i) => {
       const dist = mp5.dist(mp5.mouseX, mp5.mouseY, edge.x, edge.y);
-      if (dist < edge.r) {
+      if (dist < edge.currentSize) {
         logger.log({
           type: 'OC',
           timestamp: Date.now(),

@@ -94,13 +94,15 @@ export function generateRevealableCoords(): Coordinates[] {
   const areaWidth = mp5.width / 3;
   const rowHeight = mp5.height / 2;
 
-  // Max. 6 revealables one in each area
+  // Max. 8 revealables one in each area
   return [
     { x: mp5.random(25, areaWidth), y: mp5.random(25, rowHeight) },
     { x: mp5.random(areaWidth, areaWidth * 2), y: mp5.random(25, rowHeight) },
     { x: mp5.random(areaWidth * 2, areaWidth * 3), y: mp5.random(25, rowHeight) },
+    { x: mp5.random(areaWidth * 3, areaWidth * 4 - 25), y: mp5.random(25, rowHeight) },
     { x: mp5.random(25, areaWidth), y: mp5.random(rowHeight, rowHeight * 2) },
     { x: mp5.random(areaWidth, areaWidth * 2), y: mp5.random(rowHeight, rowHeight * 2) },
     { x: mp5.random(areaWidth * 2, areaWidth * 3), y: mp5.random(rowHeight, rowHeight * 2) },
+    { x: mp5.random(areaWidth * 2, areaWidth * 4 - 25), y: mp5.random(rowHeight, rowHeight * 2) },
   ];
 }

@@ -10,7 +10,7 @@ const exec = promisify(child_process.exec);
 const glob = promisify(nodeGlob);
 
 const octokit = new Octokit({
-  auth: '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',
+  auth: '',
 });
 
 export async function getLegaciesForSubproject(subproject) {
@@ -115,7 +115,7 @@ const createContributor = async (contrib) => {
 
 const createPackage = ({ name, version }) => {
   const path = 'path.to.package.json';
-  const size = 0;
+  const size = Math.floor(Math.random() * 250) + 50;
 
   return {
     type: 'PACKAGE',

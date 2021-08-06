@@ -31,7 +31,7 @@ const store = create<State>(
   devtools((set) => ({
     uid: null,
     showScore: false,
-    currentIntroStep: 1,
+    currentIntroStep: 0,
     revealablesFinished: 0,
     currentScene: Scenes.OVERVIEW,
     currentSubproject: null,
