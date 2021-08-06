@@ -5,6 +5,7 @@ import { colors } from '../constants/colors';
 import { logger } from '../logger';
 import store from '../store';
 import { Area } from '../types';
+import { Commit } from '../ui/info';
 
 export enum RevealableTypes {
   LEGACY = 'LEGACY',
@@ -20,6 +21,8 @@ export interface RevealableInterface {
   size: number;
   path?: string;
   imageUrl?: string;
+  version?: string;
+  commits?: Commit[];
 }
 
 enum RevealableStates {
@@ -39,6 +42,8 @@ export class Revealable {
   contents: string;
   url: string;
   imageUrl: string;
+  version: string;
+  commits: Commit[];
 
   isHovered: boolean;
   isRevealed: boolean;
@@ -53,12 +58,17 @@ export class Revealable {
   pulseOpacity: number = 255;
   pulseCountUp: boolean;
 
-  constructor({ type, name, path, contents, url, imageUrl }: RevealableInterface, area: Area) {
+  constructor(
+    { type, name, path, contents, url, imageUrl, version, commits }: RevealableInterface,
+    area: Area
+  ) {
     this.type = type;
     this.name = name;
     this.path = path;
     this.contents = contents;
     this.url = url;
+    this.version = version;
+    this.commits = commits;
     this.imageUrl = imageUrl;
     this.area = area;
     this.currentSize = this.minSize;
@@ -170,6 +180,8 @@ export class Revealable {
         innerHTML: this.contents,
         imgUrl: this.imageUrl,
         url: this.url,
+        version: this.version,
+        commits: this.commits,
       });
     }
   }

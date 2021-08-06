@@ -235,17 +235,66 @@ textarea {
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
       var(--tw-shadow);
 
-    #info-message-subheadline {
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-weight: bold;
-      color: #b0b7bf;
+    #info-message-contents {
+      #info-message-contents-text {
+        margin: 1.5rem 0;
+      }
+
+      h4 {
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: bold;
+        color: #b0b7bf;
+        margin: 0 0 1rem 0;
+      }
+
+      #info-message-contents-version {
+        h3 {
+          display: inline-block;
+          margin: 1rem 0 0 0;
+          padding: 0.4rem 0.6rem;
+          background-color: #4e4e4e;
+          color: #fff;
+          border-radius: 10px;
+          font-size: 30px;
+          letter-spacing: 2px;
+          font-weight: bold;
+        }
+      }
+
+      #info-message-contents-commits {
+        .info-message-contents-commit {
+          background-color: #d0d5d9;
+          border-radius: 10px;
+          padding: 1rem;
+
+          &:not(:last-child) {
+            margin-bottom: 1.5rem;
+          }
+
+          p {
+            margin: 0;
+          }
+
+          div {
+            span {
+              font-size: 14px;
+              color: #4e4e4e;
+            }
+
+            a {
+              color: #0d0d0d;
+              font-size: 14px;
+            }
+          }
+        }
+      }
     }
 
     #info-message-header {
       display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
+      justify-content: flex-start;
+      align-items: center;
       margin-bottom: 25px;
 
       #info-message-img {
@@ -253,11 +302,22 @@ textarea {
         height: 100px;
         width: 100px;
         border-radius: 50%;
+        margin-right: 1.5rem;
       }
 
-      #info-message-headline {
-        margin: 0;
-        text-align: center;
+      #info-message-header-text {
+        #info-message-subheadline {
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          font-weight: bold;
+          color: #b0b7bf;
+          margin: 0;
+        }
+        #info-message-headline {
+          margin: 0;
+          padding: 0;
+          text-align: left;
+        }
       }
     }
 
