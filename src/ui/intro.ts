@@ -34,6 +34,8 @@ export class Intro {
   fb9: HTMLTextAreaElement;
   fb10: HTMLTextAreaElement;
 
+  k1: HTMLTextAreaElement;
+
   errorRef: HTMLElement;
 
   constructor() {
@@ -64,6 +66,8 @@ export class Intro {
     this.fb8 = document.querySelector('#fb-8');
     this.fb9 = document.querySelector('#fb-9');
     this.fb10 = document.querySelector('#fb-10');
+
+    this.k1 = document.querySelector('#k-1');
 
     this.errorRef = document.querySelector('#intro-error');
 
@@ -192,7 +196,7 @@ export class Intro {
   }
 
   private sendKnowledgeQuestionAnswers() {
-    const answers = [];
+    const answers = [this.k1.value];
 
     logger.logQuestions(answers, true);
   }

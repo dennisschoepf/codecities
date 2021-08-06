@@ -54,7 +54,7 @@ export class Logger {
     if (uid) {
       const logEvKey = this.database.ref(uid).child('logs').push().key;
 
-      // this.database.ref(uid).update({ [`logs/${logEvKey}`]: ev });
+      this.database.ref(uid).update({ [`logs/${logEvKey}`]: ev });
     }
   }
 
