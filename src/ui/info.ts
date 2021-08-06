@@ -1,28 +1,55 @@
+import moment from 'moment';
+import { logger } from '../logger';
+import { RevealableTypes } from '../sketchObjects/Revealable';
 import store from '../store';
 
+export interface Commit {
+  url: string;
+  message: string;
+  time: string;
+}
 export interface InfoMessageType {
+  type: RevealableTypes;
   headline: string;
   innerHTML: string;
   imgUrl?: string;
   url?: string;
+  commits?: Commit[];
+  version?: string;
+  fileContents?: string;
 }
 
 export class InfoMessage {
+  type: RevealableTypes;
+  name: string;
   infoMessage: HTMLElement;
+  infoMessageSubheadline: HTMLElement;
   infoMessageHeadline: HTMLElement;
   infoMessageContents: HTMLElement;
   infoMessageClose: HTMLElement;
   infoMessageImgRef: HTMLImageElement;
   infoMessageLinkRef: HTMLAnchorElement;
+
+  infoMessageCommitsHeadlineRef: HTMLElement;
+  infoMessageCommitsRef: HTMLElement;
+  infoMessageVersionRef: HTMLElement;
+  infoMessageLegacyRef: HTMLElement;
   backdrop: HTMLElement;
 
   constructor() {
     this.infoMessage = document.getElementById('info-message');
     this.infoMessageHeadline = document.getElementById('info-message-headline');
-    this.infoMessageContents = document.getElementById('info-message-contents');
+    this.infoMessageSubheadline = document.getElementById('info-message-subheadline');
+    this.infoMessageContents = document.getElementById('info-message-contents-text');
     this.infoMessageClose = document.getElementById('info-message-close');
     this.infoMessageImgRef = document.getElementById('info-message-img') as HTMLImageElement;
     this.infoMessageLinkRef = document.getElementById('info-message-link') as HTMLAnchorElement;
+    this.infoMessageCommitsRef = document.getElementById('info-message-contents-commits');
+    this.infoMessageCommitsHeadlineRef = document.getElementById(
+      'info-message-content-commits-headline'
+    );
+    this.infoMessageVersionRef = document.getElementById('info-message-contents-version');
+    this.infoMessageLegacyRef = document.getElementById('info-message-contents-legacy');
     this.backdrop = document.getElementById('backdrop');
 
     this.backdrop.addEventListener('click', this.onBackdropClick);
@@ -39,6 +66,11 @@ export class InfoMessage {
         const newMessage = state.infoMessages[state.infoMessages.length - 1];
         this.setContents(newMessage.headline, newMessage.innerHTML);
 
+        this.type = newMessage.type;
+        this.name = newMessage.headline;
+
+        this.infoMessageSubheadline.innerHTML = this.getTextForType();
+
         if (newMessage.imgUrl) {
           this.setImg(newMessage.imgUrl);
         } else {
@@ -51,14 +83,75 @@ export class InfoMessage {
           this.infoMessageLinkRef.style.display = 'none';
         }
 
+        if (this.type === RevealableTypes.CONTRIBUTOR) {
+          this.infoMessageCommitsRef.style.display = 'block';
+          this.infoMessageCommitsHeadlineRef.style.display = 'block';
+          this.setCommits(newMessage.commits);
+        } else {
+          this.infoMessageCommitsRef.style.display = 'none';
+          this.infoMessageCommitsHeadlineRef.style.display = 'none';
+        }
+
+        if (this.type === RevealableTypes.PACKAGE) {
+          this.infoMessageVersionRef.style.display = 'block';
+          this.setVersion(newMessage.version);
+        } else {
+          this.infoMessageVersionRef.style.display = 'none';
+        }
+
+        if (this.type === RevealableTypes.LEGACY) {
+          this.infoMessageLegacyRef.style.display = 'block';
+          this.setLegacy(newMessage.fileContents);
+        } else {
+          this.infoMessageLegacyRef.style.display = 'none';
+        }
+
         store.setState({ infoMessageShown: true });
       }
     });
   }
 
+  private getTextForType(): string {
+    if (this.type === RevealableTypes.CONTRIBUTOR) {
+      return 'Contributor';
+    } else if (this.type === RevealableTypes.PACKAGE) {
+      return 'NPM Package';
+    } else {
+      return 'Legacy Alert';
+    }
+  }
+
   private setContents(headline: string, innerHTML: string) {
     this.infoMessageHeadline.innerText = headline;
     this.infoMessageContents.innerHTML = innerHTML;
+  }
+
+  private setVersion(version: string) {
+    this.infoMessageVersionRef.innerHTML = `This package is installed at<br/><h3>${version}</h3>`;
+  }
+
+  private setLegacy(fileContents: string) {
+    this.infoMessageLegacyRef.innerHTML = `
+    <p>Excerpt from the file:</p>
+    <pre>${fileContents}</pre>
+    `;
+  }
+
+  private setCommits(commits: Commit[]) {
+    const commitEls = commits.map(
+      ({ message, url, time }) =>
+        `<div class="info-message-contents-commit">
+         <p>${message}</p>
+         <div>
+            <span>${moment(time).format(
+              'LLL'
+            )}</span> • <a href="${url}" target="_blank">Take a look on Github</a>
+         </div>
+      </div>`
+    );
+    console.log(commitEls);
+
+    this.infoMessageCommitsRef.innerHTML = commitEls.join('');
   }
 
   private setImg(imgUrl: string) {
@@ -82,10 +175,30 @@ export class InfoMessage {
   }
 
   private onBackdropClick() {
+    logger.log({
+      type:
+        this.type === RevealableTypes.CONTRIBUTOR
+          ? 'NC'
+          : this.type === RevealableTypes.LEGACY
+          ? 'LC'
+          : 'PC',
+      timestamp: Date.now(),
+      message: `Closing info message for ${this.name}`,
+    });
     store.setState({ infoMessageShown: false });
   }
 
   private onCloseClick() {
+    logger.log({
+      type:
+        this.type === RevealableTypes.CONTRIBUTOR
+          ? 'NC'
+          : this.type === RevealableTypes.LEGACY
+          ? 'LC'
+          : 'PC',
+      timestamp: Date.now(),
+      message: `Closing info message for ${this.name}`,
+    });
     store.setState({ infoMessageShown: false });
   }
 }

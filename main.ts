@@ -1,4 +1,5 @@
 import p5 from 'p5';
+import firebase from 'firebase/app';
 import { SCREEN_WIDTH, SCREEN_HEIGHT } from './src/constants/screen';
 import { DetailScene } from './src/scenes/DetailScene';
 import { OverviewScene } from './src/scenes/OverviewScene';
@@ -6,6 +7,8 @@ import { Scenes } from './src/scenes/scenes';
 import store from './src/store';
 import { Companion, CompanionState } from './src/ui/companion';
 import { InfoMessage } from './src/ui/info';
+import { Intro } from './src/ui/intro';
+import { Score } from './src/ui/score';
 
 const sketch = (s: p5) => {
   // Scenes
@@ -16,8 +19,10 @@ const sketch = (s: p5) => {
     s.createCanvas(SCREEN_WIDTH, SCREEN_HEIGHT);
     s.noCursor();
 
+    new Intro();
     new Companion();
     new InfoMessage();
+    new Score();
 
     overviewScene = new OverviewScene();
     detailScene = new DetailScene();
@@ -36,7 +41,11 @@ const sketch = (s: p5) => {
   s.mousePressed = () => {
     const { currentScene, companionState, infoMessageShown } = store.getState();
 
-    if (companionState !== CompanionState.ACTIVE || !infoMessageShown) {
+    if (
+      companionState !== CompanionState.ACTIVE &&
+      !infoMessageShown &&
+      store.getState().currentIntroStep === 0
+    ) {
       if (currentScene === Scenes.OVERVIEW) {
         overviewScene.onSceneClick();
       } else if (currentScene === Scenes.DETAIL) {

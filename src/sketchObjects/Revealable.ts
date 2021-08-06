@@ -2,8 +2,10 @@ import { combineLatest } from 'rxjs';
 import { mp5 } from '../../main';
 import { areasColliding, playerHead$, revealedArea$ } from '../area';
 import { colors } from '../constants/colors';
+import { logger } from '../logger';
 import store from '../store';
 import { Area } from '../types';
+import { Commit } from '../ui/info';
 
 export enum RevealableTypes {
   LEGACY = 'LEGACY',
@@ -19,6 +21,9 @@ export interface RevealableInterface {
   size: number;
   path?: string;
   imageUrl?: string;
+  version?: string;
+  commits?: Commit[];
+  fileContents?: string;
 }
 
 enum RevealableStates {
@@ -38,10 +43,14 @@ export class Revealable {
   contents: string;
   url: string;
   imageUrl: string;
+  version: string;
+  commits: Commit[];
+  fileContents: string;
 
   isHovered: boolean;
   isRevealed: boolean;
   wasInteractedWith: boolean;
+  wasRevealed: boolean;
 
   minSize: number = 5;
   currentSize: number;
@@ -51,12 +60,28 @@ export class Revealable {
   pulseOpacity: number = 255;
   pulseCountUp: boolean;
 
-  constructor({ type, name, path, contents, url, imageUrl }: RevealableInterface, area: Area) {
+  constructor(
+    {
+      type,
+      name,
+      path,
+      contents,
+      url,
+      imageUrl,
+      version,
+      commits,
+      fileContents,
+    }: RevealableInterface,
+    area: Area
+  ) {
     this.type = type;
     this.name = name;
     this.path = path;
     this.contents = contents;
     this.url = url;
+    this.version = version;
+    this.commits = commits;
+    this.fileContents = fileContents;
     this.imageUrl = imageUrl;
     this.area = area;
     this.currentSize = this.minSize;
@@ -85,6 +110,21 @@ export class Revealable {
           this.state = RevealableStates.FOUND;
         } else if (isRevealed && !isHovered) {
           this.state = RevealableStates.REVEALED;
+
+          if (!this.wasRevealed) {
+            logger.log({
+              type:
+                this.type === RevealableTypes.CONTRIBUTOR
+                  ? 'NR'
+                  : this.type === RevealableTypes.LEGACY
+                  ? 'LR'
+                  : 'PR',
+              timestamp: Date.now(),
+              message: `Revealed ${this.name}`,
+            });
+          }
+
+          this.wasRevealed = true;
         } else {
           this.state = RevealableStates.HIDDEN;
         }
@@ -108,10 +148,27 @@ export class Revealable {
       mp5.fill(mp5.color(colors.red));
       mp5.ellipse(this.area.x, this.area.y, this.currentSize);
     } else if (this.state === RevealableStates.INACTIVE) {
+      this.minSize = 35;
       this.reduceSize();
 
-      mp5.fill(mp5.color(colors.greyDark));
+      mp5.fill(mp5.color(colors.redDark));
       mp5.ellipse(this.area.x, this.area.y, this.currentSize);
+      mp5.strokeWeight(4);
+      mp5.stroke(mp5.color(colors.greyLighter));
+
+      mp5.line(
+        this.area.x + this.currentSize / 5,
+        this.area.y - this.currentSize / 5,
+        this.area.x - this.currentSize / 5,
+        this.area.y + this.currentSize / 5
+      );
+
+      mp5.line(
+        this.area.x - this.currentSize / 5,
+        this.area.y - this.currentSize / 5,
+        this.area.x + this.currentSize / 5,
+        this.area.y + this.currentSize / 5
+      );
     }
   }
 
@@ -119,11 +176,26 @@ export class Revealable {
     if (this.isHovered && !this.wasInteractedWith) {
       this.wasInteractedWith = true;
 
+      logger.log({
+        type:
+          this.type === RevealableTypes.CONTRIBUTOR
+            ? 'NS'
+            : this.type === RevealableTypes.LEGACY
+            ? 'LS'
+            : 'PS',
+        timestamp: Date.now(),
+        message: `Showing info message for ${this.name}`,
+      });
+
       store.getState().addInfoMessage({
+        type: this.type,
         headline: this.name,
         innerHTML: this.contents,
         imgUrl: this.imageUrl,
         url: this.url,
+        version: this.version,
+        commits: this.commits,
+        fileContents: this.fileContents,
       });
     }
   }

@@ -1,4 +1,5 @@
 import anime from 'animejs/lib/anime.es';
+import { logger } from '../logger';
 import store from '../store';
 
 export enum CompanionState {
@@ -22,6 +23,7 @@ export class Companion {
   messageTextRef: HTMLElement;
   messageInputRef: HTMLElement;
   messageButtonRef: HTMLElement;
+  backdrop: HTMLElement;
   hoverAnimation: any;
   message: CompanionMessage;
 
@@ -31,6 +33,7 @@ export class Companion {
     this.messageTextRef = document.getElementById('message-text');
     this.messageInputRef = document.getElementById('message-input');
     this.messageButtonRef = document.getElementById('message-confirm');
+    this.backdrop = document.getElementById('comp-backdrop');
 
     this.ref.addEventListener('click', () => this.handleClick());
     this.ref.addEventListener('mouseover', () => this.handleMouseEnter());
@@ -43,11 +46,13 @@ export class Companion {
     store.subscribe(
       (companionState) => {
         if (companionState === CompanionState.ACTIVE) {
+          this.backdrop.style.display = 'block';
           this.stopAwaitAnimation();
           this.showActiveShape();
           this.scaleUpCompanion();
           this.showMessage(this.message);
         } else if (companionState === CompanionState.IDLE) {
+          this.backdrop.style.display = 'none';
           this.scaleDownCompanion();
           this.showIdleShape();
           this.stopAwaitAnimation();
@@ -93,6 +98,11 @@ export class Companion {
     // Hide Message
     this.messageRef.style.display = 'none';
     store.setState({ companionState: CompanionState.IDLE });
+    logger.log({
+      type: 'CC',
+      timestamp: Date.now(),
+      message: 'Close message',
+    });
 
     if (this.message.onNext) {
       this.message.onNext();
@@ -185,7 +195,7 @@ export class Companion {
   }
 
   handleClick() {
-    const { companionState } = store.getState();
+    /*const { companionState } = store.getState();
     let newCompanionState: CompanionState;
 
     if (companionState === CompanionState.ACTIVE) {
@@ -194,7 +204,11 @@ export class Companion {
       newCompanionState = CompanionState.ACTIVE;
     }
 
-    store.setState({ companionState: newCompanionState });
+    store.setState({ companionState: newCompanionState });*/
+    logger.log({
+      type: 'CC',
+      timestamp: Date.now(),
+    });
   }
 
   handleMouseEnter() {

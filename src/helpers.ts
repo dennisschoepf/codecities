@@ -1,7 +1,7 @@
 import { mp5 } from '../main';
 import { SCREEN_HEIGHT, SCREEN_WIDTH } from './constants/screen';
 import { Edge } from './sketchObjects/Edge';
-import { RevealableInterface, RevealableTypes } from './sketchObjects/Revealable';
+import { Revealable, RevealableInterface, RevealableTypes } from './sketchObjects/Revealable';
 import { Coordinates, JSONSubproject, SubProject } from './types';
 
 export function getEdgeDimensions({ size }: JSONSubproject): number {
@@ -11,8 +11,8 @@ export function getEdgeDimensions({ size }: JSONSubproject): number {
 
 export function generateRandomEdgeCoordinates(): Coordinates {
   return {
-    x: mp5.random(150, SCREEN_WIDTH - 150),
-    y: mp5.random(150, SCREEN_HEIGHT - 150),
+    x: mp5.random(200, SCREEN_WIDTH - 200),
+    y: mp5.random(200, SCREEN_HEIGHT - 200),
   };
 }
 
@@ -90,17 +90,37 @@ export function getRevealablesforSubproject(
     }));
 }
 
-export function generateRevealableCoords(): Coordinates[] {
-  const areaWidth = mp5.width / 3;
-  const rowHeight = mp5.height / 2;
+export function generateRevealableCoords(existingRevealables: Revealable[]): Coordinates {
+  let newCoords: Coordinates;
+  const existingCoordinates = existingRevealables.map(({ area }) => ({ x: area.x, y: area.y }));
 
-  // Max. 6 revealables one in each area
-  return [
-    { x: mp5.random(25, areaWidth), y: mp5.random(25, rowHeight) },
-    { x: mp5.random(areaWidth, areaWidth * 2), y: mp5.random(25, rowHeight) },
-    { x: mp5.random(areaWidth * 2, areaWidth * 3), y: mp5.random(25, rowHeight) },
-    { x: mp5.random(25, areaWidth), y: mp5.random(rowHeight, rowHeight * 2) },
-    { x: mp5.random(areaWidth, areaWidth * 2), y: mp5.random(rowHeight, rowHeight * 2) },
-    { x: mp5.random(areaWidth * 2, areaWidth * 3), y: mp5.random(rowHeight, rowHeight * 2) },
-  ];
+  if (existingRevealables.length === 0) {
+    return generateRandomEdgeCoordinates();
+  } else {
+    do {
+      newCoords = generateRandomEdgeCoordinates();
+    } while (isColliding(newCoords, existingCoordinates));
+  }
+
+  return newCoords;
+}
+
+export function generateRevealables(revealables: RevealableInterface[]): Revealable[] {
+  let revObjs = [];
+
+  revealables.forEach((revealable) => {
+    const coordinates = generateRevealableCoords(revObjs);
+    revObjs.push({
+      revealable,
+      area: {
+        x: coordinates.x,
+        y: coordinates.y,
+        w: revealable.size < 50 ? 50 : revealable.size > 400 ? 400 : revealable.size,
+      },
+    });
+  });
+
+  console.log(revObjs);
+
+  return revObjs.map((revObj) => new Revealable(revObj.revealable, revObj.area));
 }

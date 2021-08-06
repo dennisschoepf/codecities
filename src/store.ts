@@ -6,9 +6,9 @@ import project from '../metadata/project.json';
 import { InfoMessageType } from './ui/info';
 import { RevealableInterface, RevealableTypes } from './sketchObjects/Revealable';
 import { getRevealablesforSubproject } from './helpers';
-import { SubProject } from './types';
 
 export interface State {
+  currentIntroStep: number;
   currentScene: Scenes;
   currentSubproject?: string;
   companionState: CompanionState;
@@ -20,15 +20,26 @@ export interface State {
   revealables: RevealableInterface[];
   finishedSubProjects: string[];
   setProjectMetadata: (projectName: string) => void;
+  participantAnonymous: boolean;
+  finishedGame: boolean;
+  revealablesFinished: number;
+  showScore: boolean;
+  uid: string;
 }
 
 const store = create<State>(
   devtools((set) => ({
+    uid: null,
+    showScore: false,
+    currentIntroStep: 1,
+    revealablesFinished: 0,
     currentScene: Scenes.OVERVIEW,
     currentSubproject: null,
+    participantAnonymous: false,
     companionState: CompanionState.IDLE,
     infoMessageShown: false,
     infoMessages: [],
+    finishedGame: false,
     addInfoMessage: (newMessage) =>
       set((state) => ({ ...state, infoMessages: [...state.infoMessages, newMessage] })),
     userMessages: [],
