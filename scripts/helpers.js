@@ -10,7 +10,7 @@ const exec = promisify(child_process.exec);
 const glob = promisify(nodeGlob);
 
 const octokit = new Octokit({
-  auth: '',
+  auth: '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',
 });
 
 export async function getLegaciesForSubproject(subproject) {
@@ -47,7 +47,7 @@ export async function getLegaciesForSubproject(subproject) {
 export async function getProjectContributors() {
   const contribs = await octokit.request('/repos/ethereumjs/ethereumjs-monorepo/contributors');
   const contributors = await Promise.all(
-    contribs.data.map(async (contrib) => createContributor(contrib))
+    contribs.data.map(async (contrib) => await createContributor(contrib))
   );
 
   return contributors;
@@ -92,11 +92,12 @@ const createContributor = async (contrib) => {
 
   try {
     const rawCommits = await octokit.request(`/repos/ethereumjs/ethereumjs-monorepo/commits`, {
-      per_page: 3,
-      author: contrib.name,
+      author: contrib.login,
     });
 
-    commits = rawCommits.data.map((commit) => ({
+    const lastRawCommits = rawCommits.data.slice(0, 3);
+
+    commits = lastRawCommits.map((commit) => ({
       url: commit.html_url,
       message: commit.commit.message,
       time: commit.commit.author.date,
