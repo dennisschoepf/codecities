@@ -1,7 +1,7 @@
 import { mp5 } from '../main';
 import { SCREEN_HEIGHT, SCREEN_WIDTH } from './constants/screen';
 import { Edge } from './sketchObjects/Edge';
-import { RevealableInterface, RevealableTypes } from './sketchObjects/Revealable';
+import { Revealable, RevealableInterface, RevealableTypes } from './sketchObjects/Revealable';
 import { Coordinates, JSONSubproject, SubProject } from './types';
 
 export function getEdgeDimensions({ size }: JSONSubproject): number {
@@ -90,7 +90,43 @@ export function getRevealablesforSubproject(
     }));
 }
 
-export function generateRevealableCoords(): Coordinates[] {
+export function generateRevealableCoords(existingRevealables: Revealable[]): Coordinates {
+  let newCoords: Coordinates;
+  const existingCoordinates = existingRevealables.map(({ area }) => ({ x: area.x, y: area.y }));
+
+  do {
+    newCoords = generateRandomEdgeCoordinates();
+  } while (isColliding(newCoords, existingCoordinates));
+
+  return newCoords;
+}
+
+export function generateRevealables(revealables: RevealableInterface[]): Revealable[] {
+  let revObjs = [];
+
+  revealables.forEach((revealable) => {
+    const coordinates = generateRevealableCoords(revObjs);
+    revObjs.push({
+      revealable,
+      area: {
+        x: coordinates.x,
+        y: coordinates.y,
+        r: revealable.size < 50 ? 50 : revealable.size > 600 ? 600 : revealable.size,
+      },
+    });
+  });
+
+  return revObjs.map((revObj) => new Revealable(revObj.revealable, revObj.area));
+}
+
+/*export function generateRevealableCoords(revealables: RevealableInterface[]): Coordinates[] {
+  let revealableCoords = [];
+
+  revealables.forEach(revealable => {
+    const coordinates = generateEdgeCoords();
+  })
+
+
   const areaWidth = mp5.width / 3;
   const rowHeight = mp5.height / 2;
 
@@ -105,4 +141,4 @@ export function generateRevealableCoords(): Coordinates[] {
     { x: mp5.random(areaWidth * 2, areaWidth * 3), y: mp5.random(rowHeight, rowHeight * 2) },
     { x: mp5.random(areaWidth * 2, areaWidth * 4 - 25), y: mp5.random(rowHeight, rowHeight * 2) },
   ];
-}
+}*/

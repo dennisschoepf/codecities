@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import { mp5 } from '../../main';
 import { colors } from '../constants/colors';
-import { generateRevealableCoords } from '../helpers';
+import { generateRevealables } from '../helpers';
 import { logger } from '../logger';
 import { Player } from '../sketchObjects/Player';
 import { Revealable, RevealableInterface, RevealableTypes } from '../sketchObjects/Revealable';
@@ -25,15 +25,7 @@ export class DetailScene {
     store.subscribe((state, prevState) => {
       if (!_.isEqual(state.revealables, prevState.revealables)) {
         this.revealables = state.revealables;
-        this.revealableCoords = generateRevealableCoords();
-        this.revealableObjects = this.revealables.map(
-          (revealable, i) =>
-            new Revealable(revealable, {
-              x: this.revealableCoords[i].x,
-              y: this.revealableCoords[i].y,
-              w: this.revealables[i].size,
-            })
-        );
+        this.revealableObjects = generateRevealables(this.revealables);
       }
     });
   }
