@@ -26,6 +26,7 @@ export class DetailScene {
       if (!_.isEqual(state.revealables, prevState.revealables)) {
         this.revealables = state.revealables;
         this.revealableObjects = generateRevealables(this.revealables);
+        console.log(this.revealableObjects);
       }
     });
   }
