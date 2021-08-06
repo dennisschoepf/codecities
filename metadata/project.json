@@ -15,8 +15,8 @@
           "name": "merkle-patricia-tree",
           "path": "path.to.package.json",
           "version": "^4.2.0",
-          "size": 144,
-          "contents": "",
+          "size": 211,
+          "contents": "This package is used throughout this part of the repository. Below you can see the version that is installed currently. If you want to take a look at the package documentation, past versions and much more, click the button in the lower right corner. It'll lead you to the npmjs website of the package.",
           "url": "https://www.npmjs.com/package/merkle-patricia-tree"
         },
         {
@@ -25,6 +25,7 @@
           "url": "https://github.com/holgerd77",
           "size": 2060,
           "imageUrl": "https://avatars.githubusercontent.com/u/931137?v=4",
+          "contents": "This is one of the main contributors to the overall repository and this part of the repository specifically. Below you can see the contributors latest commits and the button on the right will take you straight to the respective Github profile.",
           "commits": [
             {
               "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/bfd53752d8d589a38fc3fb41bb67f5f5acb74f9d",
@@ -49,6 +50,7 @@
           "url": "https://github.com/vpulim",
           "size": 105,
           "imageUrl": "https://avatars.githubusercontent.com/u/100092?v=4",
+          "contents": "This is one of the main contributors to the overall repository and this part of the repository specifically. Below you can see the contributors latest commits and the button on the right will take you straight to the respective Github profile.",
           "commits": [
             {
               "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/ddef972fa2434e7e16be767a7b6b7cde806e6a4f",
@@ -73,6 +75,7 @@
           "url": "https://github.com/acolytec3",
           "size": 21,
           "imageUrl": "https://avatars.githubusercontent.com/u/17355484?v=4",
+          "contents": "This is one of the main contributors to the overall repository and this part of the repository specifically. Below you can see the contributors latest commits and the button on the right will take you straight to the respective Github profile.",
           "commits": [
             {
               "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/f01403a2b598c9232885dba43c6442e34d0d3ab7",
@@ -96,7 +99,9 @@
           "name": "header.ts",
           "path": "/packages/block/src/header.ts",
           "size": 899,
-          "contents": "",
+          "contents": "This file seems pretty big compared to the other files in this part of the project. It's 29101 bytes and has 899 lines of code. That could make it hard to read for new contributors and people looking at the repository. You might want to look into a refactoring in order to keep it at a more readable size. What you could also do is contact one of the contributors to help in understanding what's going on. They must be hiding somewhere in this package as well, try to reveal them to access their Github profiles.",
+          "fileContents": "  public readonly parentHash: Buffer\n  public readonly uncleHash: Buffer\n  public readonly coinbase: Address\n  public readonly stateRoot: Buffer\n  public readonly transactionsTrie: Buffer\n  public readonly receiptTrie: Buffer\n  public readonly bloom: Buffer\n  public readonly difficulty: BN\n  public readonly number: BN\n  public readonly gasLimit: BN",
+          "fileSize": 29101,
           "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/master/packages/block/src/header.ts"
         },
         {
@@ -104,7 +109,9 @@
           "name": "block.ts",
           "path": "/packages/block/src/block.ts",
           "size": 487,
-          "contents": "",
+          "contents": "This file seems pretty big compared to the other files in this part of the project. It's 15740 bytes and has 487 lines of code. That could make it hard to read for new contributors and people looking at the repository. You might want to look into a refactoring in order to keep it at a more readable size. What you could also do is contact one of the contributors to help in understanding what's going on. They must be hiding somewhere in this package as well, try to reveal them to access their Github profiles.",
+          "fileContents": "  public static fromBlockData(blockData: BlockData = {}, opts?: BlockOptions) {\n    const { header: headerData, transactions: txsData, uncleHeaders: uhsData } = blockData\n\n    const header = BlockHeader.fromHeaderData(headerData, opts)\n\n    // parse transactions\n    const transactions = []\n    for (const txData of txsData ?? []) {\n      const tx = TransactionFactory.fromTxData(txData, {\n        ...opts,",
+          "fileSize": 15740,
           "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/master/packages/block/src/block.ts"
         }
       ]
@@ -125,8 +132,8 @@
           "name": "debug",
           "path": "path.to.package.json",
           "version": "^2.2.0",
-          "size": 202,
-          "contents": "",
+          "size": 248,
+          "contents": "This package is used throughout this part of the repository. Below you can see the version that is installed currently. If you want to take a look at the package documentation, past versions and much more, click the button in the lower right corner. It'll lead you to the npmjs website of the package.",
           "url": "https://www.npmjs.com/package/debug"
         },
         {
@@ -134,8 +141,8 @@
           "name": "level-mem",
           "path": "path.to.package.json",
           "version": "^5.0.1",
-          "size": 103,
-          "contents": "",
+          "size": 146,
+          "contents": "This package is used throughout this part of the repository. Below you can see the version that is installed currently. If you want to take a look at the package documentation, past versions and much more, click the button in the lower right corner. It'll lead you to the npmjs website of the package.",
           "url": "https://www.npmjs.com/package/level-mem"
         },
         {
@@ -143,8 +150,8 @@
           "name": "lru-cache",
           "path": "path.to.package.json",
           "version": "^5.1.1",
-          "size": 153,
-          "contents": "",
+          "size": 87,
+          "contents": "This package is used throughout this part of the repository. Below you can see the version that is installed currently. If you want to take a look at the package documentation, past versions and much more, click the button in the lower right corner. It'll lead you to the npmjs website of the package.",
           "url": "https://www.npmjs.com/package/lru-cache"
         },
         {
@@ -153,6 +160,7 @@
           "url": "https://github.com/ryanio",
           "size": 599,
           "imageUrl": "https://avatars.githubusercontent.com/u/22116?v=4",
+          "contents": "This is one of the main contributors to the overall repository and this part of the repository specifically. Below you can see the contributors latest commits and the button on the right will take you straight to the respective Github profile.",
           "commits": [
             {
               "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/3a989d0d9d59dca1113759c8babd1d1fb55c6f8e",
@@ -177,6 +185,7 @@
           "url": "https://github.com/jwasinger",
           "size": 82,
           "imageUrl": "https://avatars.githubusercontent.com/u/3411040?v=4",
+          "contents": "This is one of the main contributors to the overall repository and this part of the repository specifically. Below you can see the contributors latest commits and the button on the right will take you straight to the respective Github profile.",
           "commits": [
             {
               "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/45f1ef8adaf7d3b44e0f64121ed643dd3df6c74b",
@@ -201,6 +210,7 @@
           "url": "https://github.com/whymarrh",
           "size": 19,
           "imageUrl": "https://avatars.githubusercontent.com/u/1623628?v=4",
+          "contents": "This is one of the main contributors to the overall repository and this part of the repository specifically. Below you can see the contributors latest commits and the button on the right will take you straight to the respective Github profile.",
           "commits": [
             {
               "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/81ecb3590c018ab7d9197b6f244fc87dabb76023",
@@ -224,7 +234,9 @@
           "name": "index.ts",
           "path": "/packages/blockchain/src/index.ts",
           "size": 1562,
-          "contents": "",
+          "contents": "This file seems pretty big compared to the other files in this part of the project. It's 54159 bytes and has 1562 lines of code. That could make it hard to read for new contributors and people looking at the repository. You might want to look into a refactoring in order to keep it at a more readable size. What you could also do is contact one of the contributors to help in understanding what's going on. They must be hiding somewhere in this package as well, try to reveal them to access their Github profiles.",
+          "fileContents": "   * Adds a block to the blockchain.\n   *\n   * @param block - The block to be added to the blockchain.\n   */\n  putBlock(block: Block): Promise<void>\n\n  /**\n   * Deletes a block from the blockchain. All child blocks in the chain are\n   * deleted and any encountered heads are set to the parent block.\n   *",
+          "fileSize": 54159,
           "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/master/packages/blockchain/src/index.ts"
         },
         {
@@ -232,7 +244,9 @@
           "name": "manager.ts",
           "path": "/packages/blockchain/src/db/manager.ts",
           "size": 257,
-          "contents": "",
+          "contents": "This file seems pretty big compared to the other files in this part of the project. It's 7391 bytes and has 257 lines of code. That could make it hard to read for new contributors and people looking at the repository. You might want to look into a refactoring in order to keep it at a more readable size. What you could also do is contact one of the contributors to help in understanding what's going on. They must be hiding somewhere in this package as well, try to reveal them to access their Github profiles.",
+          "fileContents": " * Abstraction over a DB to facilitate storing/fetching blockchain-related\n * data, such as blocks and headers, indices, and the head block.\n * @hidden\n */\nexport class DBManager {\n  private _cache: CacheMap\n  private _common: Common\n  private _db: LevelUp\n\n  constructor(db: LevelUp, common: Common) {",
+          "fileSize": 7391,
           "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/master/packages/blockchain/src/db/manager.ts"
         }
       ]
@@ -256,8 +270,8 @@
           "name": "merkle-patricia-tree",
           "path": "path.to.package.json",
           "version": "^4.2.0",
-          "size": 69,
-          "contents": "",
+          "size": 260,
+          "contents": "This package is used throughout this part of the repository. Below you can see the version that is installed currently. If you want to take a look at the package documentation, past versions and much more, click the button in the lower right corner. It'll lead you to the npmjs website of the package.",
           "url": "https://www.npmjs.com/package/merkle-patricia-tree"
         },
         {
@@ -265,8 +279,8 @@
           "name": "chalk",
           "path": "path.to.package.json",
           "version": "^2.4.2",
-          "size": 210,
-          "contents": "",
+          "size": 244,
+          "contents": "This package is used throughout this part of the repository. Below you can see the version that is installed currently. If you want to take a look at the package documentation, past versions and much more, click the button in the lower right corner. It'll lead you to the npmjs website of the package.",
           "url": "https://www.npmjs.com/package/chalk"
         },
         {
@@ -274,8 +288,8 @@
           "name": "fs-extra",
           "path": "path.to.package.json",
           "version": "^7.0.1",
-          "size": 164,
-          "contents": "",
+          "size": 169,
+          "contents": "This package is used throughout this part of the repository. Below you can see the version that is installed currently. If you want to take a look at the package documentation, past versions and much more, click the button in the lower right corner. It'll lead you to the npmjs website of the package.",
           "url": "https://www.npmjs.com/package/fs-extra"
         },
         {
@@ -284,6 +298,7 @@
           "url": "https://github.com/axic",
           "size": 364,
           "imageUrl": "https://avatars.githubusercontent.com/u/20340?v=4",
+          "contents": "This is one of the main contributors to the overall repository and this part of the repository specifically. Below you can see the contributors latest commits and the button on the right will take you straight to the respective Github profile.",
           "commits": [
             {
               "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/068db32fbcd262597a9e6780bc7c376a511110a5",
@@ -308,6 +323,7 @@
           "url": "https://github.com/gabrocheleau",
           "size": 55,
           "imageUrl": "https://avatars.githubusercontent.com/u/18757482?v=4",
+          "contents": "This is one of the main contributors to the overall repository and this part of the repository specifically. Below you can see the contributors latest commits and the button on the right will take you straight to the respective Github profile.",
           "commits": [
             {
               "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/ba6de670bfac5d110350125a352ec968dfe7e928",
@@ -332,6 +348,7 @@
           "url": "https://github.com/rumkin",
           "size": 19,
           "imageUrl": "https://avatars.githubusercontent.com/u/609373?v=4",
+          "contents": "This is one of the main contributors to the overall repository and this part of the repository specifically. Below you can see the contributors latest commits and the button on the right will take you straight to the respective Github profile.",
           "commits": [
             {
               "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/98e20f4d2ab3d7e2a1c5198f7ef16ceae89f0947",
@@ -355,7 +372,9 @@
           "name": "eth.ts",
           "path": "/packages/client/lib/rpc/modules/eth.ts",
           "size": 545,
-          "contents": "",
+          "contents": "This file seems pretty big compared to the other files in this part of the project. It's 18203 bytes and has 545 lines of code. That could make it hard to read for new contributors and people looking at the repository. You might want to look into a refactoring in order to keep it at a more readable size. What you could also do is contact one of the contributors to help in understanding what's going on. They must be hiding somewhere in this package as well, try to reveal them to access their Github profiles.",
+          "fileContents": "  private _vm: VM | undefined\n  public ethVersion: number\n\n  /**\n   * Create eth_* RPC module\n   * @param client Client to which the module binds\n   */\n  constructor(client: EthereumClient) {\n    this.client = client\n    this.service = client.services.find((s) => s.name === 'eth') as EthereumService",
+          "fileSize": 18203,
           "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/master/packages/client/lib/rpc/modules/eth.ts"
         },
         {
@@ -363,7 +382,9 @@
           "name": "config.ts",
           "path": "/packages/client/lib/config.ts",
           "size": 373,
-          "contents": "",
+          "contents": "This file seems pretty big compared to the other files in this part of the project. It's 10536 bytes and has 373 lines of code. That could make it hard to read for new contributors and people looking at the repository. You might want to look into a refactoring in order to keep it at a more readable size. What you could also do is contact one of the contributors to help in understanding what's going on. They must be hiding somewhere in this package as well, try to reveal them to access their Github profiles.",
+          "fileContents": "   *\n   * Default: VM instance created by client\n   */\n  vm?: VM\n\n  /**\n   * Serve light peer requests\n   *\n   * Default: `false`\n   */",
+          "fileSize": 10536,
           "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/master/packages/client/lib/config.ts"
         }
       ]
@@ -380,8 +401,8 @@
           "name": "crc-32",
           "path": "path.to.package.json",
           "version": "^1.2.0",
-          "size": 85,
-          "contents": "",
+          "size": 86,
+          "contents": "This package is used throughout this part of the repository. Below you can see the version that is installed currently. If you want to take a look at the package documentation, past versions and much more, click the button in the lower right corner. It'll lead you to the npmjs website of the package.",
           "url": "https://www.npmjs.com/package/crc-32"
         },
         {
@@ -390,6 +411,7 @@
           "url": "https://github.com/jochem-brouwer",
           "size": 280,
           "imageUrl": "https://avatars.githubusercontent.com/u/29359032?v=4",
+          "contents": "This is one of the main contributors to the overall repository and this part of the repository specifically. Below you can see the contributors latest commits and the button on the right will take you straight to the respective Github profile.",
           "commits": [
             {
               "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/755c4a6b4f84475edf70ecc818d90dc2e88bc652",
@@ -414,6 +436,7 @@
           "url": "https://github.com/cdetrio",
           "size": 51,
           "imageUrl": "https://avatars.githubusercontent.com/u/997681?v=4",
+          "contents": "This is one of the main contributors to the overall repository and this part of the repository specifically. Below you can see the contributors latest commits and the button on the right will take you straight to the respective Github profile.",
           "commits": [
             {
               "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/87a739cdda6e7650e43678713b8599ae47f8129c",
@@ -438,6 +461,7 @@
           "url": "https://github.com/chikeichan",
           "size": 16,
           "imageUrl": "https://avatars.githubusercontent.com/u/8507735?v=4",
+          "contents": "This is one of the main contributors to the overall repository and this part of the repository specifically. Below you can see the contributors latest commits and the button on the right will take you straight to the respective Github profile.",
           "commits": [
             {
               "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/37cc36f0a52f3808cce8dcbd3f79239c143c4c80",
@@ -461,7 +485,9 @@
           "name": "index.ts",
           "path": "/packages/common/src/index.ts",
           "size": 963,
-          "contents": "",
+          "contents": "This file seems pretty big compared to the other files in this part of the project. It's 30341 bytes and has 963 lines of code. That could make it hard to read for new contributors and people looking at the repository. You might want to look into a refactoring in order to keep it at a more readable size. What you could also do is contact one of the contributors to help in understanding what's going on. They must be hiding somewhere in this package as well, try to reveal them to access their Github profiles.",
+          "fileContents": "  /**\n   * xDai EVM sidechain with a native stable token\n   *\n   * - [Documentation](https://www.xdaichain.com/)\n   */\n  xDaiChain = 'x-dai-chain',\n}\n\nexport enum Chain {\n  Mainnet = 1,",
+          "fileSize": 30341,
           "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/master/packages/common/src/index.ts"
         },
         {
@@ -469,7 +495,9 @@
           "name": "types.ts",
           "path": "/packages/common/src/types.ts",
           "size": 69,
-          "contents": "",
+          "contents": "This file seems pretty big compared to the other files in this part of the project. It's 1212 bytes and has 69 lines of code. That could make it hard to read for new contributors and people looking at the repository. You might want to look into a refactoring in order to keep it at a more readable size. What you could also do is contact one of the contributors to help in understanding what's going on. They must be hiding somewhere in this package as well, try to reveal them to access their Github profiles.",
+          "fileContents": "    type: string\n    algorithm: string\n    clique?: {\n      period: number\n      epoch: number\n    }\n    ethash?: any\n  }\n}\n",
+          "fileSize": 1212,
           "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/master/packages/common/src/types.ts"
         }
       ]
@@ -488,8 +516,8 @@
           "name": "base64url",
           "path": "path.to.package.json",
           "version": "^3.0.1",
-          "size": 118,
-          "contents": "",
+          "size": 87,
+          "contents": "This package is used throughout this part of the repository. Below you can see the version that is installed currently. If you want to take a look at the package documentation, past versions and much more, click the button in the lower right corner. It'll lead you to the npmjs website of the package.",
           "url": "https://www.npmjs.com/package/base64url"
         },
         {
@@ -497,8 +525,8 @@
           "name": "bl",
           "path": "path.to.package.json",
           "version": "^1.1.2",
-          "size": 97,
-          "contents": "",
+          "size": 61,
+          "contents": "This package is used throughout this part of the repository. Below you can see the version that is installed currently. If you want to take a look at the package documentation, past versions and much more, click the button in the lower right corner. It'll lead you to the npmjs website of the package.",
           "url": "https://www.npmjs.com/package/bl"
         },
         {
@@ -506,8 +534,8 @@
           "name": "debug",
           "path": "path.to.package.json",
           "version": "^2.2.0",
-          "size": 83,
-          "contents": "",
+          "size": 152,
+          "contents": "This package is used throughout this part of the repository. Below you can see the version that is installed currently. If you want to take a look at the package documentation, past versions and much more, click the button in the lower right corner. It'll lead you to the npmjs website of the package.",
           "url": "https://www.npmjs.com/package/debug"
         },
         {
@@ -516,6 +544,7 @@
           "url": "https://github.com/wanderer",
           "size": 251,
           "imageUrl": "https://avatars.githubusercontent.com/u/158211?v=4",
+          "contents": "This is one of the main contributors to the overall repository and this part of the repository specifically. Below you can see the contributors latest commits and the button on the right will take you straight to the respective Github profile.",
           "commits": [
             {
               "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/1ae809ebd9a27eb41f3dca3e9942bc06e53f1a72",
@@ -540,6 +569,7 @@
           "url": "https://github.com/fanatid",
           "size": 40,
           "imageUrl": "https://avatars.githubusercontent.com/u/2633065?v=4",
+          "contents": "This is one of the main contributors to the overall repository and this part of the repository specifically. Below you can see the contributors latest commits and the button on the right will take you straight to the respective Github profile.",
           "commits": [
             {
               "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/50cbf93b0b91d3b8bccaa5a764b58f58b0c61050",
@@ -564,6 +594,7 @@
           "url": "https://github.com/youfoundron",
           "size": 16,
           "imageUrl": "https://avatars.githubusercontent.com/u/4658359?v=4",
+          "contents": "This is one of the main contributors to the overall repository and this part of the repository specifically. Below you can see the contributors latest commits and the button on the right will take you straight to the respective Github profile.",
           "commits": [
             {
               "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/b3cc6b4df1ec07065dce2d1c5a644b61421b1a08",
@@ -587,7 +618,9 @@
           "name": "peer.ts",
           "path": "/packages/devp2p/src/rlpx/peer.ts",
           "size": 584,
-          "contents": "",
+          "contents": "This file seems pretty big compared to the other files in this part of the project. It's 15775 bytes and has 584 lines of code. That could make it hard to read for new contributors and people looking at the repository. You might want to look into a refactoring in order to keep it at a more readable size. What you could also do is contact one of the contributors to help in understanding what's going on. They must be hiding somewhere in this package as well, try to reveal them to access their Github profiles.",
+          "fileContents": "  PROTOCOL_ERROR = 0x02,\n  USELESS_PEER = 0x03,\n  TOO_MANY_PEERS = 0x04,\n  ALREADY_CONNECTED = 0x05,\n  INCOMPATIBLE_VERSION = 0x06,\n  INVALID_IDENTITY = 0x07,\n  CLIENT_QUITTING = 0x08,\n  UNEXPECTED_IDENTITY = 0x09,\n  SAME_IDENTITY = 0x0a,\n  TIMEOUT = 0x0b,",
+          "fileSize": 15775,
           "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/master/packages/devp2p/src/rlpx/peer.ts"
         },
         {
@@ -595,7 +628,9 @@
           "name": "ecies.ts",
           "path": "/packages/devp2p/src/rlpx/ecies.ts",
           "size": 390,
-          "contents": "",
+          "contents": "This file seems pretty big compared to the other files in this part of the project. It's 13437 bytes and has 390 lines of code. That could make it hard to read for new contributors and people looking at the repository. You might want to look into a refactoring in order to keep it at a more readable size. What you could also do is contact one of the contributors to help in understanding what's going on. They must be hiding somewhere in this package as well, try to reveal them to access their Github profiles.",
+          "fileContents": "  return Buffer.from(ecdh(publicKey, privateKey, { hashfn }, Buffer.alloc(33)).slice(1))\n}\n\n// a straigth rip from python interop w/go ecies implementation\n// for sha3, blocksize is 136 bytes\n// for sha256, blocksize is 64 bytes\n// NIST SP 800-56a Concatenation Key Derivation Function (see section 5.8.1).\n// https://github.com/ethereum/pydevp2p/blob/master/devp2p/crypto.py#L295\n// https://github.com/ethereum/go-ethereum/blob/fe532a98f9f32bb81ef0d8d013cf44327830d11e/crypto/ecies/ecies.go#L165\n// https://github.com/ethereum/cpp-ethereum/blob/develop/libdevcrypto/CryptoPP.cpp#L36",
+          "fileSize": 13437,
           "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/master/packages/devp2p/src/rlpx/ecies.ts"
         }
       ]
@@ -612,8 +647,8 @@
           "name": "buffer-xor",
           "path": "path.to.package.json",
           "version": "^2.0.1",
-          "size": 81,
-          "contents": "",
+          "size": 94,
+          "contents": "This package is used throughout this part of the repository. Below you can see the version that is installed currently. If you want to take a look at the package documentation, past versions and much more, click the button in the lower right corner. It'll lead you to the npmjs website of the package.",
           "url": "https://www.npmjs.com/package/buffer-xor"
         },
         {
@@ -621,8 +656,8 @@
           "name": "miller-rabin",
           "path": "path.to.package.json",
           "version": "^4.0.0",
-          "size": 134,
-          "contents": "",
+          "size": 111,
+          "contents": "This package is used throughout this part of the repository. Below you can see the version that is installed currently. If you want to take a look at the package documentation, past versions and much more, click the button in the lower right corner. It'll lead you to the npmjs website of the package.",
           "url": "https://www.npmjs.com/package/miller-rabin"
         },
         {
@@ -631,6 +666,7 @@
           "url": "https://github.com/s1na",
           "size": 239,
           "imageUrl": "https://avatars.githubusercontent.com/u/1591639?v=4",
+          "contents": "This is one of the main contributors to the overall repository and this part of the repository specifically. Below you can see the contributors latest commits and the button on the right will take you straight to the respective Github profile.",
           "commits": [
             {
               "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/4f7829fb343fc7068d7e956ce373cb5f922fcac8",
@@ -655,6 +691,7 @@
           "url": "https://github.com/danjm",
           "size": 38,
           "imageUrl": "https://avatars.githubusercontent.com/u/7499938?v=4",
+          "contents": "This is one of the main contributors to the overall repository and this part of the repository specifically. Below you can see the contributors latest commits and the button on the right will take you straight to the respective Github profile.",
           "commits": [
             {
               "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/002172c94ad1d3c3e6ffc20cc1f5a284393ceee5",
@@ -679,6 +716,7 @@
           "url": "https://github.com/alextsg",
           "size": 15,
           "imageUrl": "https://avatars.githubusercontent.com/u/8051479?v=4",
+          "contents": "This is one of the main contributors to the overall repository and this part of the repository specifically. Below you can see the contributors latest commits and the button on the right will take you straight to the respective Github profile.",
           "commits": [
             {
               "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/96a63258d4457b0fef860ae97f968547ed6c9b90",
@@ -702,7 +740,9 @@
           "name": "index.ts",
           "path": "/packages/ethash/src/index.ts",
           "size": 222,
-          "contents": "",
+          "contents": "This file seems pretty big compared to the other files in this part of the project. It's 5764 bytes and has 222 lines of code. That could make it hard to read for new contributors and people looking at the repository. You might want to look into a refactoring in order to keep it at a more readable size. What you could also do is contact one of the contributors to help in understanding what's going on. They must be hiding somewhere in this package as well, try to reveal them to access their Github profiles.",
+          "fileContents": "    this.cache = []\n  }\n\n  mkcache(cacheSize: number, seed: Buffer) {\n    // console.log('generating cache')\n    // console.log('size: ' + cacheSize)\n    // console.log('seed: ' + seed.toString('hex'))\n    const n = Math.floor(cacheSize / params.HASH_BYTES)\n    const o = [keccak(seed, 512)]\n",
+          "fileSize": 5764,
           "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/master/packages/ethash/src/index.ts"
         },
         {
@@ -710,7 +750,9 @@
           "name": "util.ts",
           "path": "/packages/ethash/src/util.ts",
           "size": 81,
-          "contents": "",
+          "contents": "This file seems pretty big compared to the other files in this part of the project. It's 2328 bytes and has 81 lines of code. That could make it hard to read for new contributors and people looking at the repository. You might want to look into a refactoring in order to keep it at a more readable size. What you could also do is contact one of the contributors to help in understanding what's going on. They must be hiding somewhere in this package as well, try to reveal them to access their Github profiles.",
+          "fileContents": "export function getFullSize(epoc: number) {\n  const mr = new MR()\n  let sz =\n    (exports.params.DATASET_BYTES_INIT as number) +\n    (exports.params.DATASET_BYTES_GROWTH as number) * epoc\n  sz -= exports.params.MIX_BYTES\n  while (!mr.test(new BN(sz / exports.params.MIX_BYTES))) {\n    sz -= 2 * exports.params.MIX_BYTES\n  }\n  return sz",
+          "fileSize": 2328,
           "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/master/packages/ethash/src/util.ts"
         }
       ]
@@ -727,8 +769,8 @@
           "name": "level-mem",
           "path": "path.to.package.json",
           "version": "^5.0.1",
-          "size": 212,
-          "contents": "",
+          "size": 210,
+          "contents": "This package is used throughout this part of the repository. Below you can see the version that is installed currently. If you want to take a look at the package documentation, past versions and much more, click the button in the lower right corner. It'll lead you to the npmjs website of the package.",
           "url": "https://www.npmjs.com/package/level-mem"
         },
         {
@@ -736,8 +778,8 @@
           "name": "level-ws",
           "path": "path.to.package.json",
           "version": "^2.0.0",
-          "size": 222,
-          "contents": "",
+          "size": 117,
+          "contents": "This package is used throughout this part of the repository. Below you can see the version that is installed currently. If you want to take a look at the package documentation, past versions and much more, click the button in the lower right corner. It'll lead you to the npmjs website of the package.",
           "url": "https://www.npmjs.com/package/level-ws"
         },
         {
@@ -745,8 +787,8 @@
           "name": "readable-stream",
           "path": "path.to.package.json",
           "version": "^3.6.0",
-          "size": 99,
-          "contents": "",
+          "size": 171,
+          "contents": "This package is used throughout this part of the repository. Below you can see the version that is installed currently. If you want to take a look at the package documentation, past versions and much more, click the button in the lower right corner. It'll lead you to the npmjs website of the package.",
           "url": "https://www.npmjs.com/package/readable-stream"
         },
         {
@@ -755,6 +797,7 @@
           "url": "https://github.com/evertonfraga",
           "size": 231,
           "imageUrl": "https://avatars.githubusercontent.com/u/47108?v=4",
+          "contents": "This is one of the main contributors to the overall repository and this part of the repository specifically. Below you can see the contributors latest commits and the button on the right will take you straight to the respective Github profile.",
           "commits": [
             {
               "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/01243f01a75f5b58e625f1506739a3d4fcd6a484",
@@ -779,6 +822,7 @@
           "url": "https://github.com/apps/greenkeeper",
           "size": 32,
           "imageUrl": "https://avatars.githubusercontent.com/in/505?v=4",
+          "contents": "This is one of the main contributors to the overall repository and this part of the repository specifically. Below you can see the contributors latest commits and the button on the right will take you straight to the respective Github profile.",
           "commits": []
         },
         {
@@ -787,6 +831,7 @@
           "url": "https://github.com/mattdean-digicatapult",
           "size": 15,
           "imageUrl": "https://avatars.githubusercontent.com/u/29942957?v=4",
+          "contents": "This is one of the main contributors to the overall repository and this part of the repository specifically. Below you can see the contributors latest commits and the button on the right will take you straight to the respective Github profile.",
           "commits": [
             {
               "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/784cfeb90b024ef558d116675779e883b7b1e98e",
@@ -810,7 +855,9 @@
           "name": "baseTrie.ts",
           "path": "/packages/trie/src/baseTrie.ts",
           "size": 753,
-          "contents": "",
+          "contents": "This file seems pretty big compared to the other files in this part of the project. It's 21964 bytes and has 753 lines of code. That could make it hard to read for new contributors and people looking at the repository. You might want to look into a refactoring in order to keep it at a more readable size. What you could also do is contact one of the contributors to help in understanding what's going on. They must be hiding somewhere in this package as well, try to reveal them to access their Github profiles.",
+          "fileContents": "  nodeRef: Buffer,\n  node: TrieNode | null,\n  key: Nibbles,\n  walkController: WalkController\n) => void\n\n/**\n * The basic trie interface, use with `import { BaseTrie as Trie } from 'merkle-patricia-tree'`.\n * In Ethereum applications stick with the {@link SecureTrie} overlay.\n * The API for the base and the secure interface are about the same.",
+          "fileSize": 21964,
           "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/master/packages/trie/src/baseTrie.ts"
         },
         {
@@ -818,7 +865,9 @@
           "name": "trieNode.ts",
           "path": "/packages/trie/src/trieNode.ts",
           "size": 197,
-          "contents": "",
+          "contents": "This file seems pretty big compared to the other files in this part of the project. It's 4105 bytes and has 197 lines of code. That could make it hard to read for new contributors and people looking at the repository. You might want to look into a refactoring in order to keep it at a more readable size. What you could also do is contact one of the contributors to help in understanding what's going on. They must be hiding somewhere in this package as well, try to reveal them to access their Github profiles.",
+          "fileContents": "\n  set value(v: Buffer | null) {\n    this._value = v\n  }\n\n  setBranch(i: number, v: EmbeddedNode | null) {\n    this._branches[i] = v\n  }\n\n  raw(): (EmbeddedNode | null)[] {",
+          "fileSize": 4105,
           "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/master/packages/trie/src/trieNode.ts"
         }
       ]
@@ -838,6 +887,7 @@
           "url": "https://github.com/alcuadrado",
           "size": 197,
           "imageUrl": "https://avatars.githubusercontent.com/u/176499?v=4",
+          "contents": "This is one of the main contributors to the overall repository and this part of the repository specifically. Below you can see the contributors latest commits and the button on the right will take you straight to the respective Github profile.",
           "commits": [
             {
               "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/e7cf3d50c48afa97b62cb90f3d4f187fac946f03",
@@ -862,6 +912,7 @@
           "url": "https://github.com/dryajov",
           "size": 27,
           "imageUrl": "https://avatars.githubusercontent.com/u/1094341?v=4",
+          "contents": "This is one of the main contributors to the overall repository and this part of the repository specifically. Below you can see the contributors latest commits and the button on the right will take you straight to the respective Github profile.",
           "commits": [
             {
               "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/41d2bec49abf7e53fdbe7d49866e9f569813fe1a",
@@ -886,6 +937,7 @@
           "url": "https://github.com/greenkeeperio-bot",
           "size": 15,
           "imageUrl": "https://avatars.githubusercontent.com/u/14790466?v=4",
+          "contents": "This is one of the main contributors to the overall repository and this part of the repository specifically. Below you can see the contributors latest commits and the button on the right will take you straight to the respective Github profile.",
           "commits": [
             {
               "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/c3b74dd000cd027b15f84cdc5d47bc7e5ce8bb19",
@@ -909,7 +961,9 @@
           "name": "eip1559Transaction.ts",
           "path": "/packages/tx/src/eip1559Transaction.ts",
           "size": 414,
-          "contents": "",
+          "contents": "This file seems pretty big compared to the other files in this part of the project. It's 12677 bytes and has 414 lines of code. That could make it hard to read for new contributors and people looking at the repository. You might want to look into a refactoring in order to keep it at a more readable size. What you could also do is contact one of the contributors to help in understanding what's going on. They must be hiding somewhere in this package as well, try to reveal them to access their Github profiles.",
+          "fileContents": " */\nexport default class FeeMarketEIP1559Transaction extends BaseTransaction<FeeMarketEIP1559Transaction> {\n  public readonly chainId: BN\n  public readonly accessList: AccessListBuffer\n  public readonly AccessListJSON: AccessList\n  public readonly maxPriorityFeePerGas: BN\n  public readonly maxFeePerGas: BN\n\n  public readonly common: Common\n",
+          "fileSize": 12677,
           "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/master/packages/tx/src/eip1559Transaction.ts"
         },
         {
@@ -917,7 +971,9 @@
           "name": "legacyTransaction.ts",
           "path": "/packages/tx/src/legacyTransaction.ts",
           "size": 385,
-          "contents": "",
+          "contents": "This file seems pretty big compared to the other files in this part of the project. It's 12073 bytes and has 385 lines of code. That could make it hard to read for new contributors and people looking at the repository. You might want to look into a refactoring in order to keep it at a more readable size. What you could also do is contact one of the contributors to help in understanding what's going on. They must be hiding somewhere in this package as well, try to reveal them to access their Github profiles.",
+          "fileContents": "   * - All parameters are optional and have some basic default values\n   */\n  public static fromTxData(txData: TxData, opts: TxOptions = {}) {\n    return new Transaction(txData, opts)\n  }\n\n  /**\n   * Instantiate a transaction from the serialized tx.\n   *\n   * Format: `rlp([nonce, gasPrice, gasLimit, to, value, data, v, r, s])`",
+          "fileSize": 12073,
           "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/master/packages/tx/src/legacyTransaction.ts"
         }
       ]
@@ -934,8 +990,8 @@
           "name": "bn.js",
           "path": "path.to.package.json",
           "version": "^5.1.2",
-          "size": 103,
-          "contents": "",
+          "size": 206,
+          "contents": "This package is used throughout this part of the repository. Below you can see the version that is installed currently. If you want to take a look at the package documentation, past versions and much more, click the button in the lower right corner. It'll lead you to the npmjs website of the package.",
           "url": "https://www.npmjs.com/package/bn.js"
         },
         {
@@ -943,8 +999,8 @@
           "name": "create-hash",
           "path": "path.to.package.json",
           "version": "^1.1.2",
-          "size": 221,
-          "contents": "",
+          "size": 55,
+          "contents": "This package is used throughout this part of the repository. Below you can see the version that is installed currently. If you want to take a look at the package documentation, past versions and much more, click the button in the lower right corner. It'll lead you to the npmjs website of the package.",
           "url": "https://www.npmjs.com/package/create-hash"
         },
         {
@@ -952,8 +1008,8 @@
           "name": "ethereum-cryptography",
           "path": "path.to.package.json",
           "version": "^0.1.3",
-          "size": 256,
-          "contents": "",
+          "size": 108,
+          "contents": "This package is used throughout this part of the repository. Below you can see the version that is installed currently. If you want to take a look at the package documentation, past versions and much more, click the button in the lower right corner. It'll lead you to the npmjs website of the package.",
           "url": "https://www.npmjs.com/package/ethereum-cryptography"
         },
         {
@@ -962,6 +1018,7 @@
           "url": "https://github.com/kumavis",
           "size": 185,
           "imageUrl": "https://avatars.githubusercontent.com/u/1474978?v=4",
+          "contents": "This is one of the main contributors to the overall repository and this part of the repository specifically. Below you can see the contributors latest commits and the button on the right will take you straight to the respective Github profile.",
           "commits": [
             {
               "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/5807f4bdc073c6986cea3835d290d98c0bab9044",
@@ -986,6 +1043,7 @@
           "url": "https://github.com/tcoulter",
           "size": 24,
           "imageUrl": "https://avatars.githubusercontent.com/u/92629?v=4",
+          "contents": "This is one of the main contributors to the overall repository and this part of the repository specifically. Below you can see the contributors latest commits and the button on the right will take you straight to the respective Github profile.",
           "commits": [
             {
               "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/aea11d1d3e0dd7215e03f5ea25993d641d78f08d",
@@ -1010,6 +1068,7 @@
           "url": "https://github.com/sdtsui",
           "size": 13,
           "imageUrl": "https://avatars.githubusercontent.com/u/8230144?v=4",
+          "contents": "This is one of the main contributors to the overall repository and this part of the repository specifically. Below you can see the contributors latest commits and the button on the right will take you straight to the respective Github profile.",
           "commits": [
             {
               "url": "https://github.com/ethereumjs/ethereumjs-monorepo/commit/fb2172e310ed337a402c2393e0261f476c833fa1",
@@ -1033,7 +1092,9 @@
           "name": "account.ts",
           "path": "/packages/util/src/account.ts",
           "size": 320,
-          "contents": "",
+          "contents": "This file seems pretty big compared to the other files in this part of the project. It's 9203 bytes and has 320 lines of code. That could make it hard to read for new contributors and people looking at the repository. You might want to look into a refactoring in order to keep it at a more readable size. What you could also do is contact one of the contributors to help in understanding what's going on. They must be hiding somewhere in this package as well, try to reveal them to access their Github profiles.",
+          "fileContents": "    const { nonce, balance, stateRoot, codeHash } = accountData\n\n    return new Account(\n      nonce ? new BN(toBuffer(nonce)) : undefined,\n      balance ? new BN(toBuffer(balance)) : undefined,\n      stateRoot ? toBuffer(stateRoot) : undefined,\n      codeHash ? toBuffer(codeHash) : undefined\n    )\n  }\n",
+          "fileSize": 9203,
           "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/master/packages/util/src/account.ts"
         },
         {
@@ -1041,7 +1102,9 @@
           "name": "bytes.ts",
           "path": "/packages/util/src/bytes.ts",
           "size": 228,
-          "contents": "",
+          "contents": "This file seems pretty big compared to the other files in this part of the project. It's 5795 bytes and has 228 lines of code. That could make it hard to read for new contributors and people looking at the repository. You might want to look into a refactoring in order to keep it at a more readable size. What you could also do is contact one of the contributors to help in understanding what's going on. They must be hiding somewhere in this package as well, try to reveal them to access their Github profiles.",
+          "fileContents": "    if (msg.length < length) {\n      msg.copy(buf, length - msg.length)\n      return buf\n    }\n    return msg.slice(-length)\n  }\n}\n\n/**\n * Left Pads a `Buffer` with leading zeros till it has `length` bytes.",
+          "fileSize": 5795,
           "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/master/packages/util/src/bytes.ts"
         }
       ]
