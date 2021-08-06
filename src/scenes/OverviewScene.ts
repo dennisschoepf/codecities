@@ -55,14 +55,7 @@ export class OverviewScene {
   }
 
   private drawLocations() {
-    if (
-      store.getState().finishedSubProjects.every((fsp) => {
-        const edge = this.edges.filter((edge) => edge.name === fsp)[0];
-        return edge.finished;
-      }) &&
-      !store.getState().finishedGame &&
-      store.getState().finishedSubProjects.length > 0
-    ) {
+    if (store.getState().finishedSubProjects.length === 3 && !store.getState().finishedGame) {
       store.setState({ finishedGame: true });
 
       setTimeout(() => {
