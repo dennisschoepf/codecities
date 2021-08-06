@@ -36,13 +36,17 @@ export class DetailScene {
       this.startTime = mp5.millis();
     }
 
-    if (mp5.millis() > this.startTime + 3000 && !this.wasInteractedWith) {
+    if (mp5.millis() > this.startTime + 6000 && !this.wasInteractedWith) {
       this.wasInteractedWith = true;
       store.getState().addUserMessage({
         inputWanted: false,
         text: 'Trouble knowing what to do? You should try clicking somewhere in order to spawn reveal bubbles. Try this in different parts of the canvas to see what you can find',
       });
-    } else if (mp5.millis() > this.startTime + 8000 && !this.wasHovered && this.wasInteractedWith) {
+    } else if (
+      mp5.millis() > this.startTime + 16000 &&
+      !this.wasHovered &&
+      this.wasInteractedWith
+    ) {
       this.wasHovered = true;
       store.getState().addUserMessage({
         inputWanted: false,

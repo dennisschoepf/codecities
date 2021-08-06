@@ -11,8 +11,8 @@ export function getEdgeDimensions({ size }: JSONSubproject): number {
 
 export function generateRandomEdgeCoordinates(): Coordinates {
   return {
-    x: mp5.random(150, SCREEN_WIDTH - 150),
-    y: mp5.random(150, SCREEN_HEIGHT - 150),
+    x: mp5.random(200, SCREEN_WIDTH - 200),
+    y: mp5.random(200, SCREEN_HEIGHT - 200),
   };
 }
 
@@ -115,7 +115,7 @@ export function generateRevealables(revealables: RevealableInterface[]): Reveala
       area: {
         x: coordinates.x,
         y: coordinates.y,
-        w: revealable.size < 50 ? 50 : revealable.size > 600 ? 600 : revealable.size,
+        w: revealable.size < 50 ? 50 : revealable.size > 400 ? 400 : revealable.size,
       },
     });
   });

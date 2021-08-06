@@ -23,6 +23,7 @@ export class Companion {
   messageTextRef: HTMLElement;
   messageInputRef: HTMLElement;
   messageButtonRef: HTMLElement;
+  backdrop: HTMLElement;
   hoverAnimation: any;
   message: CompanionMessage;
 
@@ -32,6 +33,7 @@ export class Companion {
     this.messageTextRef = document.getElementById('message-text');
     this.messageInputRef = document.getElementById('message-input');
     this.messageButtonRef = document.getElementById('message-confirm');
+    this.backdrop = document.getElementById('comp-backdrop');
 
     this.ref.addEventListener('click', () => this.handleClick());
     this.ref.addEventListener('mouseover', () => this.handleMouseEnter());
@@ -44,11 +46,13 @@ export class Companion {
     store.subscribe(
       (companionState) => {
         if (companionState === CompanionState.ACTIVE) {
+          this.backdrop.style.display = 'block';
           this.stopAwaitAnimation();
           this.showActiveShape();
           this.scaleUpCompanion();
           this.showMessage(this.message);
         } else if (companionState === CompanionState.IDLE) {
+          this.backdrop.style.display = 'none';
           this.scaleDownCompanion();
           this.showIdleShape();
           this.stopAwaitAnimation();
