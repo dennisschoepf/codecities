@@ -240,6 +240,21 @@ textarea {
         margin: 1.5rem 0;
       }
 
+      #info-message-contents-legacy {
+        p {
+          margin: 0;
+          font-size: 14px;
+          color: #4e4e4e;
+          font-style: italic;
+        }
+        pre {
+          background-color: black;
+          color: white;
+          padding: 0.5rem;
+          border-radius: 10px;
+        }
+      }
+
       h4 {
         text-transform: uppercase;
         letter-spacing: 1px;

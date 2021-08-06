@@ -23,6 +23,7 @@ export interface RevealableInterface {
   imageUrl?: string;
   version?: string;
   commits?: Commit[];
+  fileContents?: string;
 }
 
 enum RevealableStates {
@@ -44,6 +45,7 @@ export class Revealable {
   imageUrl: string;
   version: string;
   commits: Commit[];
+  fileContents: string;
 
   isHovered: boolean;
   isRevealed: boolean;
@@ -59,7 +61,17 @@ export class Revealable {
   pulseCountUp: boolean;
 
   constructor(
-    { type, name, path, contents, url, imageUrl, version, commits }: RevealableInterface,
+    {
+      type,
+      name,
+      path,
+      contents,
+      url,
+      imageUrl,
+      version,
+      commits,
+      fileContents,
+    }: RevealableInterface,
     area: Area
   ) {
     this.type = type;
@@ -69,6 +81,7 @@ export class Revealable {
     this.url = url;
     this.version = version;
     this.commits = commits;
+    this.fileContents = fileContents;
     this.imageUrl = imageUrl;
     this.area = area;
     this.currentSize = this.minSize;
@@ -182,6 +195,7 @@ export class Revealable {
         url: this.url,
         version: this.version,
         commits: this.commits,
+        fileContents: this.fileContents,
       });
     }
   }

@@ -16,6 +16,7 @@ export interface InfoMessageType {
   url?: string;
   commits?: Commit[];
   version?: string;
+  fileContents?: string;
 }
 
 export class InfoMessage {
@@ -32,13 +33,14 @@ export class InfoMessage {
   infoMessageCommitsHeadlineRef: HTMLElement;
   infoMessageCommitsRef: HTMLElement;
   infoMessageVersionRef: HTMLElement;
+  infoMessageLegacyRef: HTMLElement;
   backdrop: HTMLElement;
 
   constructor() {
     this.infoMessage = document.getElementById('info-message');
     this.infoMessageHeadline = document.getElementById('info-message-headline');
     this.infoMessageSubheadline = document.getElementById('info-message-subheadline');
-    this.infoMessageContents = document.getElementById('info-message-contents');
+    this.infoMessageContents = document.getElementById('info-message-contents-text');
     this.infoMessageClose = document.getElementById('info-message-close');
     this.infoMessageImgRef = document.getElementById('info-message-img') as HTMLImageElement;
     this.infoMessageLinkRef = document.getElementById('info-message-link') as HTMLAnchorElement;
@@ -47,6 +49,7 @@ export class InfoMessage {
       'info-message-content-commits-headline'
     );
     this.infoMessageVersionRef = document.getElementById('info-message-contents-version');
+    this.infoMessageLegacyRef = document.getElementById('info-message-contents-legacy');
     this.backdrop = document.getElementById('backdrop');
 
     this.backdrop.addEventListener('click', this.onBackdropClick);
@@ -96,6 +99,13 @@ export class InfoMessage {
           this.infoMessageVersionRef.style.display = 'none';
         }
 
+        if (this.type === RevealableTypes.LEGACY) {
+          this.infoMessageLegacyRef.style.display = 'block';
+          this.setLegacy(newMessage.fileContents);
+        } else {
+          this.infoMessageLegacyRef.style.display = 'none';
+        }
+
         store.setState({ infoMessageShown: true });
       }
     });
@@ -113,11 +123,18 @@ export class InfoMessage {
 
   private setContents(headline: string, innerHTML: string) {
     this.infoMessageHeadline.innerText = headline;
-    // this.infoMessageContents.innerHTML = innerHTML;
+    this.infoMessageContents.innerHTML = innerHTML;
   }
 
   private setVersion(version: string) {
     this.infoMessageVersionRef.innerHTML = `This package is installed at<br/><h3>${version}</h3>`;
+  }
+
+  private setLegacy(fileContents: string) {
+    this.infoMessageLegacyRef.innerHTML = `
+    <p>Excerpt from the file:</p>
+    <pre>${fileContents}</pre>
+    `;
   }
 
   private setCommits(commits: Commit[]) {
