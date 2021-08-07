@@ -91,7 +91,7 @@ export class Intro {
       this.showStep();
     }
 
-    store.subscribe((state) => {
+    store.subscribe((state, prevState) => {
       this.currentStep = state.currentIntroStep;
       this.anonymous = state.participantAnonymous;
 
@@ -101,6 +101,12 @@ export class Intro {
         this.nextButton.innerHTML = 'Confirm';
       } else if (state.currentIntroStep === 4) {
         this.nextButton.innerHTML = 'Start already!';
+      } else if (state.currentIntroStep === 6 && prevState.currentIntroStep === 5) {
+        console.log('hm');
+
+        setTimeout(() => {
+          document.querySelector('#intro-step6').scrollIntoView();
+        }, 50);
       } else if (state.currentIntroStep === 7) {
         this.nextButton.style.display = 'none';
       } else if (state.currentIntroStep === 0) {
@@ -174,7 +180,6 @@ export class Intro {
 
     if (currentStep === 6) {
       this.sendGeneralQuestionAnswers();
-      window.scrollTo(0);
     }
 
     if (currentStep === 5) {

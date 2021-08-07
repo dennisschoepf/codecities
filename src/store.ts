@@ -31,7 +31,7 @@ const store = create<State>((set) => ({
   uid: null,
   showScore: false,
   showOvScore: true,
-  currentIntroStep: 1,
+  currentIntroStep: 5,
   revealablesFinished: 0,
   currentScene: Scenes.OVERVIEW,
   currentSubproject: null,
