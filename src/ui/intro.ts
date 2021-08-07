@@ -166,7 +166,7 @@ export class Intro {
             text: "Hey there! Need help here? You'll have to touch the parts of the project you want to take a look at with you character's head. As soon as the project part (packages/...) is highlighted, you can click it to dive deeper into what lies behind 🔬",
           });
         }
-      }, 3000);
+      }, 6000);
 
       return;
     }

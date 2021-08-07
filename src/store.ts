@@ -29,7 +29,7 @@ export interface State {
 const store = create<State>((set) => ({
   uid: null,
   showScore: false,
-  currentIntroStep: 0,
+  currentIntroStep: 1,
   revealablesFinished: 0,
   currentScene: Scenes.OVERVIEW,
   currentSubproject: null,
