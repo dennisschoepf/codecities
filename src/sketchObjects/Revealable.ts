@@ -4,7 +4,7 @@ import { areasColliding, playerHead$, revealedArea$ } from '../area';
 import { colors } from '../constants/colors';
 import { logger } from '../logger';
 import store from '../store';
-import { Area } from '../types';
+import { Area, Coordinates } from '../types';
 import { Commit } from '../ui/info';
 
 export enum RevealableTypes {
@@ -51,6 +51,9 @@ export class Revealable {
   isRevealed: boolean;
   wasInteractedWith: boolean;
   wasRevealed: boolean;
+  hasMovedAway: boolean;
+  newMovePosition: Coordinates;
+  originalMovePosition: Coordinates;
 
   minSize: number = 5;
   currentSize: number;
@@ -87,6 +90,14 @@ export class Revealable {
     this.currentSize = this.minSize;
     this.pulseCurrentSize = area.w;
     this.maxSize = area.w;
+    this.newMovePosition = {
+      x: this.area.x + mp5.random(-800, 800),
+      y: this.area.y + mp5.random(-800, 800),
+    };
+    this.originalMovePosition = {
+      x: this.area.x,
+      y: this.area.y,
+    };
 
     combineLatest([revealedArea$, playerHead$]).subscribe(([revealedArea, playerHead]) => {
       const isRevealed = areasColliding(revealedArea, {
@@ -140,6 +151,12 @@ export class Revealable {
       this.reduceSize();
     } else if (this.state === RevealableStates.REVEALED) {
       this.increaseSize();
+
+      if (!this.hasMovedAway) {
+        this.moveAway();
+      } else {
+        this.moveBack();
+      }
 
       mp5.fill(mp5.color(colors.greyLight));
       mp5.ellipse(this.area.x, this.area.y, this.currentSize);
@@ -197,6 +214,78 @@ export class Revealable {
         commits: this.commits,
         fileContents: this.fileContents,
       });
+    }
+  }
+
+  private moveAway() {
+    const boundaryX = mp5.width - 200;
+    const boundaryY = mp5.height - 200;
+
+    const newX = this.newMovePosition.x;
+    const newY = this.newMovePosition.y;
+
+    const limitedX = newX > boundaryX ? boundaryX : newX < 200 ? 200 : newX;
+    const limitedY = newY > boundaryY ? boundaryY : newY < 200 ? 200 : newY;
+
+    if (limitedX > this.area.x) {
+      this.area.x += 5;
+      if (limitedX <= this.area.x) {
+        this.area.x = limitedX;
+        this.hasMovedAway = true;
+      }
+    } else {
+      this.area.x -= 5;
+      if (limitedX >= this.area.x) {
+        this.area.x = limitedX;
+        this.hasMovedAway = true;
+      }
+    }
+
+    if (limitedY > this.area.y) {
+      this.area.y += 5;
+      if (limitedY <= this.area.y) {
+        this.area.y = limitedY;
+        this.hasMovedAway = true;
+      }
+    } else {
+      this.area.y -= 5;
+      if (limitedY >= this.area.y) {
+        this.area.y = limitedY;
+        this.hasMovedAway = true;
+      }
+    }
+  }
+
+  private moveBack() {
+    const newX = this.originalMovePosition.x;
+    const newY = this.originalMovePosition.y;
+
+    if (newX > this.area.x) {
+      this.area.x += 5;
+      if (newX <= this.area.x) {
+        this.area.x = newX;
+        this.hasMovedAway = false;
+      }
+    } else {
+      this.area.x -= 5;
+      if (newX >= this.area.x) {
+        this.area.x = newX;
+        this.hasMovedAway = false;
+      }
+    }
+
+    if (newY > this.area.y) {
+      this.area.y += 5;
+      if (newY <= this.area.y) {
+        this.area.y = newY;
+        this.hasMovedAway = false;
+      }
+    } else {
+      this.area.y -= 5;
+      if (newY >= this.area.y) {
+        this.area.y = newY;
+        this.hasMovedAway = false;
+      }
     }
   }
 

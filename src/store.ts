@@ -1,5 +1,4 @@
 import create from 'zustand/vanilla';
-import { devtools } from 'zustand/middleware';
 import { Scenes } from './scenes/scenes';
 import { CompanionMessage, CompanionState } from './ui/companion';
 import project from '../metadata/project.json';
@@ -27,34 +26,31 @@ export interface State {
   uid: string;
 }
 
-const store = create<State>(
-  devtools((set) => ({
-    uid: null,
-    showScore: false,
-    currentIntroStep: 1,
-    revealablesFinished: 0,
-    currentScene: Scenes.OVERVIEW,
-    currentSubproject: null,
-    participantAnonymous: false,
-    companionState: CompanionState.IDLE,
-    infoMessageShown: false,
-    infoMessages: [],
-    finishedGame: false,
-    addInfoMessage: (newMessage) =>
-      set((state) => ({ ...state, infoMessages: [...state.infoMessages, newMessage] })),
-    userMessages: [],
-    addUserMessage: (newMessage) =>
-      set((state) => ({
-        userMessages: [...state.userMessages, newMessage],
-      })),
-    revealables: [],
-    finishedSubProjects: [],
-    setProjectMetadata: (projectName) =>
-      set((state) => ({
-        ...state,
-        revealables: getRevealablesforSubproject(projectName, project.subprojects),
-      })),
-  }))
-);
-
+const store = create<State>((set) => ({
+  uid: null,
+  showScore: false,
+  currentIntroStep: 0,
+  revealablesFinished: 0,
+  currentScene: Scenes.OVERVIEW,
+  currentSubproject: null,
+  participantAnonymous: false,
+  companionState: CompanionState.IDLE,
+  infoMessageShown: false,
+  infoMessages: [],
+  finishedGame: false,
+  addInfoMessage: (newMessage) =>
+    set((state) => ({ ...state, infoMessages: [...state.infoMessages, newMessage] })),
+  userMessages: [],
+  addUserMessage: (newMessage) =>
+    set((state) => ({
+      userMessages: [...state.userMessages, newMessage],
+    })),
+  revealables: [],
+  finishedSubProjects: [],
+  setProjectMetadata: (projectName) =>
+    set((state) => ({
+      ...state,
+      revealables: getRevealablesforSubproject(projectName, project.subprojects),
+    })),
+}));
 export default store;

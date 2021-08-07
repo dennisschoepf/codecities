@@ -68,7 +68,7 @@ export class Player {
 
       revealedArea$.next({ x, y, w });
 
-      if (timeElapsedSinceRevealClick > 2000) {
+      if (timeElapsedSinceRevealClick > 2500) {
         this.showRevealEl = false;
         revealedArea$.next({ x: 0, y: 0, w: 0 });
       }

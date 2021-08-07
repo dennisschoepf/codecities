@@ -35,6 +35,10 @@ export class Intro {
   fb10: HTMLTextAreaElement;
 
   k1: HTMLTextAreaElement;
+  k2: HTMLTextAreaElement;
+  k3: HTMLTextAreaElement;
+  k4: HTMLTextAreaElement;
+  k5: HTMLTextAreaElement;
 
   errorRef: HTMLElement;
 
@@ -68,6 +72,10 @@ export class Intro {
     this.fb10 = document.querySelector('#fb-10');
 
     this.k1 = document.querySelector('#k-1');
+    this.k2 = document.querySelector('#k-2');
+    this.k3 = document.querySelector('#k-3');
+    this.k4 = document.querySelector('#k-4');
+    this.k5 = document.querySelector('#k-5');
 
     this.errorRef = document.querySelector('#intro-error');
 
@@ -196,7 +204,7 @@ export class Intro {
   }
 
   private sendKnowledgeQuestionAnswers() {
-    const answers = [this.k1.value];
+    const answers = [this.k1.value, this.k2.value, this.k3.value, this.k4.value, this.k5.value];
 
     logger.logQuestions(answers, true);
   }
