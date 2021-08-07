@@ -23,13 +23,15 @@ export interface State {
   finishedGame: boolean;
   revealablesFinished: number;
   showScore: boolean;
+  showOvScore: boolean;
   uid: string;
 }
 
 const store = create<State>((set) => ({
   uid: null,
   showScore: false,
-  currentIntroStep: 1,
+  showOvScore: true,
+  currentIntroStep: 0,
   revealablesFinished: 0,
   currentScene: Scenes.OVERVIEW,
   currentSubproject: null,

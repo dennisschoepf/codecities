@@ -173,6 +173,7 @@ export class Intro {
 
     if (currentStep === 6) {
       this.sendGeneralQuestionAnswers();
+      window.scrollTo(0);
     }
 
     if (currentStep === 5) {
