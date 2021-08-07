@@ -6,22 +6,56 @@ import store from '../store';
 import { generateEdges } from '../helpers';
 import { Scenes } from './scenes';
 import projectMetadata from '../../metadata/project.json';
-import { Area } from '../types';
+import { Area, Coordinates } from '../types';
 import { logger } from '../logger';
 
 export class OverviewScene {
   player: Player;
   playerHead: Area;
+  links: Array<{ edgePosition: Coordinates; linkPositions: Coordinates[] }>;
   edges: Edge[];
   sfLogged: boolean;
 
   constructor() {
     this.edges = generateEdges(projectMetadata.subprojects);
     this.player = new Player();
+
+    this.links = this.edges
+      .map((edge) => {
+        // 1. Get links from project metadata
+        const links = projectMetadata.subprojects
+          .filter((subproject) => subproject.name === edge.name)[0]
+          .links.map((link) => link.split('/')[1]);
+
+        if (links.length === 0) return;
+
+        // 2. Get position of linked packages for each edge
+        const linkPositions = links
+          .map((link) => {
+            const linkedEdge = this.edges.filter((edge) => link === edge.name)[0];
+            if (!linkedEdge) return;
+            return {
+              x: linkedEdge.x,
+              y: linkedEdge.y,
+            };
+          })
+          .filter((linkedPosition) => !!linkedPosition);
+
+        return {
+          edgePosition: {
+            x: edge.x,
+            y: edge.y,
+          },
+          linkPositions,
+        };
+      })
+      .filter((link) => !!link);
   }
 
   public draw() {
     mp5.background(mp5.color(colors.greyLighter));
+
+    this.drawConnections();
 
     this.player.follow();
     this.drawLocations();
@@ -51,6 +85,16 @@ export class OverviewScene {
           message: 'Click outside edge',
         });
       }
+    });
+  }
+
+  private drawConnections() {
+    this.links.forEach((link) => {
+      link.linkPositions.forEach((linkPosition) => {
+        mp5.stroke(mp5.color(colors.greyLight));
+        mp5.strokeWeight(4);
+        mp5.line(link.edgePosition.x, link.edgePosition.y, linkPosition.x, linkPosition.y);
+      });
     });
   }
 
