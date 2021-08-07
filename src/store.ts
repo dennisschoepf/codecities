@@ -36,7 +36,7 @@ const store = create<State>((set) => ({
   currentScene: Scenes.OVERVIEW,
   currentSubproject: null,
   participantAnonymous: false,
-  companionState: CompanionState.ACTIVE,
+  companionState: CompanionState.IDLE,
   infoMessageShown: false,
   infoMessages: [],
   finishedGame: false,
