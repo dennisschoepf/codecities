@@ -26,7 +26,7 @@ export class OvScore {
     }
 
     store.subscribe((state) => {
-      if (state.showOvScore) {
+      if (state.showOvScore && !state.showScore) {
         this.scoreRef.style.display = 'flex';
       } else {
         this.scoreRef.style.display = 'none';

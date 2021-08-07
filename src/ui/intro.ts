@@ -1,6 +1,7 @@
 import { logger } from '../logger';
 import { Scenes } from '../scenes/scenes';
 import store from '../store';
+import { CompanionState } from './companion';
 
 export class Intro {
   currentStep: number;
